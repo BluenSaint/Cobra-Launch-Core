@@ -6,19 +6,28 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/Card";
 
+interface FormData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  fullName: string;
+  agreeToTerms: boolean;
+  profilePhoto: File | null;
+}
+
 interface AuthFormProps {
   type: "login" | "signup";
-  onSubmit?: (data: any) => void;
+  onSubmit?: (data: FormData) => void;
 }
 
 export function AuthForm({ type, onSubmit }: AuthFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
     confirmPassword: "",
     fullName: "",
     agreeToTerms: false,
-    profilePhoto: null as File | null,
+    profilePhoto: null,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});

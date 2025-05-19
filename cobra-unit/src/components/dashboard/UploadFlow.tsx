@@ -6,8 +6,14 @@ import { Button } from '@/components/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 
+interface UploadResult {
+  success: boolean;
+  errorsFound: number;
+  file: File | null;
+}
+
 interface UploadFlowProps {
-  onComplete?: (result: any) => void;
+  onComplete?: (result: UploadResult) => void;
 }
 
 export function UploadFlow({ onComplete }: UploadFlowProps) {
@@ -227,7 +233,7 @@ export function UploadFlow({ onComplete }: UploadFlowProps) {
                     <div className="h-12 w-12 mx-auto bg-gray-700 rounded-full mb-3" />
                     <div className="font-medium text-white">{provider}</div>
                     {selectedProvider === provider && (
-                      <Badge variant="primary" className="mt-2">Selected</Badge>
+                      <Badge variant="default" className="mt-2">Selected</Badge>
                     )}
                   </div>
                 ))}
