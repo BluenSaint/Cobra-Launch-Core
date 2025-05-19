@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CrestPad | AI-Powered Credit Repair Platform
+
+CrestPad is a premium AI-powered credit repair SaaS designed to help users dispute inaccuracies, remove errors, and boost their credit scores faster. Built with a modern tech stack and a sleek dark-mode UI, CrestPad offers a seamless user experience for credit repair needs.
+
+![CrestPad](https://via.placeholder.com/800x400?text=CrestPad+Screenshot)
+
+## Features
+
+- 💡 **AI-Powered Analysis** - Automatically scan credit reports for errors and violations
+- 📝 **Automated Letter Generation** - Generate dispute letters based on detected issues
+- 📊 **Score Simulation** - Visualize potential credit score improvements
+- 🔒 **Secure Document Vault** - Store and manage credit reports and dispute letters
+- 📱 **Responsive Design** - Fully responsive interface across all devices
+- 🌙 **Dark Mode** - Sleek dark theme for comfortable viewing
+
+## Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, Framer Motion
+- **Styling**: Tailwind CSS with custom components
+- **Animation**: Framer Motion for smooth transitions
+- **Accessibility**: WCAG compliant with proper ARIA attributes
+- **Deployment**: Ready for deployment on Vercel
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17.0 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/BluenSaint/Cobra-Unit.git
+   cd Cobra-Unit/cobra-unit
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Run the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Project Structure
+
+```
+/src
+  /app                       # Next.js App Router
+    /page.tsx                # Landing page
+    /login/page.tsx          # Login form
+    /signup/page.tsx         # Signup form
+    /dashboard/page.tsx      # User dashboard
+    /preview/page.tsx        # Component preview
+  /components                # Reusable components
+    Navbar.tsx
+    Hero.tsx
+    TrustBar.tsx
+    CTA.tsx
+    Footer.tsx
+  /lib                       # Utility functions and data
+    utils.ts                 # Helper functions
+    compliance.ts            # Legal data/disclaimers
+    featureFlags.ts          # Feature toggle system
+```
+
+## Usage
+
+### Development
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build for Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+# or
+yarn build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Start Production Server
 
-## Learn More
+```bash
+npm run start
+# or
+yarn start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Landing Page**: Showcases the main features and benefits of CrestPad
+- **Login/Signup**: User authentication forms with validation
+- **Dashboard**: User dashboard for managing credit repair process
+- **Preview**: Component showcase for design validation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Component System
 
-## Deploy on Vercel
+CrestPad uses a component-based architecture following atomic design principles:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Navbar**: Responsive navigation with mobile menu
+- **Hero**: Main landing page section with animated background
+- **TrustBar**: Displays trust badges and cycling testimonial tags
+- **CTA**: Call-to-action section with gradient background
+- **Footer**: Site footer with legal links and company information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Legal Compliance
+
+CrestPad is designed with legal compliance in mind:
+
+- FCRA (Fair Credit Reporting Act) compliant
+- CROA (Credit Repair Organizations Act) compliant
+- Clear legal disclaimers and privacy policies
+
+## Future Plans
+
+- Integration with credit bureaus
+- Automated dispute tracking
+- Advanced AI analysis of credit factors
+- Document scanning and OCR
+- Mobile app development
+
+## License
+
+This project is proprietary software of BlueCrest Financial Consultant LLC.
+
+## Contact
+
+For questions or inquiries, please contact:
+support@bluecrestfinancialconsultantllc.com
