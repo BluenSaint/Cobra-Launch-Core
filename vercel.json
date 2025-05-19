@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "outputDirectory": "cobra-unit/.next",
+  "buildCommand": "cd cobra-unit && npm run build",
+  "installCommand": "cd cobra-unit && npm install",
+  "framework": "nextjs"
+} 
