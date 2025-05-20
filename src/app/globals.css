@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0d0f;
+    color: #f8fafc;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .container-padding {
+    @apply px-6 md:px-8 lg:px-10;
+  }
+  
+  .container-width {
+    @apply max-w-6xl mx-auto;
+  }
+  
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply btn bg-accent text-base hover:bg-opacity-90 hover:shadow-lg hover:shadow-accent/20;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-transparent border border-gray-600 hover:border-accent hover:text-accent;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6 font-heading;
+  }
+  
+  .section-description {
+    @apply text-lg text-gray-400 max-w-3xl mx-auto mb-10;
+  }
+  
+  .feature-card {
+    @apply bg-zinc-900/60 backdrop-blur-sm p-6 rounded-xl transition-all duration-300 hover:transform hover:translate-y-[-5px];
+    @apply border border-zinc-800/60 hover:border-accent/30;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-white to-accent bg-clip-text text-transparent;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus-visible {
+  @apply outline-none ring-2 ring-accent;
+}
+
+/* For proof bar logos */
+.proof-logo {
+  @apply h-12 w-auto opacity-70 hover:opacity-100 transition-opacity;
+  filter: grayscale(1);
+}
+.proof-logo:hover {
+  filter: grayscale(0);
+}
+
+/* Mobile navigation */
+.mobile-nav-link {
+  @apply block py-3 px-4 border-b border-zinc-800/60 text-lg hover:text-accent transition-colors;
+}
+
+/* New components styling */
+.hero-section {
+  background: radial-gradient(circle at 50% 50%, rgba(54, 255, 140, 0.08) 0%, rgba(11, 13, 15, 0) 70%),
+              linear-gradient(to bottom, #0b0d0f, #121417);
+}
+
+.benefits-card {
+  @apply bg-zinc-900/40 backdrop-blur-sm p-5 rounded-lg border border-zinc-800/40;
+}
+
+.testimonial-card {
+  @apply bg-zinc-900/60 backdrop-blur-sm p-6 rounded-xl border border-zinc-800/60;
+}
+
+.sticky-header {
+  @apply fixed top-0 w-full z-50 backdrop-blur-md bg-base/80 border-b border-zinc-800/40;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.score-panel {
+  background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.pricing-card:hover {
+  transform: scale(1.03);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.active {
+  max-height: 500px;
+}
+
+.upload-step {
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.upload-step.active {
+  opacity: 1;
+  border-color: #3b82f6;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+.trust-tag {
+  animation: scrollText 15s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} 
