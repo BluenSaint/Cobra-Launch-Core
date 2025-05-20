@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Rust
+target/
+
+# General
+.DS_Store
+.env
+.env.local
+.env.*.local
