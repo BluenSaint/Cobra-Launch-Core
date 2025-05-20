@@ -1,0 +1,120 @@
+name: Agent Reviewer - Review Autofix PRs
+
+on:
+  pull_request:
+    types: [opened, labeled, synchronize]
+  workflow_dispatch:
+
+jobs:
+  review-autofix:
+    if: |
+      (github.event.pull_request.user.login == 'github-actions[bot]' &&
+      contains(github.event.pull_request.title, '[Needs Review]')) ||
+      contains(github.event.pull_request.labels.*.name, 'needs-review') ||
+      contains(github.event.pull_request.labels.*.name, 'automated-pr')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd project-cobra
+          npm ci
+
+      - name: Run build to verify fixes
+        id: verify_build
+        run: |
+          cd project-cobra
+          npm run build > ../build_verification.log 2>&1 || echo "::set-output name=build_failed::true"
+        continue-on-error: true
+
+      - name: Determine review outcome
+        id: review_outcome
+        run: |
+          if [ "${{ steps.verify_build.outputs.build_failed }}" == "true" ]; then
+            echo "::set-output name=status::failed"
+            echo "::set-output name=message::❌ Review Failed. The autofix changes did not resolve all build issues."
+            grep -E "Module not found|Can't resolve" build_verification.log > remaining_errors.txt || true
+            if [ -s remaining_errors.txt ]; then
+              ERRORS=$(cat remaining_errors.txt)
+              echo "::set-output name=errors::$ERRORS"
+            fi
+          else
+            echo "::set-output name=status::success"
+            echo "::set-output name=message::✅ Review Passed. Build succeeded with the autofix changes."
+          fi
+
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const status = '${{ steps.review_outcome.outputs.status }}';
+            const message = '${{ steps.review_outcome.outputs.message }}';
+            const errors = '${{ steps.review_outcome.outputs.errors }}';
+            
+            let comment = `## Agent Reviewer Report\n\n${message}`;
+            
+            if (status === 'failed' && errors) {
+              comment += '\n\n### Remaining Errors:\n```\n' + errors + '\n```\n\nPlease make additional changes to fix these issues.';
+            } else if (status === 'success') {
+              comment += '\n\nThe PR has been approved and can be safely merged to fix the Vercel deployment issues.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Approve PR if build succeeds
+        if: steps.review_outcome.outputs.status == 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              event: 'APPROVE',
+              body: '✅ Automated approval by Agent Reviewer: Build verification passed!'
+            });
+
+      - name: Auto-merge PR if approved
+        if: steps.review_outcome.outputs.status == 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                merge_method: 'squash',
+                commit_title: `🤖 AutoFix: Resolved deployment issues (PR #${context.issue.number})`,
+                commit_message: `This is an automated fix for Vercel deployment issues.\n\nPR: #${context.issue.number}\nRef: ${context.payload.pull_request.head.ref}`
+              });
+              console.log('PR merged successfully!');
+            } catch (error) {
+              console.error('Failed to merge PR:', error);
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '⚠️ The PR was approved but could not be automatically merged. Please merge manually.'
+              });
+            } 
