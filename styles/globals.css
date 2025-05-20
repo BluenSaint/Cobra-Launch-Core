@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
+/* Mobile responsiveness styles */
+
+/* Fix hamburger menu scroll bug */
+.mobile-menu {
+  overflow-y: auto;
+}
+
+/* Ensure CTA and nav don't overflow on mobile */
+.cta, .nav {
+  max-width: 100%;
+  overflow-x: hidden;
+} 
