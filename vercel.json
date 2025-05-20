@@ -1,8 +1,9 @@
 {
   "framework": "nextjs",
   "regions": ["iad1"],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "buildCommand": "cd project-cobra && npm run build",
+  "installCommand": "cd project-cobra && npm install",
+  "outputDirectory": "project-cobra/.next",
   "headers": [
     {
       "source": "/(.*)",
