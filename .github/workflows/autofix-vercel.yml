@@ -22,6 +22,14 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
+      - name: Verify lock file
+        run: |
+          cd project-cobra
+          if [ ! -f package-lock.json ] && [ ! -f yarn.lock ]; then
+            echo "Error: No lock file found. Please commit a lock file to the repository."
+            exit 1
+          fi
+
       - name: Install dependencies
         run: |
           cd project-cobra
