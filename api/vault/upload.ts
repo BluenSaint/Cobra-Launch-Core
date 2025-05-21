@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-let vaultStore = [];
+const vaultStore = [];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {

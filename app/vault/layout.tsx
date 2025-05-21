@@ -15,4 +15,4 @@ const VaultLayout: React.FC<VaultLayoutProps> = ({ children }) => {
   );
 };
 
-export default VaultLayout; 
+export default VaultLayout;

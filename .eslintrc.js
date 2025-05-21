@@ -10,7 +10,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
     "plugin:prettier/recommended",
   ],
   settings: {
@@ -19,7 +18,7 @@ module.exports = {
     },
   },
   rules: {
-    // Add custom rules here
+    // Custom rules if needed
   },
   env: {
     browser: true,

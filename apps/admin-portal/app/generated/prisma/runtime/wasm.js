@@ -29,7 +29,7 @@ var nt = (t, e, r) => (
       e || !t || !t.__esModule
         ? Ot(r, "default", { value: t, enumerable: !0 })
         : r,
-      t,
+      t
     )
   ),
   ts = (t) => cn(Ot({}, "__esModule", { value: !0 }), t);
@@ -60,7 +60,7 @@ function xr(t, e) {
 }
 function rs(t) {
   let r = Object.getOwnPropertyNames(DataView.prototype).filter(
-      (a) => a.startsWith("get") || a.startsWith("set"),
+      (a) => a.startsWith("get") || a.startsWith("set")
     ),
     n = r.map((a) => a.replace("get", "read").replace("set", "write")),
     i = (a, f) =>
@@ -106,13 +106,13 @@ function pn(t) {
 function Mt(t, e) {
   if (!(t instanceof Uint8Array))
     throw new TypeError(
-      `The "${e}" argument must be an instance of Buffer or Uint8Array`,
+      `The "${e}" argument must be an instance of Buffer or Uint8Array`
     );
 }
 function V(t, e, r = ls + 1) {
   if (t < 0 || t > r) {
     let n = new RangeError(
-      `The value of "${e}" is out of range. It must be >= 0 && <= ${r}. Received ${t}`,
+      `The value of "${e}" is out of range. It must be >= 0 && <= ${r}. Received ${t}`
     );
     throw ((n.code = "ERR_OUT_OF_RANGE"), n);
   }
@@ -120,7 +120,7 @@ function V(t, e, r = ls + 1) {
 function B(t, e) {
   if (typeof t != "number") {
     let r = new TypeError(
-      `The "${e}" argument must be of type number. Received type ${typeof t}.`,
+      `The "${e}" argument must be of type number. Received type ${typeof t}.`
     );
     throw ((r.code = "ERR_INVALID_ARG_TYPE"), r);
   }
@@ -128,7 +128,7 @@ function B(t, e) {
 function Y(t, e) {
   if (!Number.isInteger(t) || Number.isNaN(t)) {
     let r = new RangeError(
-      `The value of "${e}" is out of range. It must be an integer. Received ${t}`,
+      `The value of "${e}" is out of range. It must be an integer. Received ${t}`
     );
     throw ((r.code = "ERR_OUT_OF_RANGE"), r);
   }
@@ -136,7 +136,7 @@ function Y(t, e) {
 function ns(t, e, r, n) {
   if (t < r || t > n) {
     let i = new RangeError(
-      `The value of "${e}" is out of range. It must be >= ${r} and <= ${n}. Received ${t}`,
+      `The value of "${e}" is out of range. It must be >= ${r} and <= ${n}. Received ${t}`
     );
     throw ((i.code = "ERR_OUT_OF_RANGE"), i);
   }
@@ -144,7 +144,7 @@ function ns(t, e, r, n) {
 function mn(t, e) {
   if (typeof t != "string") {
     let r = new TypeError(
-      `The "${e}" argument must be of type string. Received type ${typeof t}`,
+      `The "${e}" argument must be of type string. Received type ${typeof t}`
     );
     throw ((r.code = "ERR_INVALID_ARG_TYPE"), r);
   }
@@ -183,7 +183,7 @@ var y,
         if (typeof e == "string") return xr(e, r).byteLength;
         if (e && e.byteLength) return e.byteLength;
         let n = new TypeError(
-          'The "string" argument must be of type string or an instance of Buffer or ArrayBuffer.',
+          'The "string" argument must be of type string or an instance of Buffer or ArrayBuffer.'
         );
         throw ((n.code = "ERR_INVALID_ARG_TYPE"), n);
       }
@@ -209,7 +209,7 @@ var y,
             ? new t(
                 e.map((s) => s % 256),
                 n,
-                i,
+                i
               )
             : new t(o, n, i);
         }
@@ -220,7 +220,7 @@ var y,
         )
           return new t(e);
         throw new TypeError(
-          "First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.",
+          "First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object."
         );
       }
       static concat(e, r) {
@@ -378,8 +378,8 @@ var y,
         return o;
       }
       write(e, r, n, i = "utf8") {
-        let o = typeof r == "string" ? 0 : (r ?? 0),
-          s = typeof n == "string" ? this.length - o : (n ?? this.length - o);
+        let o = typeof r == "string" ? 0 : r ?? 0,
+          s = typeof n == "string" ? this.length - o : n ?? this.length - o;
         return (
           (i = typeof r == "string" ? r : typeof n == "string" ? n : i),
           B(o, "offset"),
@@ -399,7 +399,7 @@ var y,
           s = typeof n == "string" ? this.length : n;
         if (
           ((i = typeof r == "string" ? r : typeof n == "string" ? n : i),
-          (e = t.from(typeof e == "number" ? [e] : (e ?? []), i)),
+          (e = t.from(typeof e == "number" ? [e] : e ?? [], i)),
           mn(i, "encoding"),
           V(o, "offset", this.length),
           V(s, "end", this.length),
@@ -409,9 +409,9 @@ var y,
             super.set(
               e.slice(
                 0,
-                e.length + a >= this.length ? this.length - a : e.length,
+                e.length + a >= this.length ? this.length - a : e.length
               ),
-              a,
+              a
             );
         return this;
       }
@@ -436,13 +436,13 @@ var y,
               ? this.length
               : a
             : s.length === 0 && i === !0
-              ? (a >= this.length ? this.length : a) || this.length
-              : o(
-                  (f, h) =>
-                    (i ? h <= a : h >= a) &&
-                    this[h] === s[0] &&
-                    s.every((C, k) => this[h + k] === C),
-                )
+            ? (a >= this.length ? this.length : a) || this.length
+            : o(
+                (f, h) =>
+                  (i ? h <= a : h >= a) &&
+                  this[h] === s[0] &&
+                  s.every((C, k) => this[h + k] === C)
+              )
         );
       }
       toString(e = "utf8", r = 0, n = this.length) {
@@ -463,7 +463,7 @@ var y,
         )
           return this.slice(r, n).reduce(
             (i, o) => i + Er(o & (e === "ascii" ? 127 : 255)),
-            "",
+            ""
           );
         if (
           e === "ucs2" ||
@@ -473,13 +473,13 @@ var y,
         ) {
           let i = new DataView(this.buffer.slice(r, n));
           return Array.from({ length: i.byteLength / 2 }, (o, s) =>
-            s * 2 + 1 < i.byteLength ? Er(i.getUint16(s * 2, !0)) : "",
+            s * 2 + 1 < i.byteLength ? Er(i.getUint16(s * 2, !0)) : ""
           ).join("");
         }
         if (e === "hex")
           return this.slice(r, n).reduce(
             (i, o) => i + o.toString(16).padStart(2, "0"),
-            "",
+            ""
           );
         pn(`encoding "${e}"`);
       }
@@ -931,12 +931,12 @@ function Me(t, e, r) {
           : s > 1 && (o = o.charAt(0) + "." + o.slice(1)),
         (o = o + (i < 0 ? "e" : "e+") + i))
       : i < 0
-        ? ((o = "0." + Pe(-i - 1) + o), r && (n = r - s) > 0 && (o += Pe(n)))
-        : i >= s
-          ? ((o += Pe(i + 1 - s)),
-            r && (n = r - i - 1) > 0 && (o = o + "." + Pe(n)))
-          : ((n = i + 1) < s && (o = o.slice(0, n) + "." + o.slice(n)),
-            r && (n = r - s) > 0 && (i + 1 === s && (o += "."), (o += Pe(n)))),
+      ? ((o = "0." + Pe(-i - 1) + o), r && (n = r - s) > 0 && (o += Pe(n)))
+      : i >= s
+      ? ((o += Pe(i + 1 - s)),
+        r && (n = r - i - 1) > 0 && (o = o + "." + Pe(n)))
+      : ((n = i + 1) < s && (o = o.slice(0, n) + "." + o.slice(n)),
+        r && (n = r - s) > 0 && (i + 1 === s && (o += "."), (o += Pe(n)))),
     t.s < 0 ? "-" + o : o
   );
 }
@@ -1473,8 +1473,8 @@ var Fe,
           o == null
             ? (H = o = kt.precision)
             : s
-              ? (H = o + ($(n) - $(i)) + 1)
-              : (H = o),
+            ? (H = o + ($(n) - $(i)) + 1)
+            : (H = o),
           H < 0)
         )
           return new kt(0);
@@ -1788,15 +1788,15 @@ var Kn = Le((Em, Wn) => {
       ((r = { indent: " ", includeEmptyLines: !1, ...r }), typeof t != "string")
     )
       throw new TypeError(
-        `Expected \`input\` to be a \`string\`, got \`${typeof t}\``,
+        `Expected \`input\` to be a \`string\`, got \`${typeof t}\``
       );
     if (typeof e != "number")
       throw new TypeError(
-        `Expected \`count\` to be a \`number\`, got \`${typeof e}\``,
+        `Expected \`count\` to be a \`number\`, got \`${typeof e}\``
       );
     if (typeof r.indent != "string")
       throw new TypeError(
-        `Expected \`options.indent\` to be a \`string\`, got \`${typeof r.indent}\``,
+        `Expected \`options.indent\` to be a \`string\`, got \`${typeof r.indent}\``
       );
     if (e === 0) return t;
     let n = r.includeEmptyLines ? /^/gm : /^(?!\s*$)/gm;
@@ -2141,17 +2141,17 @@ var ot = {
   },
   enabled(t) {
     let e = globalThis.DEBUG.split(",").map((i) =>
-        i.replace(/[.+?^${}()|[\]\\]/g, "\\$&"),
+        i.replace(/[.+?^${}()|[\]\\]/g, "\\$&")
       ),
       r = e.some((i) =>
         i === "" || i[0] === "-"
           ? !1
-          : t.match(RegExp(i.split("*").join(".*") + "$")),
+          : t.match(RegExp(i.split("*").join(".*") + "$"))
       ),
       n = e.some((i) =>
         i === "" || i[0] !== "-"
           ? !1
-          : t.match(RegExp(i.slice(1).split("*").join(".*") + "$")),
+          : t.match(RegExp(i.slice(1).split("*").join(".*") + "$"))
       );
     return r && !n;
   },
@@ -2195,7 +2195,7 @@ function hs(t, e = 2) {
       } else if (typeof i == "bigint") return i.toString();
       return i;
     },
-    e,
+    e
   );
 }
 function Fn() {
@@ -2266,10 +2266,10 @@ function Ue(t) {
     (t?.config.engineType === "library"
       ? "library"
       : t?.config.engineType === "binary"
-        ? "binary"
-        : t?.config.engineType === "client"
-          ? "client"
-          : Bs(t))
+      ? "binary"
+      : t?.config.engineType === "client"
+      ? "client"
+      : Bs(t))
   );
 }
 function Us() {
@@ -2277,10 +2277,10 @@ function Us() {
   return t === "library"
     ? "library"
     : t === "binary"
-      ? "binary"
-      : t === "client"
-        ? "client"
-        : void 0;
+    ? "binary"
+    : t === "client"
+    ? "client"
+    : void 0;
 }
 function Bs(t) {
   return t?.previewFeatures.includes("queryCompiler") ? "client" : "library";
@@ -2343,7 +2343,7 @@ l();
 function qt(t, e) {
   if (!t)
     throw new Error(
-      `${e}. This should never happen. If you see this error, please, open an issue at https://pris.ly/prisma-prisma-bug-report`,
+      `${e}. This should never happen. If you see this error, please, open an issue at https://pris.ly/prisma-prisma-bug-report`
     );
 }
 u();
@@ -2520,17 +2520,17 @@ function $e(t) {
   return t === null
     ? t
     : Array.isArray(t)
-      ? t.map($e)
-      : typeof t == "object"
-        ? Gs(t)
-          ? Ws(t)
-          : typeof t == "bigint" ||
-              t instanceof Date ||
-              t instanceof Uint8Array ||
-              t instanceof ae
-            ? t
-            : Be(t, $e)
-        : t;
+    ? t.map($e)
+    : typeof t == "object"
+    ? Gs(t)
+      ? Ws(t)
+      : typeof t == "bigint" ||
+        t instanceof Date ||
+        t instanceof Uint8Array ||
+        t instanceof ae
+      ? t
+      : Be(t, $e)
+    : t;
 }
 function Gs(t) {
   return t !== null && typeof t == "object" && typeof t.$type == "string";
@@ -2759,7 +2759,7 @@ function Zs(
     contextLines: i,
     callArguments: o,
   },
-  s,
+  s
 ) {
   let a = [""],
     f = e ? " in" : ":";
@@ -2767,11 +2767,13 @@ function Zs(
     (n
       ? (a.push(
           s.red(
-            `Oops, an unknown error occurred! This is ${s.bold("on us")}, you did nothing wrong.`,
-          ),
+            `Oops, an unknown error occurred! This is ${s.bold(
+              "on us"
+            )}, you did nothing wrong.`
+          )
         ),
         a.push(
-          s.red(`It occurred in the ${s.bold(`\`${t}\``)} invocation${f}`),
+          s.red(`It occurred in the ${s.bold(`\`${t}\``)} invocation${f}`)
         ))
       : a.push(s.red(`Invalid ${s.bold(`\`${t}\``)} invocation${f}`)),
     e && a.push(s.underline(ea(e))),
@@ -2979,7 +2981,7 @@ var Qe = class {
   }
   indentedCurrentLine() {
     let e = this.currentLine.padStart(
-      this.currentLine.length + 2 * this.currentIndent,
+      this.currentLine.length + 2 * this.currentIndent
     );
     return this.marginSymbol ? this.marginSymbol + e.slice(1) : e;
   }
@@ -3046,7 +3048,7 @@ var de = class {
       this.isUnderlined &&
         e.afterNextNewline(() => {
           e.write(" ".repeat(r)).writeLine(
-            this.color("~".repeat(this.contents.length)),
+            this.color("~".repeat(this.contents.length))
           );
         });
   }
@@ -3319,7 +3321,11 @@ function ia(t, e) {
     r.getField(t.secondField)?.markAsError()),
     e.addErrorMessage(
       (n) =>
-        `Please ${n.bold("either")} use ${n.green(`\`${t.firstField}\``)} or ${n.green(`\`${t.secondField}\``)}, but ${n.red("not both")} at the same time.`,
+        `Please ${n.bold("either")} use ${n.green(
+          `\`${t.firstField}\``
+        )} or ${n.green(`\`${t.secondField}\``)}, but ${n.red(
+          "not both"
+        )} at the same time.`
     );
 }
 function oa(t, e) {
@@ -3330,7 +3336,9 @@ function oa(t, e) {
     for (let s of i.fields)
       s.isRelation && o.addSuggestion(new re(s.name, "true"));
   e.addErrorMessage((s) => {
-    let a = `Invalid scalar field ${s.red(`\`${n}\``)} for ${s.bold("include")} statement`;
+    let a = `Invalid scalar field ${s.red(`\`${n}\``)} for ${s.bold(
+      "include"
+    )} statement`;
     return (
       i ? (a += ` on model ${s.bold(i.name)}. ${ft(s)}`) : (a += "."),
       (a += `
@@ -3357,7 +3365,7 @@ function sa(t, e, r) {
     return;
   }
   e.addErrorMessage(
-    () => `Unknown field at "${t.selectionPath.join(".")} selection"`,
+    () => `Unknown field at "${t.selectionPath.join(".")} selection"`
   );
 }
 function aa(t, e, r) {
@@ -3365,7 +3373,11 @@ function aa(t, e, r) {
   for (let n of t.outputType.fields) r.addSuggestion(new re(n.name, "false"));
   e.addErrorMessage(
     (n) =>
-      `The ${n.red("omit")} statement includes every field of the model ${n.bold(t.outputType.name)}. At least one field must be included in the result`,
+      `The ${n.red(
+        "omit"
+      )} statement includes every field of the model ${n.bold(
+        t.outputType.name
+      )}. At least one field must be included in the result`
   );
 }
 function la(t, e) {
@@ -3375,8 +3387,12 @@ function la(t, e) {
   n && (n.removeAllFields(), gi(n, r)),
     e.addErrorMessage((o) =>
       i
-        ? `The ${o.red("`select`")} statement for type ${o.bold(r.name)} must not be empty. ${ft(o)}`
-        : `The ${o.red("`select`")} statement for type ${o.bold(r.name)} needs ${o.bold("at least one truthy value")}.`,
+        ? `The ${o.red("`select`")} statement for type ${o.bold(
+            r.name
+          )} must not be empty. ${ft(o)}`
+        : `The ${o.red("`select`")} statement for type ${o.bold(
+            r.name
+          )} needs ${o.bold("at least one truthy value")}.`
     );
 }
 function ua(t, e) {
@@ -3395,7 +3411,11 @@ function ua(t, e) {
   }
   e.addErrorMessage(
     (i) =>
-      `The global ${i.red("omit")} configuration excludes every field of the model ${i.bold(t.outputType.name)}. At least one field must be included in the result`,
+      `The global ${i.red(
+        "omit"
+      )} configuration excludes every field of the model ${i.bold(
+        t.outputType.name
+      )}. At least one field must be included in the result`
   );
 }
 function ca(t, e) {
@@ -3431,7 +3451,9 @@ function ma(t, e) {
   r.parentKind !== "unknown" && r.field.value.markAsError(),
     e.addErrorMessage(
       (n) =>
-        `Invalid value for selection field \`${n.red(r.fieldName)}\`: ${t.underlyingError}`,
+        `Invalid value for selection field \`${n.red(r.fieldName)}\`: ${
+          t.underlyingError
+        }`
     );
 }
 function pa(t, e) {
@@ -3442,8 +3464,8 @@ function pa(t, e) {
       di(
         i,
         r,
-        t.arguments.map((o) => o.name),
-      ),
+        t.arguments.map((o) => o.name)
+      )
     );
 }
 function da(t, e) {
@@ -3458,8 +3480,8 @@ function da(t, e) {
     di(
       o,
       n,
-      t.inputType.fields.map((s) => s.name),
-    ),
+      t.inputType.fields.map((s) => s.name)
+    )
   );
 }
 function di(t, e, r) {
@@ -3476,7 +3498,7 @@ function fa(t, e) {
   e.addErrorMessage((f) =>
     r?.value instanceof G && r.value.text === "null"
       ? `Argument \`${f.green(o)}\` must not be ${f.red("null")}.`
-      : `Argument \`${f.green(o)}\` is missing.`,
+      : `Argument \`${f.green(o)}\` is missing.`
   );
   let n = e.arguments.getDeepSubSelectionValue(t.selectionPath)?.asObject();
   if (!n) return;
@@ -3507,9 +3529,13 @@ function ga(t, e) {
     e.addErrorMessage((i) => {
       let o = Jt(
         "or",
-        t.argument.typeNames.map((s) => i.green(s)),
+        t.argument.typeNames.map((s) => i.green(s))
       );
-      return `Argument \`${i.bold(r)}\`: Invalid value provided. Expected ${o}, provided ${i.red(t.inferredType)}.`;
+      return `Argument \`${i.bold(
+        r
+      )}\`: Invalid value provided. Expected ${o}, provided ${i.red(
+        t.inferredType
+      )}.`;
     });
 }
 function ya(t, e) {
@@ -3525,7 +3551,7 @@ function ya(t, e) {
       ) {
         let s = Jt(
           "or",
-          t.argument.typeNames.map((a) => i.green(a)),
+          t.argument.typeNames.map((a) => i.green(a))
         );
         o.push(` Expected ${s}.`);
       }
@@ -3566,12 +3592,12 @@ function ba(t, e) {
           ? o.push(
               `${i.green("at least one of")} ${Jt(
                 "or",
-                t.constraints.requiredFields.map((s) => `\`${i.bold(s)}\``),
-              )} arguments.`,
+                t.constraints.requiredFields.map((s) => `\`${i.bold(s)}\``)
+              )} arguments.`
             )
           : o.push(`${i.green("at least one")} argument.`)
         : o.push(
-            `${i.green(`at least ${t.constraints.minFieldCount}`)} arguments.`,
+            `${i.green(`at least ${t.constraints.minFieldCount}`)} arguments.`
           ),
       o.push(ft(i)),
       o.join(" ")
@@ -3594,15 +3620,15 @@ function wa(t, e) {
       t.constraints.minFieldCount === 1 && t.constraints.maxFieldCount == 1
         ? s.push(`${o.green("exactly one")} argument,`)
         : t.constraints.maxFieldCount == 1
-          ? s.push(`${o.green("at most one")} argument,`)
-          : s.push(
-              `${o.green(`at most ${t.constraints.maxFieldCount}`)} arguments,`,
-            ),
+        ? s.push(`${o.green("at most one")} argument,`)
+        : s.push(
+            `${o.green(`at most ${t.constraints.maxFieldCount}`)} arguments,`
+          ),
       s.push(
         `but you provided ${Jt(
           "and",
-          i.map((a) => o.red(a)),
-        )}. Please choose`,
+          i.map((a) => o.red(a))
+        )}. Please choose`
       ),
       t.constraints.maxFieldCount === 1
         ? s.push("one.")
@@ -3733,7 +3759,7 @@ var Gt = Symbol(),
         ? qr.set(this, `Prisma.${this._getName()}`)
         : qr.set(
             this,
-            `new Prisma.${this._getNamespace()}.${this._getName()}()`,
+            `new Prisma.${this._getNamespace()}.${this._getName()}()`
           );
     }
     _getName() {
@@ -3838,12 +3864,12 @@ function xi(t) {
   return t instanceof xe
     ? new G(`Prisma.${t._getName()}`)
     : Ke(t)
-      ? new G(`prisma.${ve(t.modelName)}.$fields.${t.name}`)
-      : Array.isArray(t)
-        ? Ca(t)
-        : typeof t == "object"
-          ? wi(t)
-          : new G(Object.prototype.toString.call(t));
+    ? new G(`prisma.${ve(t.modelName)}.$fields.${t.name}`)
+    : Array.isArray(t)
+    ? Ca(t)
+    : typeof t == "object"
+    ? wi(t)
+    : new G(Object.prototype.toString.call(t));
 }
 function Ca(t) {
   let e = new Ge();
@@ -3914,7 +3940,7 @@ function Ra(t) {
       e.getOrCreate(n, () =>
         i.has(n)
           ? [n]
-          : (i.add(n), t[n] ? t[n].needs.flatMap((o) => r(o, i)) : [n]),
+          : (i.add(n), t[n] ? t[n].needs.flatMap((o) => r(o, i)) : [n])
       );
   return Be(t, (n) => ({ ...n, needs: r(n.name, new Set()) }));
 }
@@ -3959,7 +3985,7 @@ var Yt = class {
             ...this.previous?.getAllClientExtensions(),
             ...this.extension.client,
           }
-        : this.previous?.getAllClientExtensions(),
+        : this.previous?.getAllClientExtensions()
     );
     batchCallbacks = ut(() => {
       let e = this.previous?.getAllBatchQueryCallbacks() ?? [],
@@ -3968,7 +3994,7 @@ var Yt = class {
     });
     getAllComputedFields(e) {
       return this.computedFieldsCache.getOrCreate(e, () =>
-        Pi(this.previous?.getAllComputedFields(e), this.extension, e),
+        Pi(this.previous?.getAllComputedFields(e), this.extension, e)
       );
     }
     getAllClientExtensions() {
@@ -4278,7 +4304,9 @@ function ki(t, e) {
     selectionPath: e.getSelectionPath(),
     argumentPath: e.getArgumentPath(),
     argument: { name: e.getArgumentName(), typeNames: [] },
-    underlyingError: `We could not serialize ${Object.prototype.toString.call(t)} value. Serialize the object to JSON or implement a ".toJSON()" method on it`,
+    underlyingError: `We could not serialize ${Object.prototype.toString.call(
+      t
+    )} value. Serialize the object to JSON or implement a ".toJSON()" method on it`,
   });
 }
 function Oi(t, e) {
@@ -4405,7 +4433,7 @@ var $r = class t {
   }
   getGlobalOmit() {
     return this.params.modelName && this.shouldApplyGlobalOmit()
-      ? (this.params.globalOmit?.[ve(this.params.modelName)] ?? {})
+      ? this.params.globalOmit?.[ve(this.params.modelName)] ?? {}
       : {};
   }
   shouldApplyGlobalOmit() {
@@ -4455,7 +4483,7 @@ function Mi(t) {
   if (!t._hasPreviewFlag("metrics"))
     throw new W(
       "`metrics` preview feature must be enabled in order to access metrics API",
-      { clientVersion: t._clientVersion },
+      { clientVersion: t._clientVersion }
     );
 }
 var Ye = class {
@@ -4487,7 +4515,7 @@ function Ii(t, e) {
 }
 function Na(t) {
   throw new Error(
-    "Prisma.dmmf is not available when running in edge runtimes.",
+    "Prisma.dmmf is not available when running in edge runtimes."
   );
 }
 function jr(t) {
@@ -4547,7 +4575,7 @@ var Z = class t {
       throw e.length === 0
         ? new TypeError("Expected at least 1 string")
         : new TypeError(
-            `Expected ${e.length} strings to have ${e.length - 1} values`,
+            `Expected ${e.length} strings to have ${e.length - 1} values`
           );
     let n = r.reduce((s, a) => s + (a instanceof t ? a.values.length : 1), 0);
     (this.values = new Array(n)),
@@ -4600,7 +4628,7 @@ var Z = class t {
 function Fi(t, e = ",", r = "", n = "") {
   if (t.length === 0)
     throw new TypeError(
-      "Expected `join([])` to be called with an array of multiple elements, but got an empty array",
+      "Expected `join([])` to be called with an array of multiple elements, but got an empty array"
     );
   return new Z([r, ...Array(t.length - 1).fill(e), n], t);
 }
@@ -4705,7 +4733,7 @@ function le(t, e) {
       has(o, s) {
         if (n.has(s)) return !0;
         let a = r.get(s);
-        return a ? (a.has?.(s) ?? !0) : Reflect.has(o, s);
+        return a ? a.has?.(s) ?? !0 : Reflect.has(o, s);
       },
       ownKeys(o) {
         let s = Ui(Reflect.ownKeys(o), r),
@@ -4886,7 +4914,7 @@ function Ze(t = {}) {
     (n, [i, o]) => (
       $i[i] !== void 0 ? (n.select[i] = { select: o }) : (n[i] = o), n
     ),
-    { select: {} },
+    { select: {} }
   );
 }
 function ja(t = {}) {
@@ -4969,7 +4997,7 @@ function Gi(t, e) {
         if (s) return new gt(t, o, s.type, s.isList, s.kind === "enum");
       },
       ...or(Object.keys(n)),
-    },
+    }
   );
 }
 u();
@@ -4989,18 +5017,18 @@ var Wi = (t) => (Array.isArray(t) ? t : t.split(".")),
   Ki = (t, e, r) =>
     Wi(e).reduceRight(
       (n, i, o, s) => Object.assign({}, Kr(t, s.slice(0, o)), { [i]: n }),
-      r,
+      r
     );
 function Ka(t, e) {
   return t === void 0 || e === void 0 ? [] : [...e, "select", t];
 }
 function Ha(t, e, r) {
-  return e === void 0 ? (t ?? {}) : Ki(e, r, t || !0);
+  return e === void 0 ? t ?? {} : Ki(e, r, t || !0);
 }
 function Hr(t, e, r, n, i, o) {
   let a = t._runtimeDataModel.models[e].fields.reduce(
     (f, h) => ({ ...f, [h.name]: h }),
-    {},
+    {}
   );
   return (f) => {
     let h = Ce(t._errorFormat),
@@ -5072,7 +5100,7 @@ function Za(t, e) {
               };
               return t._request({ ...C, ...a });
             },
-            { action: o, args: f, model: e },
+            { action: o, args: f, model: e }
           );
         };
       return Ya.includes(o) ? Hr(t, e, s) : el(i) ? Ji(t, i, s) : s({});
@@ -5087,7 +5115,7 @@ function tl(t, e) {
     K("fields", () => {
       let r = t._runtimeDataModel.models[e];
       return Gi(e, r);
-    }),
+    })
   );
 }
 u();
@@ -5143,7 +5171,7 @@ function Yi(t) {
   if (t.client?.__AccelerateEngine) {
     let r = t.client.__AccelerateEngine;
     this._originalClient._engine = new r(
-      this._originalClient._accelerateEngineConfig,
+      this._originalClient._accelerateEngineConfig
     );
   }
   let e = Object.create(this._originalClient, {
@@ -5447,8 +5475,8 @@ function po(t, e) {
     ? t.datasources
       ? t.datasources
       : t.datasourceUrl
-        ? { [e[0]]: { url: t.datasourceUrl } }
-        : {}
+      ? { [e[0]]: { url: t.datasourceUrl } }
+      : {}
     : {};
 }
 u();
@@ -5644,10 +5672,10 @@ function mr({
     (o === void 0
       ? (i = void 0)
       : a
-        ? (i = a)
-        : s?.value
-          ? (i = s.value)
-          : s?.fromEnvVar && (i = r[s.fromEnvVar]),
+      ? (i = a)
+      : s?.value
+      ? (i = s.value)
+      : s?.fromEnvVar && (i = r[s.fromEnvVar]),
     s?.fromEnvVar !== void 0 && i === void 0)
   )
     throw Re().id === "workerd"
@@ -5656,13 +5684,13 @@ function mr({
 
 In Cloudflare module Workers, environment variables are available only in the Worker's \`env\` parameter of \`fetch\`.
 To solve this, provide the connection string directly: https://pris.ly/d/cloudflare-datasource-url`,
-          n,
+          n
         )
       : new I(`error: Environment variable not found: ${s.fromEnvVar}.`, n);
   if (i === void 0)
     throw new I(
       "error: Missing URL environment variable, value, or override.",
-      n,
+      n
     );
   return i;
 }
@@ -5693,8 +5721,10 @@ var tn,
       let { clientVersion: e, adapter: r, engineWasm: n } = t;
       if (r === void 0)
         throw new I(
-          `The \`adapter\` option for \`PrismaClient\` is required in this context (${Re().prettyName})`,
-          e,
+          `The \`adapter\` option for \`PrismaClient\` is required in this context (${
+            Re().prettyName
+          })`,
+          e
         );
       if (n === void 0)
         throw new I("WASM engine was unexpectedly `undefined`", e);
@@ -5705,7 +5735,7 @@ var tn,
           if (s == null)
             throw new I(
               "The loaded wasm module was unexpectedly `undefined` or `null` once loaded",
-              e,
+              e
             );
           let a = { "./query_engine_bg.js": o },
             f = new WebAssembly.Instance(s, a),
@@ -5813,7 +5843,7 @@ var Rt = class {
   }
   async applyPendingMigrations() {
     throw new Error(
-      "Cannot call this method from this type of engine instance",
+      "Cannot call this method from this type of engine instance"
     );
   }
   async transaction(e, r, n) {
@@ -5852,7 +5882,7 @@ var Rt = class {
       return this.libraryInstantiationPromise;
     (this.binaryTarget = await this.getCurrentBinaryTarget()),
       await this.tracingHelper.runInChildSpan("load_engine", () =>
-        this.loadEngine(),
+        this.loadEngine()
       ),
       this.version();
   }
@@ -5897,8 +5927,8 @@ var Rt = class {
               (n) => {
                 e.deref()?.logger(n);
               },
-              r,
-            ),
+              r
+            )
           ));
       } catch (e) {
         let r = e,
@@ -5942,7 +5972,7 @@ var Rt = class {
   }
   onBeforeExit() {
     throw new Error(
-      '"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.',
+      '"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.'
     );
   }
   async start() {
@@ -5953,7 +5983,7 @@ var Rt = class {
     )
       return (
         ye(
-          `library already starting, this.libraryStarted: ${this.libraryStarted}`,
+          `library already starting, this.libraryStarted: ${this.libraryStarted}`
         ),
         this.libraryStartingPromise
       );
@@ -5977,7 +6007,7 @@ var Rt = class {
     return (
       (this.libraryStartingPromise = this.tracingHelper.runInChildSpan(
         "connect",
-        e,
+        e
       )),
       this.libraryStartingPromise
     );
@@ -6004,7 +6034,7 @@ var Rt = class {
     return (
       (this.libraryStoppingPromise = this.tracingHelper.runInChildSpan(
         "disconnect",
-        e,
+        e
       )),
       this.libraryStoppingPromise
     );
@@ -6045,7 +6075,7 @@ var Rt = class {
         : new j(
             `${a.message}
 ${a.backtrace}`,
-            { clientVersion: this.config.clientVersion },
+            { clientVersion: this.config.clientVersion }
           );
     }
   }
@@ -6058,7 +6088,7 @@ ${a.backtrace}`,
       (this.executingQueryPromise = this.engine.query(
         this.lastQuery,
         JSON.stringify({ traceparent: n }),
-        yo(r),
+        yo(r)
       ));
     let s = await this.executingQueryPromise,
       a = this.parseEngineResponse(s);
@@ -6072,9 +6102,9 @@ ${a.backtrace}`,
     if (Array.isArray(f))
       return f.map((T) =>
         T.errors && T.errors.length > 0
-          ? (this.loggerRustPanic ??
-            this.buildQueryError(T.errors[0], o?.errorRegistry))
-          : { data: T },
+          ? this.loggerRustPanic ??
+            this.buildQueryError(T.errors[0], o?.errorRegistry)
+          : { data: T }
       );
     throw h && h.length === 1
       ? new Error(h[0].error)
@@ -6092,7 +6122,7 @@ ${a.backtrace}`,
       let n = e.meta?.id;
       qt(
         typeof n == "number",
-        "Malformed external JS error received from the engine",
+        "Malformed external JS error received from the engine"
       );
       let i = r.consumeError(n);
       return qt(i, "External error with reported id was not registered"), i;
@@ -6181,7 +6211,7 @@ function bo({ copyEngine: t = !0 }, e) {
     n &&
     lt(
       "recommend--no-engine",
-      "In production, we recommend using `prisma generate --no-engine` (See: `prisma generate --help`)",
+      "In production, we recommend using `prisma generate --no-engine` (See: `prisma generate --help`)"
     );
   let i = Ue(e.generator),
     o = n || !t,
@@ -6208,7 +6238,7 @@ function bo({ copyEngine: t = !0 }, e) {
       new W(
         T.join(`
 `),
-        { clientVersion: e.clientVersion },
+        { clientVersion: e.clientVersion }
       ))
     );
   }
@@ -6216,7 +6246,9 @@ function bo({ copyEngine: t = !0 }, e) {
   if (o) return new pr(e);
   {
     let T = [
-      `PrismaClient failed to initialize because it wasn't configured to run in this environment (${Re().prettyName}).`,
+      `PrismaClient failed to initialize because it wasn't configured to run in this environment (${
+        Re().prettyName
+      }).`,
       "In order to run Prisma Client in an edge runtime, you will need to configure one of the following options:",
       "- Enable Driver Adapters: https://pris.ly/d/driver-adapters",
       "- Enable Accelerate: https://pris.ly/d/accelerate",
@@ -6224,7 +6256,7 @@ function bo({ copyEngine: t = !0 }, e) {
     throw new W(
       T.join(`
 `),
-      { clientVersion: e.clientVersion },
+      { clientVersion: e.clientVersion }
     );
   }
   return "wasm";
@@ -6302,9 +6334,9 @@ function Rl(t) {
   return t instanceof ArrayBuffer || t instanceof SharedArrayBuffer
     ? !0
     : typeof t == "object" && t !== null
-      ? t[Symbol.toStringTag] === "ArrayBuffer" ||
-        t[Symbol.toStringTag] === "SharedArrayBuffer"
-      : !1;
+    ? t[Symbol.toStringTag] === "ArrayBuffer" ||
+      t[Symbol.toStringTag] === "SharedArrayBuffer"
+    : !1;
 }
 function To(t) {
   if (typeof t != "object" || t === null) return t;
@@ -6503,17 +6535,14 @@ l();
 function Mo(t) {
   return typeof t == "string"
     ? t
-    : t.reduce(
-        (e, r) => {
-          let n = typeof r == "string" ? r : r.level;
-          return n === "query"
-            ? e
-            : e && (r === "info" || e === "info")
-              ? "info"
-              : n;
-        },
-        void 0,
-      );
+    : t.reduce((e, r) => {
+        let n = typeof r == "string" ? r : r.level;
+        return n === "query"
+          ? e
+          : e && (r === "info" || e === "info")
+          ? "info"
+          : n;
+      }, void 0);
 }
 u();
 c();
@@ -6942,7 +6971,7 @@ var D = class extends Error {
     super(
       e +
         `
-Read more at https://pris.ly/d/client-constructor`,
+Read more at https://pris.ly/d/client-constructor`
     ),
       (this.name = "PrismaClientConstructorValidationError");
   }
@@ -6968,25 +6997,33 @@ var No = [
       if (t) {
         if (typeof t != "object" || Array.isArray(t))
           throw new D(
-            `Invalid value ${JSON.stringify(t)} for "datasources" provided to PrismaClient constructor`,
+            `Invalid value ${JSON.stringify(
+              t
+            )} for "datasources" provided to PrismaClient constructor`
           );
         for (let [r, n] of Object.entries(t)) {
           if (!e.includes(r)) {
             let i = tt(r, e) || ` Available datasources: ${e.join(", ")}`;
             throw new D(
-              `Unknown datasource ${r} provided to PrismaClient constructor.${i}`,
+              `Unknown datasource ${r} provided to PrismaClient constructor.${i}`
             );
           }
           if (typeof n != "object" || Array.isArray(n))
-            throw new D(`Invalid value ${JSON.stringify(t)} for datasource "${r}" provided to PrismaClient constructor.
+            throw new D(`Invalid value ${JSON.stringify(
+              t
+            )} for datasource "${r}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
           if (n && typeof n == "object")
             for (let [i, o] of Object.entries(n)) {
               if (i !== "url")
-                throw new D(`Invalid value ${JSON.stringify(t)} for datasource "${r}" provided to PrismaClient constructor.
+                throw new D(`Invalid value ${JSON.stringify(
+                  t
+                )} for datasource "${r}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
               if (typeof o != "string")
-                throw new D(`Invalid value ${JSON.stringify(o)} for datasource "${r}" provided to PrismaClient constructor.
+                throw new D(`Invalid value ${JSON.stringify(
+                  o
+                )} for datasource "${r}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
             }
         }
@@ -6995,37 +7032,41 @@ It should have this form: { url: "CONNECTION_STRING" }`);
     adapter: (t, e) => {
       if (!t && Ue(e.generator) === "client")
         throw new D(
-          'Using engine type "client" requires a driver adapter to be provided to PrismaClient constructor.',
+          'Using engine type "client" requires a driver adapter to be provided to PrismaClient constructor.'
         );
       if (t === null) return;
       if (t === void 0)
         throw new D(
-          '"adapter" property must not be undefined, use null to conditionally disable driver adapters.',
+          '"adapter" property must not be undefined, use null to conditionally disable driver adapters.'
         );
       if (!dr(e).includes("driverAdapters"))
         throw new D(
-          '"adapter" property can only be provided to PrismaClient constructor when "driverAdapters" preview feature is enabled.',
+          '"adapter" property can only be provided to PrismaClient constructor when "driverAdapters" preview feature is enabled.'
         );
       if (Ue(e.generator) === "binary")
         throw new D(
-          'Cannot use a driver adapter with the "binary" Query Engine. Please use the "library" Query Engine.',
+          'Cannot use a driver adapter with the "binary" Query Engine. Please use the "library" Query Engine.'
         );
     },
     datasourceUrl: (t) => {
       if (typeof t < "u" && typeof t != "string")
-        throw new D(`Invalid value ${JSON.stringify(t)} for "datasourceUrl" provided to PrismaClient constructor.
+        throw new D(`Invalid value ${JSON.stringify(
+          t
+        )} for "datasourceUrl" provided to PrismaClient constructor.
 Expected string or undefined.`);
     },
     errorFormat: (t) => {
       if (t) {
         if (typeof t != "string")
           throw new D(
-            `Invalid value ${JSON.stringify(t)} for "errorFormat" provided to PrismaClient constructor.`,
+            `Invalid value ${JSON.stringify(
+              t
+            )} for "errorFormat" provided to PrismaClient constructor.`
           );
         if (!qo.includes(t)) {
           let e = tt(t, qo);
           throw new D(
-            `Invalid errorFormat ${t} provided to PrismaClient constructor.${e}`,
+            `Invalid errorFormat ${t} provided to PrismaClient constructor.${e}`
           );
         }
       }
@@ -7034,13 +7075,15 @@ Expected string or undefined.`);
       if (!t) return;
       if (!Array.isArray(t))
         throw new D(
-          `Invalid value ${JSON.stringify(t)} for "log" provided to PrismaClient constructor.`,
+          `Invalid value ${JSON.stringify(
+            t
+          )} for "log" provided to PrismaClient constructor.`
         );
       function e(r) {
         if (typeof r == "string" && !Uo.includes(r)) {
           let n = tt(r, Uo);
           throw new D(
-            `Invalid log level "${r}" provided to PrismaClient constructor.${n}`,
+            `Invalid log level "${r}" provided to PrismaClient constructor.${n}`
           );
         }
       }
@@ -7053,7 +7096,9 @@ Expected string or undefined.`);
             if (!o.includes(i)) {
               let s = tt(i, o);
               throw new D(
-                `Invalid value ${JSON.stringify(i)} for "emit" in logLevel provided to PrismaClient constructor.${s}`,
+                `Invalid value ${JSON.stringify(
+                  i
+                )} for "emit" in logLevel provided to PrismaClient constructor.${s}`
               );
             }
           },
@@ -7063,7 +7108,7 @@ Expected string or undefined.`);
             if (n[i]) n[i](o);
             else
               throw new D(
-                `Invalid property ${i} for "log" provided to PrismaClient constructor`,
+                `Invalid property ${i} for "log" provided to PrismaClient constructor`
               );
       }
     },
@@ -7072,12 +7117,12 @@ Expected string or undefined.`);
       let e = t.maxWait;
       if (e != null && e <= 0)
         throw new D(
-          `Invalid value ${e} for maxWait in "transactionOptions" provided to PrismaClient constructor. maxWait needs to be greater than 0`,
+          `Invalid value ${e} for maxWait in "transactionOptions" provided to PrismaClient constructor. maxWait needs to be greater than 0`
         );
       let r = t.timeout;
       if (r != null && r <= 0)
         throw new D(
-          `Invalid value ${r} for timeout in "transactionOptions" provided to PrismaClient constructor. timeout needs to be greater than 0`,
+          `Invalid value ${r} for timeout in "transactionOptions" provided to PrismaClient constructor. timeout needs to be greater than 0`
         );
     },
     omit: (t, e) => {
@@ -7112,13 +7157,17 @@ Expected string or undefined.`);
       let e = ["debug", "engine", "configOverride"];
       if (typeof t != "object")
         throw new D(
-          `Invalid value ${JSON.stringify(t)} for "__internal" to PrismaClient constructor`,
+          `Invalid value ${JSON.stringify(
+            t
+          )} for "__internal" to PrismaClient constructor`
         );
       for (let [r] of Object.entries(t))
         if (!e.includes(r)) {
           let n = tt(r, e);
           throw new D(
-            `Invalid property ${JSON.stringify(r)} for "__internal" provided to PrismaClient constructor.${n}`,
+            `Invalid property ${JSON.stringify(
+              r
+            )} for "__internal" provided to PrismaClient constructor.${n}`
           );
         }
     },
@@ -7128,14 +7177,14 @@ function Vo(t, e) {
     if (!No.includes(r)) {
       let i = tt(r, No);
       throw new D(
-        `Unknown property ${r} provided to PrismaClient constructor.${i}`,
+        `Unknown property ${r} provided to PrismaClient constructor.${i}`
       );
     }
     Fl[r](n, e);
   }
   if (t.datasourceUrl && t.datasources)
     throw new D(
-      'Can not use "datasourceUrl" and "datasources" options at the same time. Pick one of them',
+      'Can not use "datasourceUrl" and "datasources" options at the same time. Pick one of them'
     );
 }
 function tt(t, e) {
@@ -7169,14 +7218,14 @@ function Ul(t, e) {
         r.arguments.getDeepField([o.modelKey, o.fieldName])?.markAsError(),
           r.addErrorMessage(
             () =>
-              `Model "${o.modelKey}" does not have a field named "${o.fieldName}".`,
+              `Model "${o.modelKey}" does not have a field named "${o.fieldName}".`
           );
         break;
       case "RelationInOmit":
         r.arguments.getDeepField([o.modelKey, o.fieldName])?.markAsError(),
           r.addErrorMessage(
             () =>
-              'Relations are already excluded by default and can not be specified in "omit".',
+              'Relations are already excluded by default and can not be specified in "omit".'
           );
         break;
       case "InvalidFieldValue":
@@ -7222,7 +7271,7 @@ function jo(t) {
                 return;
               }
               T.batchRequestIdx === h ? f(T) : (i || (i = T), a());
-            },
+            }
           );
       });
 }
@@ -7284,12 +7333,12 @@ function Go(t) {
         if (s.provider !== f)
           throw new I(
             `The Driver Adapter \`${s.adapterName}\`, based on \`${s.provider}\`, is not compatible with the provider \`${f}\` specified in the Prisma schema.`,
-            this._clientVersion,
+            this._clientVersion
           );
         if (n.datasources || n.datasourceUrl !== void 0)
           throw new I(
             "Custom datasource configuration is not compatible with Prisma Driver Adapters. Please define the database connection string directly in the Driver Adapter configuration.",
-            this._clientVersion,
+            this._clientVersion
           );
       }
       let a = t.injectableEdgeEnv?.();
@@ -7308,10 +7357,10 @@ function Go(t) {
           (f.errorFormat
             ? (this._errorFormat = f.errorFormat)
             : g.env.NODE_ENV === "production"
-              ? (this._errorFormat = "minimal")
-              : g.env.NO_COLOR
-                ? (this._errorFormat = "colorless")
-                : (this._errorFormat = "colorless"),
+            ? (this._errorFormat = "minimal")
+            : g.env.NO_COLOR
+            ? (this._errorFormat = "colorless")
+            : (this._errorFormat = "colorless"),
           (this._runtimeDataModel = t.runtimeDataModel),
           (this._engineConfig = {
             cwd: C,
@@ -7328,7 +7377,7 @@ function Go(t) {
               !!(typeof f.log == "string"
                 ? f.log === "query"
                 : f.log.find((A) =>
-                    typeof A == "string" ? A === "query" : A.level === "query",
+                    typeof A == "string" ? A === "query" : A.level === "query"
                   )),
             env: a?.parsed ?? {},
             flags: [],
@@ -7438,14 +7487,14 @@ function Go(t) {
               s.values,
               Array.isArray(n)
                 ? "prisma.$executeRaw`<SQL>`"
-                : "prisma.$executeRaw(sql`<SQL>`)",
+                : "prisma.$executeRaw(sql`<SQL>`)"
             ),
             this.$executeRawInternal(o, "$executeRaw", s, a)
           );
         }
         throw new W(
           "`$executeRaw` is a tag function, please use it like the following:\n```\nconst result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`\n```\n\nOr read our docs at https://www.prisma.io/docs/concepts/components/prisma-client/raw-database-access#executeraw\n",
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       });
     }
@@ -7456,17 +7505,17 @@ function Go(t) {
             this._activeProvider,
             n,
             i,
-            "prisma.$executeRawUnsafe(<SQL>, [...values])",
+            "prisma.$executeRawUnsafe(<SQL>, [...values])"
           ),
           this.$executeRawInternal(o, "$executeRawUnsafe", [n, ...i])
-        ),
+        )
       );
     }
     $runCommandRaw(n) {
       if (t.activeProvider !== "mongodb")
         throw new W(
           `The ${t.activeProvider} provider does not support $runCommandRaw. Use the mongodb provider.`,
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       return this._createPrismaPromise((i) =>
         this._request({
@@ -7477,7 +7526,7 @@ function Go(t) {
           argsMapper: wo,
           callsite: Ce(this._errorFormat),
           transaction: i,
-        }),
+        })
       );
     }
     async $queryRawInternal(n, i, o, s) {
@@ -7499,7 +7548,7 @@ function Go(t) {
           return this.$queryRawInternal(o, "$queryRaw", ...Qo(n, i));
         throw new W(
           "`$queryRaw` is a tag function, please use it like the following:\n```\nconst result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`\n```\n\nOr read our docs at https://www.prisma.io/docs/concepts/components/prisma-client/raw-database-access#queryraw\n",
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       });
     }
@@ -7508,14 +7557,14 @@ function Go(t) {
         if (!this._hasPreviewFlag("typedSql"))
           throw new W(
             "`typedSql` preview feature must be enabled in order to access $queryRawTyped API",
-            { clientVersion: this._clientVersion },
+            { clientVersion: this._clientVersion }
           );
         return this.$queryRawInternal(i, "$queryRawTyped", n);
       });
     }
     $queryRawUnsafe(n, ...i) {
       return this._createPrismaPromise((o) =>
-        this.$queryRawInternal(o, "$queryRawUnsafe", [n, ...i]),
+        this.$queryRawInternal(o, "$queryRawUnsafe", [n, ...i])
       );
     }
     _transactionWithArray({ promises: n, options: i }) {
@@ -7524,7 +7573,7 @@ function Go(t) {
         a = n.map((f, h) => {
           if (f?.[Symbol.toStringTag] !== "PrismaPromise")
             throw new Error(
-              "All elements of the array need to be Prisma Client promises. Hint: Please make sure you are not awaiting the Prisma client calls you intended to pass in the $transaction function.",
+              "All elements of the array need to be Prisma Client promises. Hint: Please make sure you are not awaiting the Prisma client calls you intended to pass in the $transaction function."
             );
           let T =
               i?.isolationLevel ??
@@ -7563,9 +7612,9 @@ function Go(t) {
             K("_appliedParent", () => this._appliedParent._createItxClient(n)),
             K("_createPrismaPromise", () => sn(n)),
             K($l, () => n.id),
-          ]),
+          ])
         ),
-        [Xe(to)],
+        [Xe(to)]
       );
     }
     $transaction(n, i) {
@@ -7574,7 +7623,7 @@ function Go(t) {
         ? this._engineConfig.adapter?.adapterName === "@prisma/adapter-d1"
           ? (o = () => {
               throw new Error(
-                "Cloudflare D1 does not support interactive transactions. We recommend you to refactor your queries with that limitation in mind, and use batch transactions with `prisma.$transactions([])` where applicable.",
+                "Cloudflare D1 does not support interactive transactions. We recommend you to refactor your queries with that limitation in mind, and use batch transactions with `prisma.$transactions([])` where applicable."
               );
             })
           : (o = () =>
@@ -7614,7 +7663,7 @@ function Go(t) {
           let T = this._middlewares.get(++a);
           if (T)
             return this._tracingHelper.runInChildSpan(s.middleware, (M) =>
-              T(h, (oe) => (M?.end(), f(oe))),
+              T(h, (oe) => (M?.end(), f(oe)))
             );
           let { runInTransaction: C, args: k, ...A } = h,
             O = { ...n, ...A };
@@ -7663,7 +7712,7 @@ function Go(t) {
               clientVersion: this._clientVersion,
               previewFeatures: this._previewFeatures,
               globalOmit: this._globalOmit,
-            }),
+            })
           );
         return (
           J.enabled("prisma:client") &&
@@ -7673,7 +7722,7 @@ function Go(t) {
             Ae(
               JSON.stringify(S, null, 2) +
                 `
-`,
+`
             )),
           T?.kind === "batch" && (await T.lock),
           this._requestHandler.request({

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
-import RebuildPreviewModal from './RebuildPreviewModal';
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import RebuildPreviewModal from "./RebuildPreviewModal";
 
 const UploadSuccessModal = ({ onClose }) => {
   const [isRebuildModalOpen, setRebuildModalOpen] = useState(false);
@@ -8,23 +8,29 @@ const UploadSuccessModal = ({ onClose }) => {
 
   const handleAutoRebuild = async () => {
     try {
-      const response = await fetch('/api/rebuilder/process', {
-        method: 'POST',
+      const response = await fetch("/api/rebuilder/process", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prev: {/* mock previous report */},
-          current: {/* mock current report */},
+          prev: {
+            /* mock previous report */
+          },
+          current: {
+            /* mock current report */
+          },
         }),
       });
 
       const data = await response.json();
       setActions(data.actions);
       setRebuildModalOpen(true);
-      toast.info(`${data.actions.length} auto-generated dispute actions ready for review`);
+      toast.info(
+        `${data.actions.length} auto-generated dispute actions ready for review`
+      );
     } catch (error) {
-      toast.error('Failed to auto rebuild disputes');
+      toast.error("Failed to auto rebuild disputes");
     }
   };
 
@@ -38,7 +44,9 @@ const UploadSuccessModal = ({ onClose }) => {
           <RebuildPreviewModal
             actions={actions}
             onClose={() => setRebuildModalOpen(false)}
-            onAccept={() => {/* simulate storing actions */}}
+            onAccept={() => {
+              /* simulate storing actions */
+            }}
           />
         )}
       </div>
@@ -46,4 +54,4 @@ const UploadSuccessModal = ({ onClose }) => {
   );
 };
 
-export default UploadSuccessModal; 
+export default UploadSuccessModal;

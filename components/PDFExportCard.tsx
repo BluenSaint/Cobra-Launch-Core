@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface PDFExportCardProps {
   exportType: string;
@@ -6,7 +6,11 @@ interface PDFExportCardProps {
   onDownload: () => void;
 }
 
-const PDFExportCard: React.FC<PDFExportCardProps> = ({ exportType, lastGenerated, onDownload }) => {
+const PDFExportCard: React.FC<PDFExportCardProps> = ({
+  exportType,
+  lastGenerated,
+  onDownload,
+}) => {
   return (
     <div className="pdf-export-card">
       <h3>{exportType}</h3>
@@ -16,4 +20,4 @@ const PDFExportCard: React.FC<PDFExportCardProps> = ({ exportType, lastGenerated
   );
 };
 
-export default PDFExportCard; 
+export default PDFExportCard;

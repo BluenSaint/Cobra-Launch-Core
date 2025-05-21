@@ -32,7 +32,7 @@ export class PrismaClient<
       ? Prisma.GetEvents<ClientOptions["log"]>
       : never
     : never,
-  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>["other"] };
 
@@ -52,13 +52,13 @@ export class PrismaClient<
    */
 
   constructor(
-    optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>,
+    optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>
   );
   $on<V extends U>(
     eventType: V,
     callback: (
-      event: V extends "query" ? Prisma.QueryEvent : Prisma.LogEvent,
-    ) => void,
+      event: V extends "query" ? Prisma.QueryEvent : Prisma.LogEvent
+    ) => void
   ): PrismaClient;
 
   /**
@@ -151,18 +151,18 @@ export class PrismaClient<
    */
   $transaction<P extends Prisma.PrismaPromise<any>[]>(
     arg: [...P],
-    options?: { isolationLevel?: Prisma.TransactionIsolationLevel },
+    options?: { isolationLevel?: Prisma.TransactionIsolationLevel }
   ): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>;
 
   $transaction<R>(
     fn: (
-      prisma: Omit<PrismaClient, runtime.ITXClientDenyList>,
+      prisma: Omit<PrismaClient, runtime.ITXClientDenyList>
     ) => $Utils.JsPromise<R>,
     options?: {
       maxWait?: number;
       timeout?: number;
       isolationLevel?: Prisma.TransactionIsolationLevel;
-    },
+    }
   ): $Utils.JsPromise<R>;
 
   $extends: $Extensions.ExtendsHook<
@@ -329,14 +329,17 @@ export namespace Prisma {
   /**
    * Get the type of the value, that the Promise holds.
    */
-  export type PromiseType<T extends PromiseLike<any>> =
-    T extends PromiseLike<infer U> ? U : T;
+  export type PromiseType<T extends PromiseLike<any>> = T extends PromiseLike<
+    infer U
+  >
+    ? U
+    : T;
 
   /**
    * Get the return type of a function which returns a Promise.
    */
   export type PromiseReturnType<
-    T extends (...args: any) => $Utils.JsPromise<any>,
+    T extends (...args: any) => $Utils.JsPromise<any>
   > = PromiseType<ReturnType<T>>;
 
   /**
@@ -376,8 +379,8 @@ export namespace Prisma {
   } & (T extends SelectAndInclude
     ? "Please either choose `select` or `include`."
     : T extends SelectAndOmit
-      ? "Please either choose `select` or `omit`."
-      : {});
+    ? "Please either choose `select` or `omit`."
+    : {});
 
   /**
    * Subset + Intersection
@@ -402,18 +405,17 @@ export namespace Prisma {
   /**
    * Is T a Record?
    */
-  type IsObject<T extends any> =
-    T extends Array<any>
-      ? False
-      : T extends Date
-        ? False
-        : T extends Uint8Array
-          ? False
-          : T extends BigInt
-            ? False
-            : T extends object
-              ? True
-              : False;
+  type IsObject<T extends any> = T extends Array<any>
+    ? False
+    : T extends Date
+    ? False
+    : T extends Uint8Array
+    ? False
+    : T extends bigint
+    ? False
+    : T extends object
+    ? True
+    : False;
 
   /**
    * If it's T[], return T
@@ -436,7 +438,7 @@ export namespace Prisma {
     __Either<O, K>
   >;
 
-  type _Either<O extends object, K extends Key, strict extends Boolean> = {
+  type _Either<O extends object, K extends Key, strict extends boolean> = {
     1: EitherStrict<O, K>;
     0: EitherLoose<O, K>;
   }[strict];
@@ -444,7 +446,7 @@ export namespace Prisma {
   type Either<
     O extends object,
     K extends Key,
-    strict extends Boolean = 1,
+    strict extends boolean = 1
   > = O extends unknown ? _Either<O, K, strict> : never;
 
   export type Union = any;
@@ -484,7 +486,7 @@ export namespace Prisma {
   export type At<
     O extends object,
     K extends Key,
-    strict extends Boolean = 1,
+    strict extends boolean = 1
   > = {
     1: AtStrict<O, K>;
     0: AtLoose<O, K>;
@@ -540,7 +542,7 @@ export namespace Prisma {
   */
   export type False = 0;
 
-  export type Not<B extends Boolean> = {
+  export type Not<B extends boolean> = {
     0: 1;
     1: 0;
   }[B];
@@ -548,14 +550,14 @@ export namespace Prisma {
   export type Extends<A1 extends any, A2 extends any> = [A1] extends [never]
     ? 0 // anything `never` is false
     : A1 extends A2
-      ? 1
-      : 0;
+    ? 1
+    : 0;
 
   export type Has<U extends Union, U1 extends Union> = Not<
     Extends<Exclude<U1, U>, U1>
   >;
 
-  export type Or<B1 extends Boolean, B2 extends Boolean> = {
+  export type Or<B1 extends boolean, B2 extends boolean> = {
     0: {
       0: 0;
       1: 1;
@@ -584,7 +586,7 @@ export namespace Prisma {
 
   type FieldPaths<
     T,
-    U = Omit<T, "_avg" | "_sum" | "_count" | "_min" | "_max">,
+    U = Omit<T, "_avg" | "_sum" | "_count" | "_min" | "_max">
   > = IsObject<T> extends True ? U : T;
 
   type GetHavingFields<T> = {
@@ -601,8 +603,8 @@ export namespace Prisma {
           >
         : never
       : {} extends FieldPaths<T[K]>
-        ? never
-        : K;
+      ? never
+      : K;
   }[keyof T];
 
   /**
@@ -617,7 +619,7 @@ export namespace Prisma {
    */
   type PickEnumerable<
     T,
-    K extends Enumerable<keyof T> | keyof T,
+    K extends Enumerable<keyof T> | keyof T
   > = Prisma__Pick<T, MaybeTupleToUnion<K>>;
 
   /**
@@ -654,7 +656,7 @@ export namespace Prisma {
 
   export type TypeMap<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-    GlobalOmitOptions = {},
+    GlobalOmitOptions = {}
   > = {
     globalOmitOptions: {
       omit: GlobalOmitOptions;
@@ -765,14 +767,11 @@ export namespace Prisma {
         ? T["level"]
         : never
       : never;
-  export type GetEvents<T extends any> =
-    T extends Array<LogLevel | LogDefinition>
-      ?
-          | GetLogType<T[0]>
-          | GetLogType<T[1]>
-          | GetLogType<T[2]>
-          | GetLogType<T[3]>
-      : never;
+  export type GetEvents<T extends any> = T extends Array<
+    LogLevel | LogDefinition
+  >
+    ? GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date;
@@ -828,12 +827,12 @@ export namespace Prisma {
    */
   export type Middleware<T = any> = (
     params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
+    next: (params: MiddlewareParams) => $Utils.JsPromise<T>
   ) => $Utils.JsPromise<T>;
 
   // tested in getLogLevel.test.ts
   export function getLogLevel(
-    log: Array<LogLevel | LogDefinition>,
+    log: Array<LogLevel | LogDefinition>
   ): LogLevel | undefined;
 
   /**

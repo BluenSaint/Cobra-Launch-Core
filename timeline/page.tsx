@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import AICommanderPanel from '../components/AICommanderPanel';
-import { getCommanderRecommendation } from '../lib/ai/commander';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import AICommanderPanel from "../components/AICommanderPanel";
+import { getCommanderRecommendation } from "../lib/ai/commander";
+import { toast } from "react-toastify";
 
 const TimelinePage = ({ disputes, history }) => {
   const [timeline, setTimeline] = useState([]);
 
   const handleDeployAction = (action) => {
     setTimeline([...timeline, action]);
-    toast.success('Commander action deployed to timeline');
+    toast.success("Commander action deployed to timeline");
   };
 
   return (
@@ -16,11 +16,13 @@ const TimelinePage = ({ disputes, history }) => {
       <h1>Timeline</h1>
       {timeline.map((action, index) => (
         <div key={index} className="timeline-entry">
-          <p>Action: {action.type} for {action.creditor}</p>
+          <p>
+            Action: {action.type} for {action.creditor}
+          </p>
         </div>
       ))}
       {disputes.map((dispute, index) => {
-        if (dispute.status !== 'RESOLVED') {
+        if (dispute.status !== "RESOLVED") {
           const recommendation = getCommanderRecommendation(dispute, history);
           return (
             <div key={index} className="dispute-card">
@@ -40,4 +42,4 @@ const TimelinePage = ({ disputes, history }) => {
   );
 };
 
-export default TimelinePage; 
+export default TimelinePage;

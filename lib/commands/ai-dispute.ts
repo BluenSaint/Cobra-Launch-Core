@@ -1,4 +1,4 @@
-import { autoRebuildDisputes } from '../rebuilder';
+import { autoRebuildDisputes } from "../rebuilder";
 
 interface DisputeAction {
   creditor: string;
@@ -7,16 +7,22 @@ interface DisputeAction {
   state?: string;
 }
 
-export function processDisputeActions(prevReport, currentReport): DisputeAction[] {
-  const actions: DisputeAction[] = autoRebuildDisputes(prevReport, currentReport);
+export function processDisputeActions(
+  prevReport,
+  currentReport
+): DisputeAction[] {
+  const actions: DisputeAction[] = autoRebuildDisputes(
+    prevReport,
+    currentReport
+  );
 
-  actions.forEach(action => {
-    if (action.type === 'Send-Followup') {
-      action.state = 'follow-up ready';
+  actions.forEach((action) => {
+    if (action.type === "Send-Followup") {
+      action.state = "follow-up ready";
     }
 
-    if (action.type === 'Escalate') {
-      action.state = 'stalled';
+    if (action.type === "Escalate") {
+      action.state = "stalled";
     }
   });
 
@@ -24,9 +30,12 @@ export function processDisputeActions(prevReport, currentReport): DisputeAction[
 }
 
 // Hook into RebuildPreviewModal
-export function integrateWithRebuildPreview(actions: DisputeAction[], onAccept: () => void) {
+export function integrateWithRebuildPreview(
+  actions: DisputeAction[],
+  onAccept: () => void
+) {
   // Logic to integrate actions with the RebuildPreviewModal
   // This is a placeholder for actual integration logic
-  console.log('Integrating with RebuildPreviewModal', actions);
+  console.log("Integrating with RebuildPreviewModal", actions);
   onAccept();
-} 
+}

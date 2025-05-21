@@ -27,8 +27,8 @@ var ne = (e, n, i) =>
   n.has(e)
     ? Ye("Cannot add the same private member more than once")
     : n instanceof WeakSet
-      ? n.add(e)
-      : n.set(e, i);
+    ? n.add(e)
+    : n.set(e, i);
 var ii = {};
 Oe(ii, {
   Decimal: () => Je,
@@ -53,7 +53,7 @@ var ie = Symbol(),
             this,
             "new Prisma."
               .concat(this._getNamespace(), ".")
-              .concat(this._getName(), "()"),
+              .concat(this._getName(), "()")
           );
     }
     _getName() {
@@ -433,13 +433,13 @@ h.inverseCosine = h.acos = function () {
         : new n(0)
       : new n(NaN)
     : e.isZero()
-      ? F(n, t + 4, r).times(0.5)
-      : ((n.precision = t + 6),
-        (n.rounding = 1),
-        (e = new n(1).minus(e).div(e.plus(1)).sqrt().atan()),
-        (n.precision = t),
-        (n.rounding = r),
-        e.times(2));
+    ? F(n, t + 4, r).times(0.5)
+    : ((n.precision = t + 6),
+      (n.rounding = 1),
+      (e = new n(1).minus(e).div(e.plus(1)).sqrt().atan()),
+      (n.precision = t),
+      (n.rounding = r),
+      e.times(2));
 };
 h.inverseHyperbolicCosine = h.acosh = function () {
   var e,
@@ -449,17 +449,17 @@ h.inverseHyperbolicCosine = h.acosh = function () {
   return i.lte(1)
     ? new t(i.eq(1) ? 0 : NaN)
     : i.isFinite()
-      ? ((e = t.precision),
-        (n = t.rounding),
-        (t.precision = e + Math.max(Math.abs(i.e), i.sd()) + 4),
-        (t.rounding = 1),
-        (w = !1),
-        (i = i.times(i).minus(1).sqrt().plus(i)),
-        (w = !0),
-        (t.precision = e),
-        (t.rounding = n),
-        i.ln())
-      : new t(i);
+    ? ((e = t.precision),
+      (n = t.rounding),
+      (t.precision = e + Math.max(Math.abs(i.e), i.sd()) + 4),
+      (t.rounding = 1),
+      (w = !1),
+      (i = i.times(i).minus(1).sqrt().plus(i)),
+      (w = !0),
+      (t.precision = e),
+      (t.rounding = n),
+      i.ln())
+    : new t(i);
 };
 h.inverseHyperbolicSine = h.asinh = function () {
   var e,
@@ -671,8 +671,8 @@ h.minus = h.sub = function (e) {
       !g.s || !e.s
         ? (e = new v(NaN))
         : g.d
-          ? (e.s = -e.s)
-          : (e = new v(e.d || g.s !== e.s ? g : NaN)),
+        ? (e.s = -e.s)
+        : (e = new v(e.d || g.s !== e.s ? g : NaN)),
       e
     );
   if (g.s != e.s) return (e.s = -e.s), g.plus(e);
@@ -737,14 +737,14 @@ h.modulo = h.mod = function (e) {
     !i.d || !e.s || (e.d && !e.d[0])
       ? new t(NaN)
       : !e.d || (i.d && !i.d[0])
-        ? p(new t(i), t.precision, t.rounding)
-        : ((w = !1),
-          t.modulo == 9
-            ? ((n = k(i, e.abs(), 0, 3, 1)), (n.s *= e.s))
-            : (n = k(i, e, 0, t.modulo, 1)),
-          (n = n.times(e)),
-          (w = !0),
-          i.minus(n))
+      ? p(new t(i), t.precision, t.rounding)
+      : ((w = !1),
+        t.modulo == 9
+          ? ((n = k(i, e.abs(), 0, 3, 1)), (n.s *= e.s))
+          : (n = k(i, e, 0, t.modulo, 1)),
+        (n = n.times(e)),
+        (w = !0),
+        i.minus(n))
   );
 };
 h.naturalExponential = h.exp = function () {
@@ -929,8 +929,8 @@ h.times = h.mul = function (e) {
       !e.s || (d && !d[0] && !g) || (g && !g[0] && !d)
         ? NaN
         : !d || !g
-          ? e.s / 0
-          : e.s * 0,
+        ? e.s / 0
+        : e.s * 0
     );
   for (
     i = R(l.e / m) + R(e.e / m),
@@ -1056,10 +1056,7 @@ h.toFraction = function (e) {
     (i = i.plus(r.times(t))),
     (c.s = f.s = g.s),
     (d =
-      k(f, t, s, 1)
-        .minus(g)
-        .abs()
-        .cmp(k(c, i, s, 1).minus(g).abs()) < 1
+      k(f, t, s, 1).minus(g).abs().cmp(k(c, i, s, 1).minus(g).abs()) < 1
         ? [f, t]
         : [c, i]),
     (N.precision = l),
@@ -1217,15 +1214,15 @@ function Q(e, n, i, t) {
               ((e[r + 1] / s / 100) | 0) == C(10, n - 2) - 1) ||
             ((u == s / 2 || u == 0) && ((e[r + 1] / s / 100) | 0) == 0))
       : n < 4
-        ? (n == 0
-            ? (u = (u / 1e3) | 0)
-            : n == 1
-              ? (u = (u / 100) | 0)
-              : n == 2 && (u = (u / 10) | 0),
-          (o = ((t || i < 4) && u == 9999) || (!t && i > 3 && u == 4999)))
-        : (o =
-            (((t || i < 4) && u + 1 == s) || (!t && i > 3 && u + 1 == s / 2)) &&
-            ((e[r + 1] / s / 1e3) | 0) == C(10, n - 3) - 1),
+      ? (n == 0
+          ? (u = (u / 1e3) | 0)
+          : n == 1
+          ? (u = (u / 100) | 0)
+          : n == 2 && (u = (u / 10) | 0),
+        (o = ((t || i < 4) && u == 9999) || (!t && i > 3 && u == 4999)))
+      : (o =
+          (((t || i < 4) && u + 1 == s) || (!t && i > 3 && u + 1 == s / 2)) &&
+          ((e[r + 1] / s / 1e3) | 0) == C(10, n - 3) - 1),
     o
   );
 }
@@ -1310,8 +1307,8 @@ var k = (function () {
         !t.s || !r.s || (O ? S && O[0] == S[0] : !S)
           ? NaN
           : (O && O[0] == 0) || !S
-            ? he * 0
-            : he / 0,
+          ? he * 0
+          : he / 0
       );
     for (
       c
@@ -1330,8 +1327,8 @@ var k = (function () {
       s == null
         ? ((I = s = ee.precision), (o = ee.rounding))
         : u
-          ? (I = s + (t.e - r.e) + 1)
-          : (I = s),
+        ? (I = s + (t.e - r.e) + 1)
+        : (I = s),
       I < 0)
     )
       _.push(1), (v = !0);
@@ -1492,12 +1489,11 @@ function L(e, n, i) {
           : o > 1 && (s = s.charAt(0) + "." + s.slice(1)),
         (s = s + (e.e < 0 ? "e" : "e+") + e.e))
       : r < 0
-        ? ((s = "0." + U(-r - 1) + s), i && (t = i - o) > 0 && (s += U(t)))
-        : r >= o
-          ? ((s += U(r + 1 - o)),
-            i && (t = i - r - 1) > 0 && (s = s + "." + U(t)))
-          : ((t = r + 1) < o && (s = s.slice(0, t) + "." + s.slice(t)),
-            i && (t = i - o) > 0 && (r + 1 === o && (s += "."), (s += U(t)))),
+      ? ((s = "0." + U(-r - 1) + s), i && (t = i - o) > 0 && (s += U(t)))
+      : r >= o
+      ? ((s += U(r + 1 - o)), i && (t = i - r - 1) > 0 && (s = s + "." + U(t)))
+      : ((t = r + 1) < o && (s = s.slice(0, t) + "." + s.slice(t)),
+        i && (t = i - o) > 0 && (r + 1 === o && (s += "."), (s += U(t)))),
     s
   );
 }
@@ -1573,17 +1569,7 @@ function be(e, n) {
     v = d.precision;
   if (!e.d || !e.d[0] || e.e > 17)
     return new d(
-      e.d
-        ? e.d[0]
-          ? e.s < 0
-            ? 0
-            : 1 / 0
-          : 1
-        : e.s
-          ? e.s < 0
-            ? 0
-            : e
-          : NaN,
+      e.d ? (e.d[0] ? (e.s < 0 ? 0 : 1 / 0) : 1) : e.s ? (e.s < 0 ? 0 : e) : NaN
     );
   for (
     n == null ? ((w = !1), (c = v)) : (c = n), u = new d(0.03125);
@@ -1936,20 +1922,20 @@ function bn(e, n) {
     !e.s || !n.s
       ? (i = new this(NaN))
       : !e.d && !n.d
-        ? ((i = F(this, s, 1).times(n.s > 0 ? 0.25 : 0.75)), (i.s = e.s))
-        : !n.d || e.isZero()
-          ? ((i = n.s < 0 ? F(this, t, r) : new this(0)), (i.s = e.s))
-          : !e.d || n.isZero()
-            ? ((i = F(this, s, 1).times(0.5)), (i.s = e.s))
-            : n.s < 0
-              ? ((this.precision = s),
-                (this.rounding = 1),
-                (i = this.atan(k(e, n, s, 1))),
-                (n = F(this, s, 1)),
-                (this.precision = t),
-                (this.rounding = r),
-                (i = e.s < 0 ? i.minus(n) : i.plus(n)))
-              : (i = this.atan(k(e, n, s, 1))),
+      ? ((i = F(this, s, 1).times(n.s > 0 ? 0.25 : 0.75)), (i.s = e.s))
+      : !n.d || e.isZero()
+      ? ((i = n.s < 0 ? F(this, t, r) : new this(0)), (i.s = e.s))
+      : !e.d || n.isZero()
+      ? ((i = F(this, s, 1).times(0.5)), (i.s = e.s))
+      : n.s < 0
+      ? ((this.precision = s),
+        (this.rounding = 1),
+        (i = this.atan(k(e, n, s, 1))),
+        (n = F(this, s, 1)),
+        (this.precision = t),
+        (this.rounding = r),
+        (i = e.s < 0 ? i.minus(n) : i.plus(n)))
+      : (i = this.atan(k(e, n, s, 1))),
     i
   );
 }
@@ -2029,8 +2015,8 @@ function Ge(e) {
           ? !s.d || s.e > r.maxE
             ? ((f.e = NaN), (f.d = null))
             : s.e < r.minE
-              ? ((f.e = 0), (f.d = [0]))
-              : ((f.e = s.e), (f.d = s.d.slice()))
+            ? ((f.e = 0), (f.d = [0]))
+            : ((f.e = s.e), (f.d = s.d.slice()))
           : ((f.e = s.e), (f.d = s.d ? s.d.slice() : s.d));
       return;
     }
@@ -2045,8 +2031,8 @@ function Ge(e) {
           ? o > r.maxE
             ? ((f.e = NaN), (f.d = null))
             : o < r.minE
-              ? ((f.e = 0), (f.d = [0]))
-              : ((f.e = o), (f.d = [s]))
+            ? ((f.e = 0), (f.d = [0]))
+            : ((f.e = o), (f.d = [s]))
           : ((f.e = o), (f.d = [s]));
         return;
       }

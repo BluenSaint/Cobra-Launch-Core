@@ -29,7 +29,7 @@ var k = (e, r, t) => (
       r || !e || !e.__esModule
         ? Vt(t, "default", { value: e, enumerable: !0 })
         : t,
-      e,
+      e
     )
   ),
   Pu = (e) => _o(Vt({}, "__esModule", { value: !0 }), e);
@@ -57,11 +57,11 @@ var us = ne((Ng, ls) => {
     (Q.FORCE_COLOR === "true"
       ? (Ge = 1)
       : Q.FORCE_COLOR === "false"
-        ? (Ge = 0)
-        : (Ge =
-            Q.FORCE_COLOR.length === 0
-              ? 1
-              : Math.min(parseInt(Q.FORCE_COLOR, 10), 3)));
+      ? (Ge = 0)
+      : (Ge =
+          Q.FORCE_COLOR.length === 0
+            ? 1
+            : Math.min(parseInt(Q.FORCE_COLOR, 10), 3)));
   function gi(e) {
     return e === 0
       ? !1
@@ -108,10 +108,10 @@ var us = ne((Ng, ls) => {
     return /-256(color)?$/i.test(Q.TERM)
       ? 2
       : /^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/i.test(
-            Q.TERM,
-          ) || "COLORTERM" in Q
-        ? 1
-        : t;
+          Q.TERM
+        ) || "COLORTERM" in Q
+      ? 1
+      : t;
   }
   function $c(e) {
     let r = hi(e, e && e.isTTY);
@@ -330,15 +330,15 @@ var Ci = ne((Eh, ws) => {
       ((t = { indent: " ", includeEmptyLines: !1, ...t }), typeof e != "string")
     )
       throw new TypeError(
-        `Expected \`input\` to be a \`string\`, got \`${typeof e}\``,
+        `Expected \`input\` to be a \`string\`, got \`${typeof e}\``
       );
     if (typeof r != "number")
       throw new TypeError(
-        `Expected \`count\` to be a \`number\`, got \`${typeof r}\``,
+        `Expected \`count\` to be a \`number\`, got \`${typeof r}\``
       );
     if (typeof t.indent != "string")
       throw new TypeError(
-        `Expected \`options.indent\` to be a \`string\`, got \`${typeof t.indent}\``,
+        `Expected \`options.indent\` to be a \`string\`, got \`${typeof t.indent}\``
       );
     if (r === 0) return e;
     let n = t.includeEmptyLines ? /^/gm : /^(?!\s*$)/gm;
@@ -434,7 +434,7 @@ var Os = ne((Ah, Ne) => {
     t = t.replace(
       /\r\n?/gm,
       `
-`,
+`
     );
     let n;
     for (; (n = op.exec(t)) != null; ) {
@@ -447,7 +447,7 @@ var Os = ne((Ah, Ne) => {
           ((o = o.replace(
             /\\n/g,
             `
-`,
+`
           )),
           (o = o.replace(/\\r/g, "\r"))),
         (r[i] = o);
@@ -459,7 +459,7 @@ var Os = ne((Ah, Ne) => {
       t = B.configDotenv({ path: r });
     if (!t.parsed) {
       let s = new Error(
-        `MISSING_DATA: Cannot parse ${r} for an unknown reason`,
+        `MISSING_DATA: Cannot parse ${r} for an unknown reason`
       );
       throw ((s.code = "MISSING_DATA"), s);
     }
@@ -487,8 +487,8 @@ var Os = ne((Ah, Ne) => {
     return e && e.DOTENV_KEY && e.DOTENV_KEY.length > 0
       ? e.DOTENV_KEY
       : process.env.DOTENV_KEY && process.env.DOTENV_KEY.length > 0
-        ? process.env.DOTENV_KEY
-        : "";
+      ? process.env.DOTENV_KEY
+      : "";
   }
   function up(e, r) {
     let t;
@@ -497,7 +497,7 @@ var Os = ne((Ah, Ne) => {
     } catch (a) {
       if (a.code === "ERR_INVALID_URL") {
         let l = new Error(
-          "INVALID_DOTENV_KEY: Wrong format. Must be in valid uri format like dotenv://:key_1234@dotenvx.com/vault/.env.vault?environment=development",
+          "INVALID_DOTENV_KEY: Wrong format. Must be in valid uri format like dotenv://:key_1234@dotenvx.com/vault/.env.vault?environment=development"
         );
         throw ((l.code = "INVALID_DOTENV_KEY"), l);
       }
@@ -517,7 +517,7 @@ var Os = ne((Ah, Ne) => {
       s = e.parsed[o];
     if (!s) {
       let a = new Error(
-        `NOT_FOUND_DOTENV_ENVIRONMENT: Cannot locate environment ${o} in your .env.vault file.`,
+        `NOT_FOUND_DOTENV_ENVIRONMENT: Cannot locate environment ${o} in your .env.vault file.`
       );
       throw ((a.code = "NOT_FOUND_DOTENV_ENVIRONMENT"), a);
     }
@@ -582,7 +582,7 @@ var Os = ne((Ah, Ne) => {
     return r
       ? B._configVault(e)
       : (lp(
-          `You set DOTENV_KEY but you are missing a .env.vault file at ${r}. Did you forget to build it?`,
+          `You set DOTENV_KEY but you are missing a .env.vault file at ${r}. Did you forget to build it?`
         ),
         B.configDotenv(e));
   }
@@ -601,7 +601,7 @@ var Os = ne((Ah, Ne) => {
         u = s.message === "Unsupported state or unable to authenticate data";
       if (a || l) {
         let c = new Error(
-          "INVALID_DOTENV_KEY: It must be 64 characters long (or more)",
+          "INVALID_DOTENV_KEY: It must be 64 characters long (or more)"
         );
         throw ((c.code = "INVALID_DOTENV_KEY"), c);
       } else if (u) {
@@ -615,7 +615,7 @@ var Os = ne((Ah, Ne) => {
       i = !!(t && t.override);
     if (typeof r != "object") {
       let o = new Error(
-        "OBJECT_REQUIRED: Please check the processEnv argument being passed to populate",
+        "OBJECT_REQUIRED: Please check the processEnv argument being passed to populate"
       );
       throw ((o.code = "OBJECT_REQUIRED"), o);
     }
@@ -626,7 +626,7 @@ var Os = ne((Ah, Ne) => {
             it(
               i === !0
                 ? `"${o}" is already defined and WAS overwritten`
-                : `"${o}" is already defined and was NOT overwritten`,
+                : `"${o}" is already defined and was NOT overwritten`
             ))
         : (e[o] = r[o]);
   }
@@ -656,7 +656,7 @@ var Ls = ne((Nh, an) => {
     else if (e.user && e.repo) r = `https://github.com/${e.user}/${e.repo}`;
     else
       throw new Error(
-        "You need to specify either the `repoUrl` option or both the `user` and `repo` options",
+        "You need to specify either the `repoUrl` option or both the `user` and `repo` options"
       );
     let t = new URL(`${r}/issues/new`),
       n = [
@@ -901,17 +901,17 @@ var Yr = {
   },
   enabled(e) {
     let r = globalThis.DEBUG.split(",").map((i) =>
-        i.replace(/[.+?^${}()|[\]\\]/g, "\\$&"),
+        i.replace(/[.+?^${}()|[\]\\]/g, "\\$&")
       ),
       t = r.some((i) =>
         i === "" || i[0] === "-"
           ? !1
-          : e.match(RegExp(i.split("*").join(".*") + "$")),
+          : e.match(RegExp(i.split("*").join(".*") + "$"))
       ),
       n = r.some((i) =>
         i === "" || i[0] !== "-"
           ? !1
-          : e.match(RegExp(i.slice(1).split("*").join(".*") + "$")),
+          : e.match(RegExp(i.slice(1).split("*").join(".*") + "$"))
       );
     return t && !n;
   },
@@ -958,13 +958,15 @@ function Qu(e, r = 2) {
       } else if (typeof i == "bigint") return i.toString();
       return i;
     },
-    r,
+    r
   );
 }
 function Qo(e = 7500) {
   let r = Kr.map(
     ([t, ...n]) =>
-      `${t} ${n.map((i) => (typeof i == "string" ? i : JSON.stringify(i))).join(" ")}`,
+      `${t} ${n
+        .map((i) => (typeof i == "string" ? i : JSON.stringify(i)))
+        .join(" ")}`
   ).join(`
 `);
   return r.length < e ? r : r.slice(-e);
@@ -978,7 +980,7 @@ function oi() {
   let e = process.env.PRISMA_QUERY_ENGINE_LIBRARY;
   if (!(e && Wo.default.existsSync(e)) && process.arch === "ia32")
     throw new Error(
-      'The default query engine type (Node-API, "library") is currently not supported for 32bit Node. Please set `engineType = "binary"` in the "generator" block of your "schema.prisma" file (or use the environment variables "PRISMA_CLIENT_ENGINE_TYPE=binary" and/or "PRISMA_CLI_QUERY_ENGINE_TYPE=binary".)',
+      'The default query engine type (Node-API, "library") is currently not supported for 32bit Node. Please set `engineType = "binary"` in the "generator" block of your "schema.prisma" file (or use the environment variables "PRISMA_CLIENT_ENGINE_TYPE=binary" and/or "PRISMA_CLI_QUERY_ENGINE_TYPE=binary".)'
     );
 }
 var si = [
@@ -1021,12 +1023,12 @@ function Qt(e, r) {
       ? "query_engine.dll.node"
       : `query_engine-${e}.dll.node`
     : e.includes("darwin")
-      ? t
-        ? `${Ut}.dylib.node`
-        : `${Ut}-${e}.dylib.node`
-      : t
-        ? `${Ut}.so.node`
-        : `${Ut}-${e}.so.node`;
+    ? t
+      ? `${Ut}.dylib.node`
+      : `${Ut}-${e}.dylib.node`
+    : t
+    ? `${Ut}.so.node`
+    : `${Ut}-${e}.so.node`;
 }
 var Yo = k(require("node:child_process")),
   pi = k(require("node:fs/promises")),
@@ -1056,7 +1058,7 @@ var De = Symbol.for("@ts-pattern/matcher"),
         if (o.length) {
           if (o.length > 1)
             throw new Error(
-              "Pattern error: Using `...P.array(...)` several times in a single pattern is not allowed.",
+              "Pattern error: Using `...P.array(...)` several times in a single pattern is not allowed."
             );
           if (r.length < n.length + i.length) return !1;
           let s = r.slice(0, n.length),
@@ -1092,8 +1094,8 @@ var De = Symbol.for("@ts-pattern/matcher"),
           ? r
           : []
         : Array.isArray(e)
-          ? zr(e, Qe)
-          : zr(Object.values(e), Qe)
+        ? zr(e, Qe)
+        : zr(Object.values(e), Qe)
       : [];
   },
   zr = (e, r) => e.reduce((t, n) => t.concat(r(n)), []);
@@ -1190,7 +1192,7 @@ function Ve(e) {
 var eg = pe(
   C(function (e) {
     return !0;
-  }),
+  })
 );
 var Be = (e) =>
     Object.assign(pe(e), {
@@ -1227,29 +1229,29 @@ var Be = (e) =>
         Ee(
           q(
             e,
-            C((r) => be(r) && Number.isInteger(r)),
-          ),
+            C((r) => be(r) && Number.isInteger(r))
+          )
         ),
       finite: () =>
         Ee(
           q(
             e,
-            C((r) => be(r) && Number.isFinite(r)),
-          ),
+            C((r) => be(r) && Number.isFinite(r))
+          )
         ),
       positive: () =>
         Ee(
           q(
             e,
-            C((r) => be(r) && r > 0),
-          ),
+            C((r) => be(r) && r > 0)
+          )
         ),
       negative: () =>
         Ee(
           q(
             e,
-            C((r) => be(r) && r < 0),
-          ),
+            C((r) => be(r) && r < 0)
+          )
         ),
     }),
   tg = Ee(C(be)),
@@ -1265,37 +1267,37 @@ var Be = (e) =>
         Ue(
           q(
             e,
-            C((r) => Ve(r) && r > 0),
-          ),
+            C((r) => Ve(r) && r > 0)
+          )
         ),
       negative: () =>
         Ue(
           q(
             e,
-            C((r) => Ve(r) && r < 0),
-          ),
+            C((r) => Ve(r) && r < 0)
+          )
         ),
     }),
   ng = Ue(C(Ve)),
   ig = pe(
     C(function (e) {
       return typeof e == "boolean";
-    }),
+    })
   ),
   og = pe(
     C(function (e) {
       return typeof e == "symbol";
-    }),
+    })
   ),
   sg = pe(
     C(function (e) {
       return e == null;
-    }),
+    })
   ),
   ag = pe(
     C(function (e) {
       return e != null;
-    }),
+    })
   );
 var li = class extends Error {
     constructor(r) {
@@ -1348,7 +1350,7 @@ var ci = class e {
     let n = !!r(this.input);
     return new e(
       this.input,
-      n ? { matched: !0, value: t(this.input, this.input) } : ui,
+      n ? { matched: !0, value: t(this.input, this.input) } : ui
     );
   }
   otherwise(r) {
@@ -1428,7 +1430,7 @@ function Zu(e) {
           targetDistro: "rhel",
           familyDistro: "rhel",
           originalDistro: l,
-        }),
+        })
       )
       .when(
         ({ idLike: l }) => l.includes("debian") || l.includes("ubuntu"),
@@ -1436,7 +1438,7 @@ function Zu(e) {
           targetDistro: "debian",
           familyDistro: "debian",
           originalDistro: l,
-        }),
+        })
       )
       .when(
         ({ idLike: l }) => i === "arch" || l.includes("arch"),
@@ -1444,7 +1446,7 @@ function Zu(e) {
           targetDistro: "debian",
           familyDistro: "arch",
           originalDistro: l,
-        }),
+        })
       )
       .when(
         ({ idLike: l }) =>
@@ -1456,7 +1458,7 @@ function Zu(e) {
           targetDistro: "rhel",
           familyDistro: "rhel",
           originalDistro: l,
-        }),
+        })
       )
       .otherwise(({ id: l }) => ({
         targetDistro: void 0,
@@ -1510,27 +1512,27 @@ function rc(e) {
       { familyDistro: "musl" },
       () => (
         ee('Trying platform-specific paths for "alpine"'), ["/lib", "/usr/lib"]
-      ),
+      )
     )
     .with(
       { familyDistro: "debian" },
       ({ archFromUname: r }) => (
         ee('Trying platform-specific paths for "debian" (and "ubuntu")'),
         [`/usr/lib/${r}-linux-gnu`, `/lib/${r}-linux-gnu`]
-      ),
+      )
     )
     .with(
       { familyDistro: "rhel" },
       () => (
         ee('Trying platform-specific paths for "rhel"'),
         ["/lib64", "/usr/lib64"]
-      ),
+      )
     )
     .otherwise(
       ({ familyDistro: r, arch: t, archFromUname: n }) => (
         ee(`Don't know any platform-specific paths for "${r}" on ${t} (${n})`),
         []
-      ),
+      )
     );
 }
 async function tc(e) {
@@ -1544,7 +1546,7 @@ async function tc(e) {
   }
   ee('Falling back to "ldconfig" and other generic paths');
   let n = await Yt(
-    `ldconfig -p | sed "s/.*=>s*//" | sed "s|.*/||" | grep libssl | sort | ${r}`,
+    `ldconfig -p | sed "s/.*=>s*//" | sed "s|.*/||" | grep libssl | sort | ${r}`
   );
   if ((n || (n = await Ko(["/lib64", "/usr/lib64", "/lib", "/usr/lib"])), n)) {
     ee(`Found libssl.so file using "ldconfig" or other generic paths: ${n}`);
@@ -1570,7 +1572,7 @@ async function Ko(e) {
 async function nc(e) {
   try {
     return (await pi.default.readdir(e)).find(
-      (t) => t.startsWith("libssl.so.") && !t.startsWith("libssl.so.0"),
+      (t) => t.startsWith("libssl.so.") && !t.startsWith("libssl.so.0")
     );
   } catch (r) {
     if (r.code === "ENOENT") return;
@@ -1608,7 +1610,7 @@ function oc(e) {
   r === "linux" &&
     !["x64", "arm64"].includes(t) &&
     Jt(
-      `Prisma only officially supports Linux on amd64 (x86_64) and arm64 (aarch64) system architectures (detected "${t}" instead). If you are using your own custom Prisma engines, you can ignore this warning, as long as you've compiled the engines for your system architecture "${n}".`,
+      `Prisma only officially supports Linux on amd64 (x86_64) and arm64 (aarch64) system architectures (detected "${t}" instead). If you are using your own custom Prisma engines, you can ignore this warning, as long as you've compiled the engines for your system architecture "${n}".`
     );
   let l = "1.1.x";
   if (r === "linux" && i === void 0) {
@@ -1616,11 +1618,10 @@ function oc(e) {
       .with(
         { familyDistro: "debian" },
         () =>
-          "Please manually install OpenSSL via `apt-get update -y && apt-get install -y openssl` and try installing Prisma again. If you're running Prisma on Docker, add this command to your Dockerfile, or switch to an image that already has OpenSSL installed.",
+          "Please manually install OpenSSL via `apt-get update -y && apt-get install -y openssl` and try installing Prisma again. If you're running Prisma on Docker, add this command to your Dockerfile, or switch to an image that already has OpenSSL installed."
       )
       .otherwise(
-        () =>
-          "Please manually install OpenSSL and try installing Prisma again.",
+        () => "Please manually install OpenSSL and try installing Prisma again."
       );
     Jt(`Prisma failed to detect the libssl/openssl version to use, and may not work as expected. Defaulting to "openssl-${l}".
 ${c}`);
@@ -1640,7 +1641,9 @@ ${c}`);
   if (r === "netbsd") return "netbsd";
   if (r === "linux" && o === "nixos") return "linux-nixos";
   if (r === "linux" && t === "arm64")
-    return `${o === "musl" ? "linux-musl-arm64" : "linux-arm64"}-openssl-${i || l}`;
+    return `${o === "musl" ? "linux-musl-arm64" : "linux-arm64"}-openssl-${
+      i || l
+    }`;
   if (r === "linux" && t === "arm") return `linux-arm-openssl-${i || l}`;
   if (r === "linux" && o === "musl") {
     let c = "linux-musl";
@@ -1650,7 +1653,7 @@ ${c}`);
     ? `${o}-openssl-${i}`
     : (r !== "linux" &&
         Jt(
-          `Prisma detected unknown OS "${r}" and may not work as expected. Defaulting to "linux".`,
+          `Prisma detected unknown OS "${r}" and may not work as expected. Defaulting to "linux".`
         ),
       i ? `${u}-openssl-${i}` : o ? `${o}-openssl-${l}` : `${u}-openssl-${l}`);
 }
@@ -1761,7 +1764,7 @@ var A = "\x1B[",
   uc = zt
     ? () => {
         throw new Error(
-          "`process.cwd()` only works in Node.js, not the browser.",
+          "`process.cwd()` only works in Node.js, not the browser."
         );
       }
     : Zt.default.cwd,
@@ -1830,7 +1833,7 @@ var A = "\x1B[",
         i = r.y !== void 0;
       if ((n || i) && !(n && i && r.length !== void 0))
         throw new Error(
-          "`x`, `y` and `length` must be defined when `x` or `y` is defined",
+          "`x`, `y` and `length` must be defined when `x` or `y` is defined"
         );
       return (
         (e = e.replaceAll("|", "")),
@@ -1847,10 +1850,10 @@ function or(e, r, { target: t = "stdout", ...n } = {}) {
   return en.default[t]
     ? Xt.link(e, r)
     : n.fallback === !1
-      ? e
-      : typeof n.fallback == "function"
-        ? n.fallback(e, r)
-        : `${e} (\u200B${r}\u200B)`;
+    ? e
+    : typeof n.fallback == "function"
+    ? n.fallback(e, r)
+    : `${e} (\u200B${r}\u200B)`;
 }
 or.isSupported = en.default.stdout;
 or.stderr = (e, r, t = {}) => or(e, r, { target: "stderr", ...t });
@@ -1867,10 +1870,10 @@ function Er(e) {
     (e?.config.engineType === "library"
       ? "library"
       : e?.config.engineType === "binary"
-        ? "binary"
-        : e?.config.engineType === "client"
-          ? "client"
-          : Uc(e))
+      ? "binary"
+      : e?.config.engineType === "client"
+      ? "client"
+      : Uc(e))
   );
 }
 function Bc() {
@@ -1878,10 +1881,10 @@ function Bc() {
   return e === "library"
     ? "library"
     : e === "binary"
-      ? "binary"
-      : e === "client"
-        ? "client"
-        : void 0;
+    ? "binary"
+    : e === "client"
+    ? "client"
+    : void 0;
 }
 function Uc(e) {
   return e?.previewFeatures.includes("queryCompiler") ? "client" : "library";
@@ -1911,20 +1914,20 @@ M.default.join(__dirname, "../libquery_engine-debian-openssl-1.1.x.so.node");
 M.default.join(__dirname, "../libquery_engine-debian-openssl-3.0.x.so.node");
 M.default.join(
   __dirname,
-  "../libquery_engine-linux-arm64-openssl-1.0.x.so.node",
+  "../libquery_engine-linux-arm64-openssl-1.0.x.so.node"
 );
 M.default.join(
   __dirname,
-  "../libquery_engine-linux-arm64-openssl-1.1.x.so.node",
+  "../libquery_engine-linux-arm64-openssl-1.1.x.so.node"
 );
 M.default.join(
   __dirname,
-  "../libquery_engine-linux-arm64-openssl-3.0.x.so.node",
+  "../libquery_engine-linux-arm64-openssl-3.0.x.so.node"
 );
 M.default.join(__dirname, "../libquery_engine-linux-musl.so.node");
 M.default.join(
   __dirname,
-  "../libquery_engine-linux-musl-openssl-3.0.x.so.node",
+  "../libquery_engine-linux-musl-openssl-3.0.x.so.node"
 );
 M.default.join(__dirname, "../libquery_engine-rhel-openssl-1.0.x.so.node");
 M.default.join(__dirname, "../libquery_engine-rhel-openssl-1.1.x.so.node");
@@ -1948,17 +1951,19 @@ function Ti(e) {
     t = (a) =>
       `Prisma cannot find the required \`${a}\` system library in your system`,
     n = r.message.includes("cannot open shared object file"),
-    i = `Please refer to the documentation about Prisma's system requirements: ${bi("https://pris.ly/d/system-requirements")}`,
+    i = `Please refer to the documentation about Prisma's system requirements: ${bi(
+      "https://pris.ly/d/system-requirements"
+    )}`,
     o = `Unable to require(\`${Ie(e.id)}\`).`,
     s = hr({ message: r.message, code: r.code })
       .with({ code: "ENOENT" }, () => "File does not exist.")
       .when(
         ({ message: a }) => n && a.includes("libz"),
-        () => `${t("libz")}. Please install it and try again.`,
+        () => `${t("libz")}. Please install it and try again.`
       )
       .when(
         ({ message: a }) => n && a.includes("libgcc_s"),
-        () => `${t("libgcc_s")}. Please install it and try again.`,
+        () => `${t("libgcc_s")}. Please install it and try again.`
       )
       .when(
         ({ message: a }) => n && a.includes("libssl"),
@@ -1967,22 +1972,22 @@ function Ti(e) {
             ? `openssl-${e.platformInfo.libssl}`
             : "openssl";
           return `${t("libssl")}. Please install ${a} and try again.`;
-        },
+        }
       )
       .when(
         ({ message: a }) => a.includes("GLIBC"),
         () =>
-          `Prisma has detected an incompatible version of the \`glibc\` C standard library installed in your system. This probably means your system may be too old to run Prisma. ${i}`,
+          `Prisma has detected an incompatible version of the \`glibc\` C standard library installed in your system. This probably means your system may be too old to run Prisma. ${i}`
       )
       .when(
         ({ message: a }) =>
           e.platformInfo.platform === "linux" && a.includes("symbol not found"),
         () =>
-          `The Prisma engines are not compatible with your system ${e.platformInfo.originalDistro} on (${e.platformInfo.archFromUname}) which uses the \`${e.platformInfo.binaryTarget}\` binaryTarget by default. ${i}`,
+          `The Prisma engines are not compatible with your system ${e.platformInfo.originalDistro} on (${e.platformInfo.archFromUname}) which uses the \`${e.platformInfo.binaryTarget}\` binaryTarget by default. ${i}`
       )
       .otherwise(
         () =>
-          `The Prisma engines do not seem to be compatible with your system. ${i}`,
+          `The Prisma engines do not seem to be compatible with your system. ${i}`
       );
   return `${o}
 ${s}
@@ -2020,7 +2025,7 @@ var Ai = class {
         ? `env("${r.provider.fromEnvVar}")`
         : r.provider.value,
       n = JSON.parse(
-        JSON.stringify({ provider: t, binaryTargets: Jc(r.binaryTargets) }),
+        JSON.stringify({ provider: t, binaryTargets: Jc(r.binaryTargets) })
       );
     return `generator ${r.name} {
 ${(0, xs.default)(Hc(n), 2)}
@@ -2047,8 +2052,8 @@ function Kc(e) {
     JSON.stringify(e, (r, t) =>
       Array.isArray(t)
         ? `[${t.map((n) => JSON.stringify(n)).join(", ")}]`
-        : JSON.stringify(t),
-    ),
+        : JSON.stringify(t)
+    )
   );
 }
 var tt = {};
@@ -2086,7 +2091,7 @@ function Xc(e, ...r) {
 function on(e, r) {
   if (!e)
     throw new Error(
-      `${r}. This should never happen. If you see this error, please, open an issue at https://pris.ly/prisma-prisma-bug-report`,
+      `${r}. This should never happen. If you see this error, please, open an issue at https://pris.ly/prisma-prisma-bug-report`
     );
 }
 function _e(e, r) {
@@ -2129,7 +2134,7 @@ function Ds(e) {
 var Li = gr("prisma:tryLoadEnv");
 function ot(
   { rootEnvPath: e, schemaEnvPath: r },
-  t = { conflictCheck: "none" },
+  t = { conflictCheck: "none" }
 ) {
   let n = _s(e);
   t.conflictCheck !== "none" && gp(n, r, t.conflictCheck);
@@ -2157,16 +2162,22 @@ function gp(e, r, t) {
       let a = wr.default.relative(process.cwd(), e.path),
         l = wr.default.relative(process.cwd(), r);
       if (t === "error") {
-        let u = `There is a conflict between env var${s.length > 1 ? "s" : ""} in ${Y(a)} and ${Y(l)}
+        let u = `There is a conflict between env var${
+          s.length > 1 ? "s" : ""
+        } in ${Y(a)} and ${Y(l)}
 Conflicting env vars:
 ${s.map((c) => `  ${W(c)}`).join(`
 `)}
 
-We suggest to move the contents of ${Y(l)} to ${Y(a)} to consolidate your env vars.
+We suggest to move the contents of ${Y(l)} to ${Y(
+          a
+        )} to consolidate your env vars.
 `;
         throw new Error(u);
       } else if (t === "warn") {
-        let u = `Conflict for env var${s.length > 1 ? "s" : ""} ${s.map((c) => W(c)).join(", ")} in ${Y(a)} and ${Y(l)}
+        let u = `Conflict for env var${s.length > 1 ? "s" : ""} ${s
+          .map((c) => W(c))
+          .join(", ")} in ${Y(a)} and ${Y(l)}
 Env vars from ${Y(l)} overwrite the ones from ${Y(a)}
       `;
         console.warn(`${ke("warn(prisma)")} ${u}`);
@@ -2184,7 +2195,10 @@ function _s(e) {
     return {
       dotenvResult: Ds(r),
       message: Ie(
-        `Environment variables loaded from ${wr.default.relative(process.cwd(), e)}`,
+        `Environment variables loaded from ${wr.default.relative(
+          process.cwd(),
+          e
+        )}`
       ),
       path: e,
     };
@@ -2551,13 +2565,13 @@ m.inverseCosine = m.acos = function () {
         : new r(0)
       : new r(NaN)
     : e.isZero()
-      ? xe(r, n + 4, i).times(0.5)
-      : ((r.precision = n + 6),
-        (r.rounding = 1),
-        (e = new r(1).minus(e).div(e.plus(1)).sqrt().atan()),
-        (r.precision = n),
-        (r.rounding = i),
-        e.times(2));
+    ? xe(r, n + 4, i).times(0.5)
+    : ((r.precision = n + 6),
+      (r.rounding = 1),
+      (e = new r(1).minus(e).div(e.plus(1)).sqrt().atan()),
+      (r.precision = n),
+      (r.rounding = i),
+      e.times(2));
 };
 m.inverseHyperbolicCosine = m.acosh = function () {
   var e,
@@ -2567,17 +2581,17 @@ m.inverseHyperbolicCosine = m.acosh = function () {
   return t.lte(1)
     ? new n(t.eq(1) ? 0 : NaN)
     : t.isFinite()
-      ? ((e = n.precision),
-        (r = n.rounding),
-        (n.precision = e + Math.max(Math.abs(t.e), t.sd()) + 4),
-        (n.rounding = 1),
-        (w = !1),
-        (t = t.times(t).minus(1).sqrt().plus(t)),
-        (w = !0),
-        (n.precision = e),
-        (n.rounding = r),
-        t.ln())
-      : new n(t);
+    ? ((e = n.precision),
+      (r = n.rounding),
+      (n.precision = e + Math.max(Math.abs(t.e), t.sd()) + 4),
+      (n.rounding = 1),
+      (w = !1),
+      (t = t.times(t).minus(1).sqrt().plus(t)),
+      (w = !0),
+      (n.precision = e),
+      (n.rounding = r),
+      t.ln())
+    : new n(t);
 };
 m.inverseHyperbolicSine = m.asinh = function () {
   var e,
@@ -2789,8 +2803,8 @@ m.minus = m.sub = function (e) {
       !f.s || !e.s
         ? (e = new g(NaN))
         : f.d
-          ? (e.s = -e.s)
-          : (e = new g(e.d || f.s !== e.s ? f : NaN)),
+        ? (e.s = -e.s)
+        : (e = new g(e.d || f.s !== e.s ? f : NaN)),
       e
     );
   if (f.s != e.s) return (e.s = -e.s), f.plus(e);
@@ -2855,14 +2869,14 @@ m.modulo = m.mod = function (e) {
     !t.d || !e.s || (e.d && !e.d[0])
       ? new n(NaN)
       : !e.d || (t.d && !t.d[0])
-        ? y(new n(t), n.precision, n.rounding)
-        : ((w = !1),
-          n.modulo == 9
-            ? ((r = L(t, e.abs(), 0, 3, 1)), (r.s *= e.s))
-            : (r = L(t, e, 0, n.modulo, 1)),
-          (r = r.times(e)),
-          (w = !0),
-          t.minus(r))
+      ? y(new n(t), n.precision, n.rounding)
+      : ((w = !1),
+        n.modulo == 9
+          ? ((r = L(t, e.abs(), 0, 3, 1)), (r.s *= e.s))
+          : (r = L(t, e, 0, n.modulo, 1)),
+        (r = r.times(e)),
+        (w = !0),
+        t.minus(r))
   );
 };
 m.naturalExponential = m.exp = function () {
@@ -3047,8 +3061,8 @@ m.times = m.mul = function (e) {
       !e.s || (d && !d[0] && !f) || (f && !f[0] && !d)
         ? NaN
         : !d || !f
-          ? e.s / 0
-          : e.s * 0,
+        ? e.s / 0
+        : e.s * 0
     );
   for (
     t = X(c.e / E) + X(e.e / E),
@@ -3174,10 +3188,7 @@ m.toFraction = function (e) {
     (t = t.plus(i.times(n))),
     (l.s = u.s = f.s),
     (d =
-      L(u, n, o, 1)
-        .minus(f)
-        .abs()
-        .cmp(L(l, t, o, 1).minus(f).abs()) < 1
+      L(u, n, o, 1).minus(f).abs().cmp(L(l, t, o, 1).minus(f).abs()) < 1
         ? [u, n]
         : [l, t]),
     (h.precision = c),
@@ -3335,15 +3346,15 @@ function at(e, r, t, n) {
               ((e[i + 1] / o / 100) | 0) == U(10, r - 2) - 1) ||
             ((a == o / 2 || a == 0) && ((e[i + 1] / o / 100) | 0) == 0))
       : r < 4
-        ? (r == 0
-            ? (a = (a / 1e3) | 0)
-            : r == 1
-              ? (a = (a / 100) | 0)
-              : r == 2 && (a = (a / 10) | 0),
-          (s = ((n || t < 4) && a == 9999) || (!n && t > 3 && a == 4999)))
-        : (s =
-            (((n || t < 4) && a + 1 == o) || (!n && t > 3 && a + 1 == o / 2)) &&
-            ((e[i + 1] / o / 1e3) | 0) == U(10, r - 3) - 1),
+      ? (r == 0
+          ? (a = (a / 1e3) | 0)
+          : r == 1
+          ? (a = (a / 100) | 0)
+          : r == 2 && (a = (a / 10) | 0),
+        (s = ((n || t < 4) && a == 9999) || (!n && t > 3 && a == 4999)))
+      : (s =
+          (((n || t < 4) && a + 1 == o) || (!n && t > 3 && a + 1 == o / 2)) &&
+          ((e[i + 1] / o / 1e3) | 0) == U(10, r - 3) - 1),
     s
   );
 }
@@ -3428,8 +3439,8 @@ var L = (function () {
         !n.s || !i.s || (K ? _ && K[0] == _[0] : !_)
           ? NaN
           : (K && K[0] == 0) || !_
-            ? ei * 0
-            : ei / 0,
+          ? ei * 0
+          : ei / 0
       );
     for (
       l
@@ -3448,8 +3459,8 @@ var L = (function () {
       o == null
         ? ((ae = o = jt.precision), (s = jt.rounding))
         : a
-          ? (ae = o + (n.e - i.e) + 1)
-          : (ae = o),
+        ? (ae = o + (n.e - i.e) + 1)
+        : (ae = o),
       ae < 0)
     )
       S.push(1), (g = !0);
@@ -3610,12 +3621,12 @@ function ve(e, r, t) {
           : s > 1 && (o = o.charAt(0) + "." + o.slice(1)),
         (o = o + (e.e < 0 ? "e" : "e+") + e.e))
       : i < 0
-        ? ((o = "0." + We(-i - 1) + o), t && (n = t - s) > 0 && (o += We(n)))
-        : i >= s
-          ? ((o += We(i + 1 - s)),
-            t && (n = t - i - 1) > 0 && (o = o + "." + We(n)))
-          : ((n = i + 1) < s && (o = o.slice(0, n) + "." + o.slice(n)),
-            t && (n = t - s) > 0 && (i + 1 === s && (o += "."), (o += We(n)))),
+      ? ((o = "0." + We(-i - 1) + o), t && (n = t - s) > 0 && (o += We(n)))
+      : i >= s
+      ? ((o += We(i + 1 - s)),
+        t && (n = t - i - 1) > 0 && (o = o + "." + We(n)))
+      : ((n = i + 1) < s && (o = o.slice(0, n) + "." + o.slice(n)),
+        t && (n = t - s) > 0 && (i + 1 === s && (o += "."), (o += We(n)))),
     o
   );
 }
@@ -3691,17 +3702,7 @@ function Bi(e, r) {
     g = d.precision;
   if (!e.d || !e.d[0] || e.e > 17)
     return new d(
-      e.d
-        ? e.d[0]
-          ? e.s < 0
-            ? 0
-            : 1 / 0
-          : 1
-        : e.s
-          ? e.s < 0
-            ? 0
-            : e
-          : NaN,
+      e.d ? (e.d[0] ? (e.s < 0 ? 0 : 1 / 0) : 1) : e.s ? (e.s < 0 ? 0 : e) : NaN
     );
   for (
     r == null ? ((w = !1), (l = g)) : (l = r), a = new d(0.03125);
@@ -4054,20 +4055,20 @@ function _p(e, r) {
     !e.s || !r.s
       ? (t = new this(NaN))
       : !e.d && !r.d
-        ? ((t = xe(this, o, 1).times(r.s > 0 ? 0.25 : 0.75)), (t.s = e.s))
-        : !r.d || e.isZero()
-          ? ((t = r.s < 0 ? xe(this, n, i) : new this(0)), (t.s = e.s))
-          : !e.d || r.isZero()
-            ? ((t = xe(this, o, 1).times(0.5)), (t.s = e.s))
-            : r.s < 0
-              ? ((this.precision = o),
-                (this.rounding = 1),
-                (t = this.atan(L(e, r, o, 1))),
-                (r = xe(this, o, 1)),
-                (this.precision = n),
-                (this.rounding = i),
-                (t = e.s < 0 ? t.minus(r) : t.plus(r)))
-              : (t = this.atan(L(e, r, o, 1))),
+      ? ((t = xe(this, o, 1).times(r.s > 0 ? 0.25 : 0.75)), (t.s = e.s))
+      : !r.d || e.isZero()
+      ? ((t = r.s < 0 ? xe(this, n, i) : new this(0)), (t.s = e.s))
+      : !e.d || r.isZero()
+      ? ((t = xe(this, o, 1).times(0.5)), (t.s = e.s))
+      : r.s < 0
+      ? ((this.precision = o),
+        (this.rounding = 1),
+        (t = this.atan(L(e, r, o, 1))),
+        (r = xe(this, o, 1)),
+        (this.precision = n),
+        (this.rounding = i),
+        (t = e.s < 0 ? t.minus(r) : t.plus(r)))
+      : (t = this.atan(L(e, r, o, 1))),
     t
   );
 }
@@ -4147,8 +4148,8 @@ function Ys(e) {
           ? !o.d || o.e > i.maxE
             ? ((u.e = NaN), (u.d = null))
             : o.e < i.minE
-              ? ((u.e = 0), (u.d = [0]))
-              : ((u.e = o.e), (u.d = o.d.slice()))
+            ? ((u.e = 0), (u.d = [0]))
+            : ((u.e = o.e), (u.d = o.d.slice()))
           : ((u.e = o.e), (u.d = o.d ? o.d.slice() : o.d));
       return;
     }
@@ -4163,8 +4164,8 @@ function Ys(e) {
           ? s > i.maxE
             ? ((u.e = NaN), (u.d = null))
             : s < i.minE
-              ? ((u.e = 0), (u.d = [0]))
-              : ((u.e = s), (u.d = [o]))
+            ? ((u.e = 0), (u.d = [0]))
+            : ((u.e = s), (u.d = [o]))
           : ((u.e = s), (u.d = [o]));
         return;
       }
@@ -4399,17 +4400,17 @@ function Tr(e) {
   return e === null
     ? e
     : Array.isArray(e)
-      ? e.map(Tr)
-      : typeof e == "object"
-        ? cd(e)
-          ? pd(e)
-          : typeof e == "bigint" ||
-              e instanceof Date ||
-              e instanceof Uint8Array ||
-              e instanceof ge
-            ? e
-            : xr(e, Tr)
-        : e;
+    ? e.map(Tr)
+    : typeof e == "object"
+    ? cd(e)
+      ? pd(e)
+      : typeof e == "bigint" ||
+        e instanceof Date ||
+        e instanceof Uint8Array ||
+        e instanceof ge
+      ? e
+      : xr(e, Tr)
+    : e;
 }
 function cd(e) {
   return e !== null && typeof e == "object" && typeof e.$type == "string";
@@ -4837,12 +4838,12 @@ he.stringify = function (e, r) {
   return typeof e == "string"
     ? e
     : Array.isArray(e)
-      ? e
-          .map(function (t) {
-            return he.stringify(t, r);
-          })
-          .join("")
-      : gd(e.type)(e.content);
+    ? e
+        .map(function (t) {
+          return he.stringify(t, r);
+        })
+        .join("")
+    : gd(e.type)(e.content);
 };
 function gd(e) {
   return Xs[e] || md;
@@ -4894,7 +4895,7 @@ var En = class e {
   mapLines(r) {
     return new e(
       this.firstLineNumber,
-      this.lines.map((t, n) => r(t, this.firstLineNumber + n)),
+      this.lines.map((t, n) => r(t, this.firstLineNumber + n))
     );
   }
   lineAt(r) {
@@ -4909,7 +4910,7 @@ var En = class e {
     return new e(
       r,
       ra(n).split(`
-`),
+`)
     );
   }
   highlight() {
@@ -4917,7 +4918,7 @@ var En = class e {
     return new e(
       this.firstLineNumber,
       r.split(`
-`),
+`)
     );
   }
   toString() {
@@ -4951,7 +4952,7 @@ function Ed({ message: e, originalMethod: r, isPanic: t, callArguments: n }) {
 }
 function wd(
   { callsite: e, message: r, originalMethod: t, isPanic: n, callArguments: i },
-  o,
+  o
 ) {
   let s = Ed({ message: r, originalMethod: t, isPanic: n, callArguments: i });
   if (!e || typeof window < "u" || process.env.NODE_ENV === "production")
@@ -5011,7 +5012,7 @@ function Pd(
     contextLines: i,
     callArguments: o,
   },
-  s,
+  s
 ) {
   let a = [""],
     l = r ? " in" : ":";
@@ -5019,11 +5020,13 @@ function Pd(
     (n
       ? (a.push(
           s.red(
-            `Oops, an unknown error occurred! This is ${s.bold("on us")}, you did nothing wrong.`,
-          ),
+            `Oops, an unknown error occurred! This is ${s.bold(
+              "on us"
+            )}, you did nothing wrong.`
+          )
         ),
         a.push(
-          s.red(`It occurred in the ${s.bold(`\`${e}\``)} invocation${l}`),
+          s.red(`It occurred in the ${s.bold(`\`${e}\``)} invocation${l}`)
         ))
       : a.push(s.red(`Invalid ${s.bold(`\`${e}\``)} invocation${l}`)),
     r && a.push(s.underline(Td(r))),
@@ -5190,7 +5193,7 @@ var Ar = class {
   }
   indentedCurrentLine() {
     let r = this.currentLine.padStart(
-      this.currentLine.length + 2 * this.currentIndent,
+      this.currentLine.length + 2 * this.currentIndent
     );
     return this.marginSymbol ? this.marginSymbol + r.slice(1) : r;
   }
@@ -5233,7 +5236,7 @@ var Te = class {
       this.isUnderlined &&
         r.afterNextNewline(() => {
           r.write(" ".repeat(t)).writeLine(
-            this.color("~".repeat(this.contents.length)),
+            this.color("~".repeat(this.contents.length))
           );
         });
   }
@@ -5488,7 +5491,11 @@ function Ad(e, r) {
     t.getField(e.secondField)?.markAsError()),
     r.addErrorMessage(
       (n) =>
-        `Please ${n.bold("either")} use ${n.green(`\`${e.firstField}\``)} or ${n.green(`\`${e.secondField}\``)}, but ${n.red("not both")} at the same time.`,
+        `Please ${n.bold("either")} use ${n.green(
+          `\`${e.firstField}\``
+        )} or ${n.green(`\`${e.secondField}\``)}, but ${n.red(
+          "not both"
+        )} at the same time.`
     );
 }
 function Id(e, r) {
@@ -5499,7 +5506,9 @@ function Id(e, r) {
     for (let s of i.fields)
       s.isRelation && o.addSuggestion(new ue(s.name, "true"));
   r.addErrorMessage((s) => {
-    let a = `Invalid scalar field ${s.red(`\`${n}\``)} for ${s.bold("include")} statement`;
+    let a = `Invalid scalar field ${s.red(`\`${n}\``)} for ${s.bold(
+      "include"
+    )} statement`;
     return (
       i ? (a += ` on model ${s.bold(i.name)}. ${dt(s)}`) : (a += "."),
       (a += `
@@ -5526,7 +5535,7 @@ function kd(e, r, t) {
     return;
   }
   r.addErrorMessage(
-    () => `Unknown field at "${e.selectionPath.join(".")} selection"`,
+    () => `Unknown field at "${e.selectionPath.join(".")} selection"`
   );
 }
 function Od(e, r, t) {
@@ -5534,7 +5543,11 @@ function Od(e, r, t) {
   for (let n of e.outputType.fields) t.addSuggestion(new ue(n.name, "false"));
   r.addErrorMessage(
     (n) =>
-      `The ${n.red("omit")} statement includes every field of the model ${n.bold(e.outputType.name)}. At least one field must be included in the result`,
+      `The ${n.red(
+        "omit"
+      )} statement includes every field of the model ${n.bold(
+        e.outputType.name
+      )}. At least one field must be included in the result`
   );
 }
 function Dd(e, r) {
@@ -5544,8 +5557,12 @@ function Dd(e, r) {
   n && (n.removeAllFields(), ga(n, t)),
     r.addErrorMessage((o) =>
       i
-        ? `The ${o.red("`select`")} statement for type ${o.bold(t.name)} must not be empty. ${dt(o)}`
-        : `The ${o.red("`select`")} statement for type ${o.bold(t.name)} needs ${o.bold("at least one truthy value")}.`,
+        ? `The ${o.red("`select`")} statement for type ${o.bold(
+            t.name
+          )} must not be empty. ${dt(o)}`
+        : `The ${o.red("`select`")} statement for type ${o.bold(
+            t.name
+          )} needs ${o.bold("at least one truthy value")}.`
     );
 }
 function _d(e, r) {
@@ -5564,7 +5581,11 @@ function _d(e, r) {
   }
   r.addErrorMessage(
     (i) =>
-      `The global ${i.red("omit")} configuration excludes every field of the model ${i.bold(e.outputType.name)}. At least one field must be included in the result`,
+      `The global ${i.red(
+        "omit"
+      )} configuration excludes every field of the model ${i.bold(
+        e.outputType.name
+      )}. At least one field must be included in the result`
   );
 }
 function Nd(e, r) {
@@ -5600,7 +5621,9 @@ function Ld(e, r) {
   t.parentKind !== "unknown" && t.field.value.markAsError(),
     r.addErrorMessage(
       (n) =>
-        `Invalid value for selection field \`${n.red(t.fieldName)}\`: ${e.underlyingError}`,
+        `Invalid value for selection field \`${n.red(t.fieldName)}\`: ${
+          e.underlyingError
+        }`
     );
 }
 function Fd(e, r) {
@@ -5611,8 +5634,8 @@ function Fd(e, r) {
       ma(
         i,
         t,
-        e.arguments.map((o) => o.name),
-      ),
+        e.arguments.map((o) => o.name)
+      )
     );
 }
 function Md(e, r) {
@@ -5627,8 +5650,8 @@ function Md(e, r) {
     ma(
       o,
       n,
-      e.inputType.fields.map((s) => s.name),
-    ),
+      e.inputType.fields.map((s) => s.name)
+    )
   );
 }
 function ma(e, r, t) {
@@ -5645,7 +5668,7 @@ function $d(e, r) {
   r.addErrorMessage((l) =>
     t?.value instanceof G && t.value.text === "null"
       ? `Argument \`${l.green(o)}\` must not be ${l.red("null")}.`
-      : `Argument \`${l.green(o)}\` is missing.`,
+      : `Argument \`${l.green(o)}\` is missing.`
   );
   let n = r.arguments.getDeepSubSelectionValue(e.selectionPath)?.asObject();
   if (!n) return;
@@ -5676,9 +5699,13 @@ function qd(e, r) {
     r.addErrorMessage((i) => {
       let o = Sn(
         "or",
-        e.argument.typeNames.map((s) => i.green(s)),
+        e.argument.typeNames.map((s) => i.green(s))
       );
-      return `Argument \`${i.bold(t)}\`: Invalid value provided. Expected ${o}, provided ${i.red(e.inferredType)}.`;
+      return `Argument \`${i.bold(
+        t
+      )}\`: Invalid value provided. Expected ${o}, provided ${i.red(
+        e.inferredType
+      )}.`;
     });
 }
 function jd(e, r) {
@@ -5694,7 +5721,7 @@ function jd(e, r) {
       ) {
         let s = Sn(
           "or",
-          e.argument.typeNames.map((a) => i.green(a)),
+          e.argument.typeNames.map((a) => i.green(a))
         );
         o.push(` Expected ${s}.`);
       }
@@ -5735,12 +5762,12 @@ function Bd(e, r) {
           ? o.push(
               `${i.green("at least one of")} ${Sn(
                 "or",
-                e.constraints.requiredFields.map((s) => `\`${i.bold(s)}\``),
-              )} arguments.`,
+                e.constraints.requiredFields.map((s) => `\`${i.bold(s)}\``)
+              )} arguments.`
             )
           : o.push(`${i.green("at least one")} argument.`)
         : o.push(
-            `${i.green(`at least ${e.constraints.minFieldCount}`)} arguments.`,
+            `${i.green(`at least ${e.constraints.minFieldCount}`)} arguments.`
           ),
       o.push(dt(i)),
       o.join(" ")
@@ -5763,15 +5790,15 @@ function Ud(e, r) {
       e.constraints.minFieldCount === 1 && e.constraints.maxFieldCount == 1
         ? s.push(`${o.green("exactly one")} argument,`)
         : e.constraints.maxFieldCount == 1
-          ? s.push(`${o.green("at most one")} argument,`)
-          : s.push(
-              `${o.green(`at most ${e.constraints.maxFieldCount}`)} arguments,`,
-            ),
+        ? s.push(`${o.green("at most one")} argument,`)
+        : s.push(
+            `${o.green(`at most ${e.constraints.maxFieldCount}`)} arguments,`
+          ),
       s.push(
         `but you provided ${Sn(
           "and",
-          i.map((a) => o.red(a)),
-        )}. Please choose`,
+          i.map((a) => o.red(a))
+        )}. Please choose`
       ),
       e.constraints.maxFieldCount === 1
         ? s.push("one.")
@@ -5884,7 +5911,7 @@ var Rn = Symbol(),
         ? Ji.set(this, `Prisma.${this._getName()}`)
         : Ji.set(
             this,
-            `new Prisma.${this._getNamespace()}.${this._getName()}()`,
+            `new Prisma.${this._getNamespace()}.${this._getName()}()`
           );
     }
     _getName() {
@@ -5983,12 +6010,12 @@ function wa(e) {
   return e instanceof Fe
     ? new G(`Prisma.${e._getName()}`)
     : Dr(e)
-      ? new G(`prisma.${Ye(e.modelName)}.$fields.${e.name}`)
-      : Array.isArray(e)
-        ? Kd(e)
-        : typeof e == "object"
-          ? Ea(e)
-          : new G(Object.prototype.toString.call(e));
+    ? new G(`prisma.${Ye(e.modelName)}.$fields.${e.name}`)
+    : Array.isArray(e)
+    ? Kd(e)
+    : typeof e == "object"
+    ? Ea(e)
+    : new G(Object.prototype.toString.call(e));
 }
 function Kd(e) {
   let r = new kr();
@@ -6041,7 +6068,7 @@ function Yd(e) {
       r.getOrCreate(n, () =>
         i.has(n)
           ? [n]
-          : (i.add(n), e[n] ? e[n].needs.flatMap((o) => t(o, i)) : [n]),
+          : (i.add(n), e[n] ? e[n].needs.flatMap((o) => t(o, i)) : [n])
       );
   return xr(e, (n) => ({ ...n, needs: t(n.name, new Set()) }));
 }
@@ -6086,7 +6113,7 @@ var On = class {
             ...this.previous?.getAllClientExtensions(),
             ...this.extension.client,
           }
-        : this.previous?.getAllClientExtensions(),
+        : this.previous?.getAllClientExtensions()
     );
     batchCallbacks = lt(() => {
       let r = this.previous?.getAllBatchQueryCallbacks() ?? [],
@@ -6095,7 +6122,7 @@ var On = class {
     });
     getAllComputedFields(r) {
       return this.computedFieldsCache.getOrCreate(r, () =>
-        va(this.previous?.getAllComputedFields(r), this.extension, r),
+        va(this.previous?.getAllComputedFields(r), this.extension, r)
       );
     }
     getAllClientExtensions() {
@@ -6387,7 +6414,9 @@ function Ia(e, r) {
     selectionPath: r.getSelectionPath(),
     argumentPath: r.getArgumentPath(),
     argument: { name: r.getArgumentName(), typeNames: [] },
-    underlyingError: `We could not serialize ${Object.prototype.toString.call(e)} value. Serialize the object to JSON or implement a ".toJSON()" method on it`,
+    underlyingError: `We could not serialize ${Object.prototype.toString.call(
+      e
+    )} value. Serialize the object to JSON or implement a ".toJSON()" method on it`,
   });
 }
 function ka(e, r) {
@@ -6514,7 +6543,7 @@ var Yi = class e {
   }
   getGlobalOmit() {
     return this.params.modelName && this.shouldApplyGlobalOmit()
-      ? (this.params.globalOmit?.[Ye(this.params.modelName)] ?? {})
+      ? this.params.globalOmit?.[Ye(this.params.modelName)] ?? {}
       : {};
   }
   shouldApplyGlobalOmit() {
@@ -6558,7 +6587,7 @@ function Oa(e) {
   if (!e._hasPreviewFlag("metrics"))
     throw new Z(
       "`metrics` preview feature must be enabled in order to access metrics API",
-      { clientVersion: e._clientVersion },
+      { clientVersion: e._clientVersion }
     );
 }
 var Lr = class {
@@ -6621,7 +6650,7 @@ var oe = class e {
       throw r.length === 0
         ? new TypeError("Expected at least 1 string")
         : new TypeError(
-            `Expected ${r.length} strings to have ${r.length - 1} values`,
+            `Expected ${r.length} strings to have ${r.length - 1} values`
           );
     let n = t.reduce((s, a) => s + (a instanceof e ? a.values.length : 1), 0);
     (this.values = new Array(n)),
@@ -6674,7 +6703,7 @@ var oe = class e {
 function Na(e, r = ",", t = "", n = "") {
   if (e.length === 0)
     throw new TypeError(
-      "Expected `join([])` to be called with an array of multiple elements, but got an empty array",
+      "Expected `join([])` to be called with an array of multiple elements, but got an empty array"
     );
   return new oe([t, ...Array(e.length - 1).fill(r), n], e);
 }
@@ -6743,7 +6772,7 @@ function ye(e, r) {
       has(o, s) {
         if (n.has(s)) return !0;
         let a = t.get(s);
-        return a ? (a.has?.(s) ?? !0) : Reflect.has(o, s);
+        return a ? a.has?.(s) ?? !0 : Reflect.has(o, s);
       },
       ownKeys(o) {
         let s = Ma(Reflect.ownKeys(o), t),
@@ -6978,7 +7007,7 @@ function qr(e = {}) {
     (n, [i, o]) => (
       ja[i] !== void 0 ? (n.select[i] = { select: o }) : (n[i] = o), n
     ),
-    { select: {} },
+    { select: {} }
   );
 }
 function Tm(e = {}) {
@@ -7043,7 +7072,7 @@ function Ga(e, r) {
         if (s) return new mt(e, o, s.type, s.isList, s.kind === "enum");
       },
       ...$n(Object.keys(n)),
-    },
+    }
   );
 }
 var Wa = (e) => (Array.isArray(e) ? e : e.split(".")),
@@ -7051,18 +7080,18 @@ var Wa = (e) => (Array.isArray(e) ? e : e.split(".")),
   Ja = (e, r, t) =>
     Wa(r).reduceRight(
       (n, i, o, s) => Object.assign({}, io(e, s.slice(0, o)), { [i]: n }),
-      t,
+      t
     );
 function Im(e, r) {
   return e === void 0 || r === void 0 ? [] : [...r, "select", e];
 }
 function km(e, r, t) {
-  return r === void 0 ? (e ?? {}) : Ja(r, t, e || !0);
+  return r === void 0 ? e ?? {} : Ja(r, t, e || !0);
 }
 function oo(e, r, t, n, i, o) {
   let a = e._runtimeDataModel.models[r].fields.reduce(
     (l, u) => ({ ...l, [u.name]: u }),
-    {},
+    {}
   );
   return (l) => {
     let u = Ze(e._errorFormat),
@@ -7134,7 +7163,7 @@ function Nm(e, r) {
               };
               return e._request({ ...p, ...a });
             },
-            { action: o, args: l, model: r },
+            { action: o, args: l, model: r }
           );
         };
       return Dm.includes(o) ? oo(e, r, s) : Lm(i) ? Qa(e, i, s) : s({});
@@ -7149,7 +7178,7 @@ function Fm(e, r) {
     re("fields", () => {
       let t = e._runtimeDataModel.models[r];
       return Ga(r, t);
-    }),
+    })
   );
 }
 function Ha(e) {
@@ -7204,7 +7233,7 @@ function Ya(e) {
   if (e.client?.__AccelerateEngine) {
     let t = e.client.__AccelerateEngine;
     this._originalClient._engine = new t(
-      this._originalClient._accelerateEngineConfig,
+      this._originalClient._accelerateEngineConfig
     );
   }
   let r = Object.create(this._originalClient, {
@@ -7459,8 +7488,8 @@ function pl(e, r) {
     ? e.datasources
       ? e.datasources
       : e.datasourceUrl
-        ? { [r[0]]: { url: e.datasourceUrl } }
-        : {}
+      ? { [r[0]]: { url: e.datasourceUrl } }
+      : {}
     : {};
 }
 var Qm = () => globalThis.process?.release?.name === "node",
@@ -7549,7 +7578,9 @@ function ml(e) {
   return `${Xe(e)}${Qn(e)}
 
 This is likely caused by a bundler that has not copied "${r}" next to the resulting bundle.
-Ensure that "${r}" has been copied next to the bundle or in "${e.expectedLocation}".
+Ensure that "${r}" has been copied next to the bundle or in "${
+    e.expectedLocation
+  }".
 
 ${Un("engine-not-found-bundler-investigation")}
 
@@ -7560,7 +7591,9 @@ function fl(e) {
     n = t.find((i) => i.native);
   return `${Xe(e)}
 
-This happened because Prisma Client was generated for "${n?.value ?? "unknown"}", but the actual deployment required "${r}".
+This happened because Prisma Client was generated for "${
+    n?.value ?? "unknown"
+  }", but the actual deployment required "${r}".
 ${Bn(e)}
 
 ${er(e)}`;
@@ -7570,7 +7603,9 @@ function gl(e) {
   return `${Xe(e)}${Qn(e)}
 
 This is likely caused by tooling that has not copied "${r}" to the deployment folder.
-Ensure that you ran \`prisma generate\` and that "${r}" has been copied to "${e.expectedLocation}".
+Ensure that you ran \`prisma generate\` and that "${r}" has been copied to "${
+    e.expectedLocation
+  }".
 
 ${Un("engine-not-found-tooling-investigation")}
 
@@ -7647,15 +7682,15 @@ function wl(e) {
   return e
     .split(
       `
-`,
+`
     )
     .map((r) =>
       r
         .replace(
           /^\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z)\s*/,
-          "",
+          ""
         )
-        .replace(/\+\d+\s*ms$/, ""),
+        .replace(/\+\d+\s*ms$/, "")
     ).join(`
 `);
 }
@@ -7835,17 +7870,17 @@ function jr({
     (o === void 0
       ? (i = void 0)
       : a
-        ? (i = a)
-        : s?.value
-          ? (i = s.value)
-          : s?.fromEnvVar && (i = t[s.fromEnvVar]),
+      ? (i = a)
+      : s?.value
+      ? (i = s.value)
+      : s?.fromEnvVar && (i = t[s.fromEnvVar]),
     s?.fromEnvVar !== void 0 && i === void 0)
   )
     throw new T(`error: Environment variable not found: ${s.fromEnvVar}.`, n);
   if (i === void 0)
     throw new T(
       "error: Missing URL environment variable, value, or override.",
-      n,
+      n
     );
   return i;
 }
@@ -8140,13 +8175,13 @@ function Cl(e) {
 }
 function Al(e) {
   if (
-    !!e.generator?.previewFeatures.some((t) =>
-      t.toLowerCase().includes("metrics"),
+    e.generator?.previewFeatures.some((t) =>
+      t.toLowerCase().includes("metrics")
     )
   )
     throw new T(
       "The `metrics` preview feature is not yet available with Accelerate.\nPlease remove `metrics` from the `previewFeatures` in your schema.\n\nMore information about Accelerate: https://pris.ly/d/accelerate",
-      e.clientVersion,
+      e.clientVersion
     );
 }
 function uf(e) {
@@ -8169,7 +8204,7 @@ var Mt = class extends se {
     super(
       `Cannot fetch data from service:
 ${r}`,
-      R(t, !0),
+      R(t, !0)
     );
   }
 };
@@ -8207,7 +8242,9 @@ async function df(e, r) {
       p = await dr(c, { clientVersion: n });
     if (!p.ok)
       throw new Error(
-        `Failed to fetch stable Prisma version, unpkg.com status ${p.status} ${p.statusText}, response body: ${(await p.text()) || "<empty body>"}`,
+        `Failed to fetch stable Prisma version, unpkg.com status ${p.status} ${
+          p.statusText
+        }, response body: ${(await p.text()) || "<empty body>"}`
       );
     let d = await p.text();
     kl("length of body fetched from unpkg.com", d.length);
@@ -8223,7 +8260,7 @@ async function df(e, r) {
   }
   throw new cr(
     "Only `major.minor.patch` versions are supported by Accelerate.",
-    { clientVersion: n },
+    { clientVersion: n }
   );
 }
 async function Ol(e, r) {
@@ -8365,7 +8402,7 @@ var Dl = 3,
     }
     onBeforeExit() {
       throw new Error(
-        '"beforeExit" hook is not applicable to the remote query engine',
+        '"beforeExit" hook is not applicable to the remote query engine'
       );
     }
     async url(r) {
@@ -8403,7 +8440,7 @@ var Dl = 3,
     }
     request(
       r,
-      { traceparent: t, interactiveTransaction: n, customDataProxyFetch: i },
+      { traceparent: t, interactiveTransaction: n, customDataProxyFetch: i }
     ) {
       return this.requestInternal({
         body: r,
@@ -8414,7 +8451,7 @@ var Dl = 3,
     }
     async requestBatch(
       r,
-      { traceparent: t, transaction: n, customDataProxyFetch: i },
+      { traceparent: t, transaction: n, customDataProxyFetch: i }
     ) {
       let o = n?.kind === "itx" ? n.options : void 0,
         s = Mr(r, n);
@@ -8429,7 +8466,7 @@ var Dl = 3,
         (l) => (
           l.extensions && this.propagateResponseExtensions(l.extensions),
           "errors" in l ? this.convertProtocolErrorsToClientError(l.errors) : l
-        ),
+        )
       );
     }
     requestInternal({
@@ -8456,7 +8493,7 @@ var Dl = 3,
               body: JSON.stringify(r),
               clientVersion: this.clientVersion,
             },
-            n,
+            n
           );
           a.ok || $t("graphql response status", a.status),
             await this.handleError(await Ft(a, this.clientVersion));
@@ -8532,20 +8569,20 @@ var Dl = 3,
       } catch {
         throw new ur(
           `Error validating datasource \`${t}\`: the URL must start with the protocol \`prisma://\``,
-          r,
+          r
         );
       }
       let { protocol: o, searchParams: s } = i;
       if (o !== "prisma:" && o !== tn)
         throw new ur(
           `Error validating datasource \`${t}\`: the URL must start with the protocol \`prisma://\` or \`prisma+postgres://\``,
-          r,
+          r
         );
       let a = s.get("api_key");
       if (a === null || a.length < 1)
         throw new ur(
           `Error validating datasource \`${t}\`: the URL must contain a valid API key`,
-          r,
+          r
         );
       return { apiKey: a, url: i };
     }
@@ -8569,7 +8606,9 @@ var Dl = 3,
           if (!(i instanceof se) || !i.isRetryable) throw i;
           if (t >= Dl) throw i instanceof Vr ? i.cause : i;
           this.logEmitter.emit("warn", {
-            message: `Attempt ${t + 1}/${Dl} failed for ${r.actionGerund}: ${i.message ?? "(unknown)"}`,
+            message: `Attempt ${t + 1}/${Dl} failed for ${r.actionGerund}: ${
+              i.message ?? "(unknown)"
+            }`,
             timestamp: new Date(),
             target: "",
           });
@@ -8634,7 +8673,7 @@ var Ll = {
     try {
       return e.tracingHelper.runInChildSpan(
         { name: "loadLibrary", internal: !0 },
-        () => gf(t),
+        () => gf(t)
       );
     } catch (n) {
       let i = Ti({ e: n, platformInfo: r, id: t });
@@ -8648,8 +8687,10 @@ var Po,
       let { clientVersion: r, adapter: t, engineWasm: n } = e;
       if (t === void 0)
         throw new T(
-          `The \`adapter\` option for \`PrismaClient\` is required in this context (${Vn().prettyName})`,
-          r,
+          `The \`adapter\` option for \`PrismaClient\` is required in this context (${
+            Vn().prettyName
+          })`,
+          r
         );
       if (n === void 0)
         throw new T("WASM engine was unexpectedly `undefined`", r);
@@ -8660,7 +8701,7 @@ var Po,
           if (s == null)
             throw new T(
               "The loaded wasm module was unexpectedly `undefined` or `null` once loaded",
-              r,
+              r
             );
           let a = { "./query_engine_bg.js": o },
             l = new WebAssembly.Instance(s, a),
@@ -8769,7 +8810,7 @@ var Qr = class {
   }
   async applyPendingMigrations() {
     throw new Error(
-      "Cannot call this method from this type of engine instance",
+      "Cannot call this method from this type of engine instance"
     );
   }
   async transaction(r, t, n) {
@@ -8809,7 +8850,7 @@ var Qr = class {
     oi(),
       (this.binaryTarget = await this.getCurrentBinaryTarget()),
       await this.tracingHelper.runInChildSpan("load_engine", () =>
-        this.loadEngine(),
+        this.loadEngine()
       ),
       this.version();
   }
@@ -8817,13 +8858,17 @@ var Qr = class {
     {
       if (this.binaryTarget) return this.binaryTarget;
       let r = await this.tracingHelper.runInChildSpan("detect_platform", () =>
-        ir(),
+        ir()
       );
       if (!Ml.includes(r))
         throw new T(
-          `Unknown ${ce("PRISMA_QUERY_ENGINE_LIBRARY")} ${ce(W(r))}. Possible binaryTargets: ${qe(Ml.join(", "))} or a path to the query engine library.
+          `Unknown ${ce("PRISMA_QUERY_ENGINE_LIBRARY")} ${ce(
+            W(r)
+          )}. Possible binaryTargets: ${qe(
+            Ml.join(", ")
+          )} or a path to the query engine library.
 You may have to run ${qe("prisma generate")} for your changes to take effect.`,
-          this.config.clientVersion,
+          this.config.clientVersion
         );
       return r;
     }
@@ -8868,8 +8913,8 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
               (n) => {
                 r.deref()?.logger(n);
               },
-              t,
-            ),
+              t
+            )
           ));
       } catch (r) {
         let t = r,
@@ -8893,18 +8938,18 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
             target: t.module_path,
           })
         : bf(t)
-          ? (this.loggerRustPanic = new le(
-              So(
-                this,
-                `${t.message}: ${t.reason} in ${t.file}:${t.line}:${t.column}`,
-              ),
-              this.config.clientVersion,
-            ))
-          : this.logEmitter.emit(t.level, {
-              timestamp: new Date(),
-              message: t.message,
-              target: t.module_path,
-            }));
+        ? (this.loggerRustPanic = new le(
+            So(
+              this,
+              `${t.message}: ${t.reason} in ${t.file}:${t.line}:${t.column}`
+            ),
+            this.config.clientVersion
+          ))
+        : this.logEmitter.emit(t.level, {
+            timestamp: new Date(),
+            message: t.message,
+            target: t.module_path,
+          }));
   }
   parseInitError(r) {
     try {
@@ -8920,7 +8965,7 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
   }
   onBeforeExit() {
     throw new Error(
-      '"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.',
+      '"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.'
     );
   }
   async start() {
@@ -8931,7 +8976,7 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
     )
       return (
         Ce(
-          `library already starting, this.libraryStarted: ${this.libraryStarted}`,
+          `library already starting, this.libraryStarted: ${this.libraryStarted}`
         ),
         this.libraryStartingPromise
       );
@@ -8955,7 +9000,7 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
     return (
       (this.libraryStartingPromise = this.tracingHelper.runInChildSpan(
         "connect",
-        r,
+        r
       )),
       this.libraryStartingPromise
     );
@@ -8982,7 +9027,7 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
     return (
       (this.libraryStoppingPromise = this.tracingHelper.runInChildSpan(
         "disconnect",
-        r,
+        r
       )),
       this.libraryStoppingPromise
     );
@@ -9024,7 +9069,7 @@ You may have to run ${qe("prisma generate")} for your changes to take effect.`,
         : new j(
             `${a.message}
 ${a.backtrace}`,
-            { clientVersion: this.config.clientVersion },
+            { clientVersion: this.config.clientVersion }
           );
     }
   }
@@ -9037,7 +9082,7 @@ ${a.backtrace}`,
       (this.executingQueryPromise = this.engine.query(
         this.lastQuery,
         JSON.stringify({ traceparent: n }),
-        _l(t),
+        _l(t)
       ));
     let s = await this.executingQueryPromise,
       a = this.parseEngineResponse(s);
@@ -9051,9 +9096,9 @@ ${a.backtrace}`,
     if (Array.isArray(l))
       return l.map((c) =>
         c.errors && c.errors.length > 0
-          ? (this.loggerRustPanic ??
-            this.buildQueryError(c.errors[0], o?.errorRegistry))
-          : { data: c },
+          ? this.loggerRustPanic ??
+            this.buildQueryError(c.errors[0], o?.errorRegistry)
+          : { data: c }
       );
     throw u && u.length === 1
       ? new Error(u[0].error)
@@ -9063,7 +9108,7 @@ ${a.backtrace}`,
     if (r.user_facing_error.is_panic)
       return new le(
         So(this, r.user_facing_error.message),
-        this.config.clientVersion,
+        this.config.clientVersion
       );
     let n = this.getExternalAdapterError(r.user_facing_error, t);
     return n
@@ -9075,7 +9120,7 @@ ${a.backtrace}`,
       let n = r.meta?.id;
       on(
         typeof n == "number",
-        "Malformed external JS error received from the engine",
+        "Malformed external JS error received from the engine"
       );
       let i = t.consumeError(n);
       return on(i, "External error with reported id was not registered"), i;
@@ -9115,7 +9160,7 @@ function $l({ copyEngine: e = !0 }, r) {
     n &&
     st(
       "recommend--no-engine",
-      "In production, we recommend using `prisma generate --no-engine` (See: `prisma generate --help`)",
+      "In production, we recommend using `prisma generate --no-engine` (See: `prisma generate --help`)"
     );
   let i = Er(r.generator),
     o = n || !e,
@@ -9142,7 +9187,7 @@ function $l({ copyEngine: e = !0 }, r) {
       new Z(
         c.join(`
 `),
-        { clientVersion: r.clientVersion },
+        { clientVersion: r.clientVersion }
       ))
     );
   }
@@ -9190,9 +9235,9 @@ function vf(e) {
   return e instanceof ArrayBuffer || e instanceof SharedArrayBuffer
     ? !0
     : typeof e == "object" && e !== null
-      ? e[Symbol.toStringTag] === "ArrayBuffer" ||
-        e[Symbol.toStringTag] === "SharedArrayBuffer"
-      : !1;
+    ? e[Symbol.toStringTag] === "ArrayBuffer" ||
+      e[Symbol.toStringTag] === "SharedArrayBuffer"
+    : !1;
 }
 function Ql(e) {
   if (typeof e != "object" || e === null) return e;
@@ -9367,17 +9412,14 @@ function Yl(e, r = () => {}) {
 function zl(e) {
   return typeof e == "string"
     ? e
-    : e.reduce(
-        (r, t) => {
-          let n = typeof t == "string" ? t : t.level;
-          return n === "query"
-            ? r
-            : r && (t === "info" || r === "info")
-              ? "info"
-              : n;
-        },
-        void 0,
-      );
+    : e.reduce((r, t) => {
+        let n = typeof t == "string" ? t : t.level;
+        return n === "query"
+          ? r
+          : r && (t === "info" || r === "info")
+          ? "info"
+          : n;
+      }, void 0);
 }
 var Hn = class {
   _middlewares = [];
@@ -9749,7 +9791,7 @@ var D = class extends Error {
     super(
       r +
         `
-Read more at https://pris.ly/d/client-constructor`,
+Read more at https://pris.ly/d/client-constructor`
     ),
       (this.name = "PrismaClientConstructorValidationError");
   }
@@ -9775,25 +9817,33 @@ var nu = [
       if (e) {
         if (typeof e != "object" || Array.isArray(e))
           throw new D(
-            `Invalid value ${JSON.stringify(e)} for "datasources" provided to PrismaClient constructor`,
+            `Invalid value ${JSON.stringify(
+              e
+            )} for "datasources" provided to PrismaClient constructor`
           );
         for (let [t, n] of Object.entries(e)) {
           if (!r.includes(t)) {
             let i = Wr(t, r) || ` Available datasources: ${r.join(", ")}`;
             throw new D(
-              `Unknown datasource ${t} provided to PrismaClient constructor.${i}`,
+              `Unknown datasource ${t} provided to PrismaClient constructor.${i}`
             );
           }
           if (typeof n != "object" || Array.isArray(n))
-            throw new D(`Invalid value ${JSON.stringify(e)} for datasource "${t}" provided to PrismaClient constructor.
+            throw new D(`Invalid value ${JSON.stringify(
+              e
+            )} for datasource "${t}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
           if (n && typeof n == "object")
             for (let [i, o] of Object.entries(n)) {
               if (i !== "url")
-                throw new D(`Invalid value ${JSON.stringify(e)} for datasource "${t}" provided to PrismaClient constructor.
+                throw new D(`Invalid value ${JSON.stringify(
+                  e
+                )} for datasource "${t}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
               if (typeof o != "string")
-                throw new D(`Invalid value ${JSON.stringify(o)} for datasource "${t}" provided to PrismaClient constructor.
+                throw new D(`Invalid value ${JSON.stringify(
+                  o
+                )} for datasource "${t}" provided to PrismaClient constructor.
 It should have this form: { url: "CONNECTION_STRING" }`);
             }
         }
@@ -9802,37 +9852,41 @@ It should have this form: { url: "CONNECTION_STRING" }`);
     adapter: (e, r) => {
       if (!e && Er(r.generator) === "client")
         throw new D(
-          'Using engine type "client" requires a driver adapter to be provided to PrismaClient constructor.',
+          'Using engine type "client" requires a driver adapter to be provided to PrismaClient constructor.'
         );
       if (e === null) return;
       if (e === void 0)
         throw new D(
-          '"adapter" property must not be undefined, use null to conditionally disable driver adapters.',
+          '"adapter" property must not be undefined, use null to conditionally disable driver adapters.'
         );
       if (!Jn(r).includes("driverAdapters"))
         throw new D(
-          '"adapter" property can only be provided to PrismaClient constructor when "driverAdapters" preview feature is enabled.',
+          '"adapter" property can only be provided to PrismaClient constructor when "driverAdapters" preview feature is enabled.'
         );
       if (Er(r.generator) === "binary")
         throw new D(
-          'Cannot use a driver adapter with the "binary" Query Engine. Please use the "library" Query Engine.',
+          'Cannot use a driver adapter with the "binary" Query Engine. Please use the "library" Query Engine.'
         );
     },
     datasourceUrl: (e) => {
       if (typeof e < "u" && typeof e != "string")
-        throw new D(`Invalid value ${JSON.stringify(e)} for "datasourceUrl" provided to PrismaClient constructor.
+        throw new D(`Invalid value ${JSON.stringify(
+          e
+        )} for "datasourceUrl" provided to PrismaClient constructor.
 Expected string or undefined.`);
     },
     errorFormat: (e) => {
       if (e) {
         if (typeof e != "string")
           throw new D(
-            `Invalid value ${JSON.stringify(e)} for "errorFormat" provided to PrismaClient constructor.`,
+            `Invalid value ${JSON.stringify(
+              e
+            )} for "errorFormat" provided to PrismaClient constructor.`
           );
         if (!iu.includes(e)) {
           let r = Wr(e, iu);
           throw new D(
-            `Invalid errorFormat ${e} provided to PrismaClient constructor.${r}`,
+            `Invalid errorFormat ${e} provided to PrismaClient constructor.${r}`
           );
         }
       }
@@ -9841,13 +9895,15 @@ Expected string or undefined.`);
       if (!e) return;
       if (!Array.isArray(e))
         throw new D(
-          `Invalid value ${JSON.stringify(e)} for "log" provided to PrismaClient constructor.`,
+          `Invalid value ${JSON.stringify(
+            e
+          )} for "log" provided to PrismaClient constructor.`
         );
       function r(t) {
         if (typeof t == "string" && !ou.includes(t)) {
           let n = Wr(t, ou);
           throw new D(
-            `Invalid log level "${t}" provided to PrismaClient constructor.${n}`,
+            `Invalid log level "${t}" provided to PrismaClient constructor.${n}`
           );
         }
       }
@@ -9860,7 +9916,9 @@ Expected string or undefined.`);
             if (!o.includes(i)) {
               let s = Wr(i, o);
               throw new D(
-                `Invalid value ${JSON.stringify(i)} for "emit" in logLevel provided to PrismaClient constructor.${s}`,
+                `Invalid value ${JSON.stringify(
+                  i
+                )} for "emit" in logLevel provided to PrismaClient constructor.${s}`
               );
             }
           },
@@ -9870,7 +9928,7 @@ Expected string or undefined.`);
             if (n[i]) n[i](o);
             else
               throw new D(
-                `Invalid property ${i} for "log" provided to PrismaClient constructor`,
+                `Invalid property ${i} for "log" provided to PrismaClient constructor`
               );
       }
     },
@@ -9879,12 +9937,12 @@ Expected string or undefined.`);
       let r = e.maxWait;
       if (r != null && r <= 0)
         throw new D(
-          `Invalid value ${r} for maxWait in "transactionOptions" provided to PrismaClient constructor. maxWait needs to be greater than 0`,
+          `Invalid value ${r} for maxWait in "transactionOptions" provided to PrismaClient constructor. maxWait needs to be greater than 0`
         );
       let t = e.timeout;
       if (t != null && t <= 0)
         throw new D(
-          `Invalid value ${t} for timeout in "transactionOptions" provided to PrismaClient constructor. timeout needs to be greater than 0`,
+          `Invalid value ${t} for timeout in "transactionOptions" provided to PrismaClient constructor. timeout needs to be greater than 0`
         );
     },
     omit: (e, r) => {
@@ -9919,13 +9977,17 @@ Expected string or undefined.`);
       let r = ["debug", "engine", "configOverride"];
       if (typeof e != "object")
         throw new D(
-          `Invalid value ${JSON.stringify(e)} for "__internal" to PrismaClient constructor`,
+          `Invalid value ${JSON.stringify(
+            e
+          )} for "__internal" to PrismaClient constructor`
         );
       for (let [t] of Object.entries(e))
         if (!r.includes(t)) {
           let n = Wr(t, r);
           throw new D(
-            `Invalid property ${JSON.stringify(t)} for "__internal" provided to PrismaClient constructor.${n}`,
+            `Invalid property ${JSON.stringify(
+              t
+            )} for "__internal" provided to PrismaClient constructor.${n}`
           );
         }
     },
@@ -9935,14 +9997,14 @@ function lu(e, r) {
     if (!nu.includes(t)) {
       let i = Wr(t, nu);
       throw new D(
-        `Unknown property ${t} provided to PrismaClient constructor.${i}`,
+        `Unknown property ${t} provided to PrismaClient constructor.${i}`
       );
     }
     Df[t](n, r);
   }
   if (e.datasourceUrl && e.datasources)
     throw new D(
-      'Can not use "datasourceUrl" and "datasources" options at the same time. Pick one of them',
+      'Can not use "datasourceUrl" and "datasources" options at the same time. Pick one of them'
     );
 }
 function Wr(e, r) {
@@ -9976,14 +10038,14 @@ function Lf(e, r) {
         t.arguments.getDeepField([o.modelKey, o.fieldName])?.markAsError(),
           t.addErrorMessage(
             () =>
-              `Model "${o.modelKey}" does not have a field named "${o.fieldName}".`,
+              `Model "${o.modelKey}" does not have a field named "${o.fieldName}".`
           );
         break;
       case "RelationInOmit":
         t.arguments.getDeepField([o.modelKey, o.fieldName])?.markAsError(),
           t.addErrorMessage(
             () =>
-              'Relations are already excluded by default and can not be specified in "omit".',
+              'Relations are already excluded by default and can not be specified in "omit".'
           );
         break;
       case "InvalidFieldValue":
@@ -10023,7 +10085,7 @@ function uu(e) {
                 return;
               }
               c.batchRequestIdx === u ? l(c) : (i || (i = c), a());
-            },
+            }
           );
       });
 }
@@ -10085,12 +10147,12 @@ function gu(e) {
         if (s.provider !== l)
           throw new T(
             `The Driver Adapter \`${s.adapterName}\`, based on \`${s.provider}\`, is not compatible with the provider \`${l}\` specified in the Prisma schema.`,
-            this._clientVersion,
+            this._clientVersion
           );
         if (n.datasources || n.datasourceUrl !== void 0)
           throw new T(
             "Custom datasource configuration is not compatible with Prisma Driver Adapters. Please define the database connection string directly in the Driver Adapter configuration.",
-            this._clientVersion,
+            this._clientVersion
           );
       }
       let a =
@@ -10111,10 +10173,10 @@ function gu(e) {
           (l.errorFormat
             ? (this._errorFormat = l.errorFormat)
             : process.env.NODE_ENV === "production"
-              ? (this._errorFormat = "minimal")
-              : process.env.NO_COLOR
-                ? (this._errorFormat = "colorless")
-                : (this._errorFormat = "colorless"),
+            ? (this._errorFormat = "minimal")
+            : process.env.NO_COLOR
+            ? (this._errorFormat = "colorless")
+            : (this._errorFormat = "colorless"),
           (this._runtimeDataModel = e.runtimeDataModel),
           (this._engineConfig = {
             cwd: p,
@@ -10131,7 +10193,7 @@ function gu(e) {
               !!(typeof l.log == "string"
                 ? l.log === "query"
                 : l.log.find((f) =>
-                    typeof f == "string" ? f === "query" : f.level === "query",
+                    typeof f == "string" ? f === "query" : f.level === "query"
                   )),
             env: a?.parsed ?? {},
             flags: [],
@@ -10241,14 +10303,14 @@ function gu(e) {
               s.values,
               Array.isArray(n)
                 ? "prisma.$executeRaw`<SQL>`"
-                : "prisma.$executeRaw(sql`<SQL>`)",
+                : "prisma.$executeRaw(sql`<SQL>`)"
             ),
             this.$executeRawInternal(o, "$executeRaw", s, a)
           );
         }
         throw new Z(
           "`$executeRaw` is a tag function, please use it like the following:\n```\nconst result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`\n```\n\nOr read our docs at https://www.prisma.io/docs/concepts/components/prisma-client/raw-database-access#executeraw\n",
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       });
     }
@@ -10259,17 +10321,17 @@ function gu(e) {
             this._activeProvider,
             n,
             i,
-            "prisma.$executeRawUnsafe(<SQL>, [...values])",
+            "prisma.$executeRawUnsafe(<SQL>, [...values])"
           ),
           this.$executeRawInternal(o, "$executeRawUnsafe", [n, ...i])
-        ),
+        )
       );
     }
     $runCommandRaw(n) {
       if (e.activeProvider !== "mongodb")
         throw new Z(
           `The ${e.activeProvider} provider does not support $runCommandRaw. Use the mongodb provider.`,
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       return this._createPrismaPromise((i) =>
         this._request({
@@ -10280,7 +10342,7 @@ function gu(e) {
           argsMapper: ql,
           callsite: Ze(this._errorFormat),
           transaction: i,
-        }),
+        })
       );
     }
     async $queryRawInternal(n, i, o, s) {
@@ -10302,7 +10364,7 @@ function gu(e) {
           return this.$queryRawInternal(o, "$queryRaw", ...cu(n, i));
         throw new Z(
           "`$queryRaw` is a tag function, please use it like the following:\n```\nconst result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`\n```\n\nOr read our docs at https://www.prisma.io/docs/concepts/components/prisma-client/raw-database-access#queryraw\n",
-          { clientVersion: this._clientVersion },
+          { clientVersion: this._clientVersion }
         );
       });
     }
@@ -10311,14 +10373,14 @@ function gu(e) {
         if (!this._hasPreviewFlag("typedSql"))
           throw new Z(
             "`typedSql` preview feature must be enabled in order to access $queryRawTyped API",
-            { clientVersion: this._clientVersion },
+            { clientVersion: this._clientVersion }
           );
         return this.$queryRawInternal(i, "$queryRawTyped", n);
       });
     }
     $queryRawUnsafe(n, ...i) {
       return this._createPrismaPromise((o) =>
-        this.$queryRawInternal(o, "$queryRawUnsafe", [n, ...i]),
+        this.$queryRawInternal(o, "$queryRawUnsafe", [n, ...i])
       );
     }
     _transactionWithArray({ promises: n, options: i }) {
@@ -10327,7 +10389,7 @@ function gu(e) {
         a = n.map((l, u) => {
           if (l?.[Symbol.toStringTag] !== "PrismaPromise")
             throw new Error(
-              "All elements of the array need to be Prisma Client promises. Hint: Please make sure you are not awaiting the Prisma client calls you intended to pass in the $transaction function.",
+              "All elements of the array need to be Prisma Client promises. Hint: Please make sure you are not awaiting the Prisma client calls you intended to pass in the $transaction function."
             );
           let c =
               i?.isolationLevel ??
@@ -10366,9 +10428,9 @@ function gu(e) {
             re("_appliedParent", () => this._appliedParent._createItxClient(n)),
             re("_createPrismaPromise", () => Ao(n)),
             re(Mf, () => n.id),
-          ]),
+          ])
         ),
-        [Fr(el)],
+        [Fr(el)]
       );
     }
     $transaction(n, i) {
@@ -10377,7 +10439,7 @@ function gu(e) {
         ? this._engineConfig.adapter?.adapterName === "@prisma/adapter-d1"
           ? (o = () => {
               throw new Error(
-                "Cloudflare D1 does not support interactive transactions. We recommend you to refactor your queries with that limitation in mind, and use batch transactions with `prisma.$transactions([])` where applicable.",
+                "Cloudflare D1 does not support interactive transactions. We recommend you to refactor your queries with that limitation in mind, and use batch transactions with `prisma.$transactions([])` where applicable."
               );
             })
           : (o = () =>
@@ -10417,7 +10479,7 @@ function gu(e) {
           let c = this._middlewares.get(++a);
           if (c)
             return this._tracingHelper.runInChildSpan(s.middleware, (I) =>
-              c(u, (P) => (I?.end(), l(P))),
+              c(u, (P) => (I?.end(), l(P)))
             );
           let { runInTransaction: p, args: d, ...f } = u,
             g = { ...n, ...f };
@@ -10437,8 +10499,8 @@ function gu(e) {
         };
       return this._tracingHelper.runInChildSpan(s.operation, () =>
         new du.AsyncResource("prisma-client-request").runInAsyncScope(() =>
-          l(o),
-        ),
+          l(o)
+        )
       );
     }
     async _executeRequest({
@@ -10470,7 +10532,7 @@ function gu(e) {
               clientVersion: this._clientVersion,
               previewFeatures: this._previewFeatures,
               globalOmit: this._globalOmit,
-            }),
+            })
           );
         return (
           N.enabled("prisma:client") &&
@@ -10480,7 +10542,7 @@ function gu(e) {
             rr(
               JSON.stringify(h, null, 2) +
                 `
-`,
+`
             )),
           c?.kind === "batch" && (await c.lock),
           this._requestHandler.request({

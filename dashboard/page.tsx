@@ -1,31 +1,45 @@
-import React, { useState } from 'react';
-import AICommanderPanel from '../components/AICommanderPanel';
-import { getCommanderRecommendation } from '../lib/ai/commander';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import AICommanderPanel from "../components/AICommanderPanel";
+import { getCommanderRecommendation } from "../lib/ai/commander";
+import { toast } from "react-toastify";
 
 const DashboardPage = ({ disputes, history }) => {
   const [timeline, setTimeline] = useState([]);
 
   const handleDeployAction = (action) => {
     setTimeline([...timeline, action]);
-    toast.success('Commander action deployed to timeline');
+    toast.success("Commander action deployed to timeline");
   };
 
-  const recommendations = disputes.map(dispute => {
-    if (dispute.status !== 'RESOLVED') {
-      return {
-        creditor: dispute.creditor,
-        recommendation: getCommanderRecommendation(dispute, history),
-      };
-    }
-    return null;
-  }).filter(Boolean);
+  const recommendations = disputes
+    .map((dispute) => {
+      if (dispute.status !== "RESOLVED") {
+        return {
+          creditor: dispute.creditor,
+          recommendation: getCommanderRecommendation(dispute, history),
+        };
+      }
+      return null;
+    })
+    .filter(Boolean);
 
-  const topRecommendations = recommendations.sort((a, b) => {
-    const scoreA = a.recommendation.action === 'Escalate' ? 80 : a.recommendation.action === 'Send Follow-up' ? 50 : 20;
-    const scoreB = b.recommendation.action === 'Escalate' ? 80 : b.recommendation.action === 'Send Follow-up' ? 50 : 20;
-    return scoreB - scoreA;
-  }).slice(0, 3);
+  const topRecommendations = recommendations
+    .sort((a, b) => {
+      const scoreA =
+        a.recommendation.action === "Escalate"
+          ? 80
+          : a.recommendation.action === "Send Follow-up"
+          ? 50
+          : 20;
+      const scoreB =
+        b.recommendation.action === "Escalate"
+          ? 80
+          : b.recommendation.action === "Send Follow-up"
+          ? 50
+          : 20;
+      return scoreB - scoreA;
+    })
+    .slice(0, 3);
 
   return (
     <div className="dashboard-page">
@@ -45,4 +59,4 @@ const DashboardPage = ({ disputes, history }) => {
   );
 };
 
-export default DashboardPage; 
+export default DashboardPage;
