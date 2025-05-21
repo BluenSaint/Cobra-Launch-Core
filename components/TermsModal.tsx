@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const TermsModal = ({ onAgree }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -28,4 +28,4 @@ const TermsModal = ({ onAgree }) => {
   );
 };
 
-export default TermsModal; 
+export default TermsModal;

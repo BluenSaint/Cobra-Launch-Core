@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-*Placeholder for executive summary.*
+_Placeholder for executive summary._
 
 ## Folder Structure
 
@@ -30,4 +30,4 @@ Cobra-Launch-Core/
 
 ## Setup Instructions
 
-*Placeholder for setup instructions.*
+_Placeholder for setup instructions._

@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
-import { ThrottlerModule } from '@nestjs/throttler';
+import { Module } from "@nestjs/common";
+import { AuthModule } from "./auth/auth.module";
+import { ThrottlerModule } from "@nestjs/throttler";
 
 @Module({
   imports: [
@@ -11,4 +11,4 @@ import { ThrottlerModule } from '@nestjs/throttler';
     }),
   ],
 })
-export class AppModule {} 
+export class AppModule {}

@@ -1,17 +1,17 @@
-import React from 'react';
-import { getSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import AdminUserCard from '../../components/AdminUserCard';
-import { fetchUsers } from '../../lib/admin-mock-data';
+import React from "react";
+import { getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import AdminUserCard from "../../components/AdminUserCard";
+import { fetchUsers } from "../../lib/admin-mock-data";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
-  if (!session || session.user.email !== 'admin@bluecrest.com') {
+  if (!session || session.user.email !== "admin@bluecrest.com") {
     return {
       redirect: {
-        destination: '/dashboard',
+        destination: "/dashboard",
         permanent: false,
       },
     };
@@ -43,4 +43,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage; 
+export default AdminPage;

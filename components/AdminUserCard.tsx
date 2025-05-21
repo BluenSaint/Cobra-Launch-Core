@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const AdminUserCard = ({ user }) => {
   return (
@@ -11,4 +11,4 @@ const AdminUserCard = ({ user }) => {
   );
 };
 
-export default AdminUserCard; 
+export default AdminUserCard;

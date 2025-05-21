@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/react';
+import { getSession } from "next-auth/react";
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -6,7 +6,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin',
+        destination: "/api/auth/signin",
         permanent: false,
       },
     };
@@ -15,4 +15,4 @@ export async function getServerSideProps(context) {
   return {
     props: { session },
   };
-} 
+}

@@ -1,5 +1,10 @@
 export function validateEnv() {
-  const requiredVars = ['NEXTAUTH_SECRET', 'NEXTAUTH_URL', 'MONGODB_URI', 'ADMIN_EMAIL'];
+  const requiredVars = [
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL",
+    "MONGODB_URI",
+    "ADMIN_EMAIL",
+  ];
 
   requiredVars.forEach((varName) => {
     if (!process.env[varName]) {
@@ -7,5 +12,5 @@ export function validateEnv() {
     }
   });
 
-  console.log('All required environment variables are set.');
-} 
+  console.log("All required environment variables are set.");
+}

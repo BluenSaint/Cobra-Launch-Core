@@ -1,7 +1,12 @@
+import { letterTemplates } from "./templates/letter-templates";
+
 export function generateLetter(dispute) {
+  const base =
+    letterTemplates[dispute.violationType.toLowerCase()] ||
+    letterTemplates["inaccurate reporting"];
   return {
-    creditorName: 'Sample Creditor',
-    violationType: 'Inaccurate Reporting',
-    body: 'This account is inaccurately reported...'
+    to: dispute.creditor,
+    body: base,
+    footer: "Sincerely,\n[Client Name]\nFiled via Project Cobra",
   };
-} 
+}

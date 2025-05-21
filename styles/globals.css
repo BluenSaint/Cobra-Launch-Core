@@ -10,7 +10,8 @@
 }
 
 /* Ensure CTA and nav don't overflow on mobile */
-.cta, .nav {
+.cta,
+.nav {
   max-width: 100%;
   overflow-x: hidden;
-} 
+}

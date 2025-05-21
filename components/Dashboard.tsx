@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Dashboard = ({ user }) => {
   const [isFreezeModalOpen, setIsFreezeModalOpen] = useState(false);
 
   const handleRequestUpdate = () => {
-    toast('Update requested!');
+    toast("Update requested!");
   };
 
   const handleFreezeAccount = () => {
@@ -32,7 +32,9 @@ const Dashboard = ({ user }) => {
         <h2>Alerts</h2>
         <p>Placeholder for alerts</p>
       </div>
-      <button className="cta-freeze-account" onClick={handleFreezeAccount}>Freeze Account</button>
+      <button className="cta-freeze-account" onClick={handleFreezeAccount}>
+        Freeze Account
+      </button>
 
       {isFreezeModalOpen && (
         <div className="modal">
@@ -44,4 +46,4 @@ const Dashboard = ({ user }) => {
   );
 };
 
-export default Dashboard; 
+export default Dashboard;

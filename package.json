@@ -1,0 +1,22 @@
+{
+  "devDependencies": {
+    "@types/next-auth": "^3.13.0",
+    "@types/react-toastify": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "typescript": "^4.4.4"
+  },
+  "type": "module",
+  "dependencies": {
+    "next": "^15.3.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "scripts": {
+    "build": "next build"
+  }
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-import EscalationControls from './EscalationControls';
+import React from "react";
+import EscalationControls from "./EscalationControls";
 
 const AdminTimeline = ({ disputes }) => {
   return (
@@ -15,4 +15,4 @@ const AdminTimeline = ({ disputes }) => {
   );
 };
 
-export default AdminTimeline; 
+export default AdminTimeline;

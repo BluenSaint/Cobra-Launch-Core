@@ -12,7 +12,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: "16"
       - name: Auto-fix ESLint issues
         run: npm run lint -- --fix
       - name: Auto-fix Prettier issues
@@ -32,4 +32,4 @@ jobs:
           if [ $? -ne 0 ]; then
             echo 'Errors still present, tagging @BluenSaint'
             gh issue create --title 'FixBot: Remaining Issues' --body 'Errors still present after auto-fix.' --assignee @BluenSaint
-          fi 
+          fi
