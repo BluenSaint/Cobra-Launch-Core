@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AICommanderPanel from '../components/AICommanderPanel';
 import { getCommanderRecommendation } from '../lib/ai/commander';
+import { toast } from 'react-toastify';
 
 const DashboardPage = ({ disputes, history }) => {
+  const [timeline, setTimeline] = useState([]);
+
+  const handleDeployAction = (action) => {
+    setTimeline([...timeline, action]);
+    toast.success('Commander action deployed to timeline');
+  };
+
   const recommendations = disputes.map(dispute => {
     if (dispute.status !== 'RESOLVED') {
       return {
@@ -29,6 +37,7 @@ const DashboardPage = ({ disputes, history }) => {
             key={index}
             creditor={rec.creditor}
             recommendation={rec.recommendation}
+            onDeploy={handleDeployAction}
           />
         ))}
       </div>

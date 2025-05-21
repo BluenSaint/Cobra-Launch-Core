@@ -42,4 +42,4 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({ creditor, recommend
   );
 };
 
-export default AICommanderPanel; 
+export default AICommanderPanel;

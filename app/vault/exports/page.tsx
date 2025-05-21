@@ -1,6 +1,7 @@
 import React from 'react';
 import PDFExportCard from '../../../components/PDFExportCard';
 import { getSession } from 'next-auth/react';
+import { toast } from 'react-toastify';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -20,21 +21,23 @@ export async function getServerSideProps(context) {
 }
 
 const ExportsPage = () => {
-  const handleDownload = (exportType) => {
-    // Call the API to download the PDF
-    fetch('/api/exports/batch', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ exportType }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Handle the PDF download
-        console.log('PDF download link:', data.link);
-      })
-      .catch((error) => console.error('Error downloading PDF:', error));
+  const handleDownload = async (exportType) => {
+    try {
+      const response = await fetch('/api/exports/batch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ exportType }),
+      });
+
+      const data = await response.json();
+      console.log('PDF download link:', data.link);
+      toast.success('Export prepared. Download starting…');
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+      toast.error('Failed to prepare export');
+    }
   };
 
   return (
