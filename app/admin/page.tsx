@@ -1,28 +1,20 @@
-import React from "react";
-import { getSession } from "next-auth/react";
+"use client";
+
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import AdminUserCard from "../../components/AdminUserCard";
 import { fetchUsers } from "../../lib/admin-mock-data";
+import { redirect } from "next/navigation";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export default async function AdminPage() {
+  const session = await getServerSession(authOptions);
 
   if (!session || session.user.email !== "admin@bluecrest.com") {
-    return {
-      redirect: {
-        destination: "/dashboard",
-        permanent: false,
-      },
-    };
+    redirect("/dashboard");
   }
 
-  return {
-    props: { session },
-  };
-}
-
-const AdminPage = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -41,6 +33,4 @@ const AdminPage = () => {
       </div>
     </div>
   );
-};
-
-export default AdminPage;
+}

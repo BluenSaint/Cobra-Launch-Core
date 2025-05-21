@@ -1,24 +1,17 @@
-import React from "react";
-import { getSession } from "next-auth/react";
+"use client";
+
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
 import { validateEnv } from "../../utils/validateEnv";
 import { fetchUsers } from "../../lib/admin-mock-data";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export default async function DebugPage() {
+  const session = await getServerSession(authOptions);
+
   const envValidation = validateEnv();
   const userDisputes =
     fetchUsers().find((u) => u.name === session.user.name)?.disputes || [];
 
-  return {
-    props: {
-      session,
-      envValidation,
-      userDisputes,
-    },
-  };
-}
-
-const DebugPage = ({ session, envValidation, userDisputes }) => {
   return (
     <div className="debug-page">
       <h1>Debug Information</h1>
@@ -39,6 +32,4 @@ const DebugPage = ({ session, envValidation, userDisputes }) => {
       <pre>{JSON.stringify(userDisputes, null, 2)}</pre>
     </div>
   );
-};
-
-export default DebugPage;
+}

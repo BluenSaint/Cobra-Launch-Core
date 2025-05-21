@@ -1,26 +1,19 @@
+"use client";
+
 import React from "react";
 import PDFExportCard from "../../../components/PDFExportCard";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export default async function ExportsPage() {
+  const session = await getServerSession(authOptions);
 
   if (!session) {
-    return {
-      redirect: {
-        destination: "/api/auth/signin",
-        permanent: false,
-      },
-    };
+    redirect("/api/auth/signin");
   }
 
-  return {
-    props: { session },
-  };
-}
-
-const ExportsPage = () => {
   const handleDownload = async (exportType) => {
     try {
       const response = await fetch("/api/exports/batch", {
@@ -65,6 +58,4 @@ const ExportsPage = () => {
       />
     </div>
   );
-};
-
-export default ExportsPage;
+}

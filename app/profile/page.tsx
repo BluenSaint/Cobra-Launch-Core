@@ -1,3 +1,4 @@
+"use client";
 import { useSession } from "next-auth/react";
 import ProfileHeader from "../../components/ProfileHeader";
 import KYCUploadCard from "../../components/KYCUploadCard";
