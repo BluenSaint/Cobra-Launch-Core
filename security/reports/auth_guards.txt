@@ -1,0 +1,15 @@
+./apps/client-api/src/dispute/dispute.controller.ts:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+./apps/client-api/src/dispute/dispute.controller.ts:@UseGuards(JwtAuthGuard)
+./apps/client-api/src/escalation/escalation.controller.ts:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+./apps/client-api/src/escalation/escalation.controller.ts:@UseGuards(JwtAuthGuard)
+./apps/client-api/src/ocr/ocr.controller.ts:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+./apps/client-api/src/ocr/ocr.controller.ts:@UseGuards(JwtAuthGuard)
+./apps/client-api/src/billing/billing.controller.ts:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+./apps/client-api/src/billing/billing.controller.ts:@UseGuards(JwtAuthGuard)
+./apps/client-api/src/admin/admin.controller.ts:import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+./apps/client-api/src/admin/admin.controller.ts:import { AdminGuard } from './guards/admin.guard';
+./apps/client-api/src/admin/admin.controller.ts:@UseGuards(JwtAuthGuard, AdminGuard)
+./apps/client-api/src/admin/guards/admin.guard.ts:export class AdminGuard implements CanActivate {
+./src/auth/jwt-auth.guard.ts:export class JwtAuthGuard extends AuthGuard("jwt") {
+./src/disputes/disputes.controller.ts:import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+./src/disputes/disputes.controller.ts:  @UseGuards(JwtAuthGuard)
