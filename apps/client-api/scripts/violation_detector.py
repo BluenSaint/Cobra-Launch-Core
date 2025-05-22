@@ -23,7 +23,8 @@ def detect_violations(text: str, structured_data: Dict[str, Any]) -> List[Dict[s
     # FCRA Violations
     
     # Check for outdated negative information (7-year rule)
-    if re.search(r'(bankruptcy|charge[-\s]off|collection).{0,50}(7|seven) years', text_lower):
+    match = re.search(r'(bankruptcy|charge[-\s]off|collection).{0,50}(7|seven) years', text_lower)
+    if match:
         violations.append({
             "type": "FCRA",
             "title": "Outdated Negative Information",
@@ -32,7 +33,7 @@ def detect_violations(text: str, structured_data: Dict[str, Any]) -> List[Dict[s
             "severity": "high",
             "confidence": 0.85,
             "metadata": {
-                "matchedText": re.search(r'(bankruptcy|charge[-\s]off|collection).{0,100}(7|seven) years', text_lower).group(0)
+                "matchedText": match.group(0) # Use the match object here
             }
         })
     
