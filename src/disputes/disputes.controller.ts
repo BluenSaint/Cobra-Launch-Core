@@ -1,18 +1,18 @@
-import { Controller, Post, UseGuards, Request } from "@nestjs/common";
+import { Controller, Post, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller("disputes")
 export class DisputesController {
   @UseGuards(JwtAuthGuard)
   @Post("create")
-  createDispute(@Request() req) {
+  createDispute() {
     return { success: true, message: "Dispute created" };
   }
 
   @Post("upload/report")
-  uploadReport(@Request() req) {
-    console.log("File metadata:", req.body);
-    console.log("User info:", req.user);
+  uploadReport() {
+    console.log("File metadata:");
+    console.log("User info:");
     return { success: true, message: "Report uploaded" };
   }
 }

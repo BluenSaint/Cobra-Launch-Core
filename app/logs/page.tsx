@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
-import AuditLogCard from "../../components/AuditLogCard";
-import { getAuditLogs } from "../../lib/audit-log";
+// import AuditLogCard from "../../components/AuditLogCard";
+// import { getAuditLogs } from "../../lib/audit-log";
 
 const LogsPage = () => {
   const { data: session } = useSession();
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState<{
+    type: string;
+    timestamp: string;
+    context: string;
+  }[]>([]);
 
   useEffect(() => {
     // Simulate fetching logs

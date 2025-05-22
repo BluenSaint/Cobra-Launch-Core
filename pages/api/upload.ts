@@ -5,8 +5,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const file = req.body;
-
   // Simulate OCR and analysis with a delay
   setTimeout(() => {
     // Mocked violation data

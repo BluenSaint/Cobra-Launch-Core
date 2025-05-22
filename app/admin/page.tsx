@@ -1,26 +1,38 @@
 "use client";
 
+import React from "react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "../../lib/auth";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
+// import { redirect } from "next/navigation";
 import AdminUserCard from "../../components/AdminUserCard";
 import { fetchUsers } from "../../lib/admin-mock-data";
-import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
-  const session = await getServerSession(authOptions);
-
-  if (!session || session.user.email !== "admin@bluecrest.com") {
-    redirect("/dashboard");
-  }
-
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<{
+    name: string;
+    plan: string;
+    disputes: { title: string; status: string }[];
+    creditScore: number;
+  }[]>([]);
 
   useEffect(() => {
     // Fetch users from mock data
     const usersData = fetchUsers();
     setUsers(usersData);
+  }, []);
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      const session = await getServerSession(authOptions);
+      if (session && session.user) {
+        // Handle authenticated state
+      } else {
+        // Handle unauthenticated state
+      }
+    };
+    fetchSession();
   }, []);
 
   return (

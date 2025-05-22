@@ -7,7 +7,7 @@ declare type Args<T, F extends Operation> = T extends {
     types: {
       operations: {
         [K in F]: {
-          args: any;
+          args: unknown;
         };
       };
     };

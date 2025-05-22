@@ -3,7 +3,7 @@
 import React from "react";
 import PDFExportCard from "../../../components/PDFExportCard";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "../../../lib/auth";
 import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 

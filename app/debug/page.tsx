@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "../../lib/auth";
 import { validateEnv } from "../../utils/validateEnv";
 import { fetchUsers } from "../../lib/admin-mock-data";
 

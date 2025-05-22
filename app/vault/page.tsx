@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -5,26 +7,27 @@ import { toast } from "react-toastify";
 import UploadDocumentModal from "../../components/UploadDocumentModal";
 import VaultLayout from "./layout";
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+const VaultPage = () => {
+  const [documents, setDocuments] = useState<DocumentType[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/api/auth/signin",
-        permanent: false,
-      },
-    };
+  // Define DocumentType
+  interface DocumentType {
+    id: number;
+    title: string;
+    status: string;
+    name?: string; // Add 'name' as an optional property if needed
   }
 
-  return {
-    props: { session },
-  };
-}
-
-const VaultPage = () => {
-  const [documents, setDocuments] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const fetchSession = async () => {
+      const session = await getSession();
+      if (!session) {
+        // Handle unauthenticated state
+      }
+    };
+    fetchSession();
+  }, []);
 
   useEffect(() => {
     // Fetch documents from API

@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/debug/page": "app/debug/page.js",
+  "/logs/page": "app/logs/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/vault/exports/page": "app/vault/exports/page.js",
+  "/vault/page": "app/vault/page.js",
+  "/admin/page": "app/admin/page.js"
+}

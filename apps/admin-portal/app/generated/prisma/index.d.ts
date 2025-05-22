@@ -89,7 +89,7 @@ export class PrismaClient<
    */
   $executeRaw<T = unknown>(
     query: TemplateStringsArray | Prisma.Sql,
-    ...values: any[]
+    ...values: unknown[]
   ): Prisma.PrismaPromise<number>;
 
   /**
@@ -104,7 +104,7 @@ export class PrismaClient<
    */
   $executeRawUnsafe<T = unknown>(
     query: string,
-    ...values: any[]
+    ...values: unknown[]
   ): Prisma.PrismaPromise<number>;
 
   /**
@@ -118,7 +118,7 @@ export class PrismaClient<
    */
   $queryRaw<T = unknown>(
     query: TemplateStringsArray | Prisma.Sql,
-    ...values: any[]
+    ...values: unknown[]
   ): Prisma.PrismaPromise<T>;
 
   /**
@@ -133,7 +133,7 @@ export class PrismaClient<
    */
   $queryRawUnsafe<T = unknown>(
     query: string,
-    ...values: any[]
+    ...values: unknown[]
   ): Prisma.PrismaPromise<T>;
 
   /**
@@ -149,7 +149,7 @@ export class PrismaClient<
    *
    * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
    */
-  $transaction<P extends Prisma.PrismaPromise<any>[]>(
+  $transaction<P extends Prisma.PrismaPromise<unknown>[]>(
     arg: [...P],
     options?: { isolationLevel?: Prisma.TransactionIsolationLevel }
   ): $Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>;
