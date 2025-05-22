@@ -39,8 +39,10 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      role="region"
+      aria-labelledby={`creditor-${creditor}`}
     >
-      <h3>Creditor: {creditor}</h3>
+      <h3 id={`creditor-${creditor}`}>Creditor: {creditor}</h3>
       <p>Recommended Action: {recommendation.action}</p>
       <p>Reason: {recommendation.reason}</p>
       <div
@@ -50,10 +52,17 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
           backgroundColor:
             threatScore >= 80 ? "red" : threatScore >= 50 ? "yellow" : "green",
         }}
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={threatScore}
+        aria-label="Threat Score"
       >
         Threat Score: {threatScore}
       </div>
-      <button onClick={handleDeployAction}>Deploy This Action</button>
+      <button onClick={handleDeployAction} aria-label="Deploy This Action">
+        Deploy This Action
+      </button>
     </motion.div>
   );
 };
