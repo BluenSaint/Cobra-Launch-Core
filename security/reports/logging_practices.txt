@@ -1,0 +1,71 @@
+./api/vault/upload.ts:  console.log("Letter saved to vault:", letter);
+./apps/admin-portal/app/generated/prisma/runtime/edge-esm.js:    (console.warn ?? console.log)(`${t} ${r}`, ...n);
+./apps/admin-portal/app/generated/prisma/runtime/edge-esm.js:  console.log(...e);
+./apps/admin-portal/app/generated/prisma/runtime/edge-esm.js:  console.log(`${Pt.query} ${e}`, ...t);
+./apps/admin-portal/app/generated/prisma/runtime/edge.js:    (console.warn ?? console.log)(`${t} ${r}`, ...n);
+./apps/admin-portal/app/generated/prisma/runtime/edge.js:  console.log(...e);
+./apps/admin-portal/app/generated/prisma/runtime/edge.js:  console.log(`${Ct.query} ${e}`, ...t);
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:    logger: (log: string) => void,
+./apps/admin-portal/app/generated/prisma/runtime/library.js:    console.log(`[dotenv@${As}][WARN] ${e}`);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:    console.log(`[dotenv@${As}][DEBUG] ${e}`);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:    (console.warn ?? console.log)(`${r} ${t}`, ...n);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:  console.log(...e);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:  console.log(`${rt.query} ${e}`, ...r);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:  loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/library.js:                r.deref()?.logger(n);
+./apps/admin-portal/app/generated/prisma/runtime/library.js:  logger(r) {
+./apps/admin-portal/app/generated/prisma/runtime/library.js:        ? (this.loggerRustPanic = new le(
+./apps/admin-portal/app/generated/prisma/runtime/library.js:      if (this.loggerRustPanic) throw this.loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/library.js:          ? this.loggerRustPanic ??
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:    (console.warn ?? console.log)(`${t} ${r}`, ...n);
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:  console.log(...e);
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:  console.log(`${Ft.query} ${e}`, ...t);
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:  loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:                t.deref()?.logger(n);
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:  logger(t) {
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:        ? (this.loggerRustPanic = new ue(
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:      if (this.loggerRustPanic) throw this.loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/react-native.js:          ? this.loggerRustPanic ??
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:    (console.warn ?? console.log)(`${e} ${r}`, ...n);
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:  console.log(...t);
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:  console.log(`${st.query} ${t}`, ...e);
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:  loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:                e.deref()?.logger(n);
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:  logger(e) {
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:      if (this.loggerRustPanic) throw this.loggerRustPanic;
+./apps/admin-portal/app/generated/prisma/runtime/wasm.js:          ? this.loggerRustPanic ??
+./apps/client-api/src/dispute/dispute.service.ts:  private readonly logger = new Logger(DisputeService.name);
+./apps/client-api/src/escalation/escalation.service.ts:  private readonly logger = new Logger(EscalationService.name);
+./apps/client-api/src/ocr/ocr.service.ts:  private readonly logger = new Logger(OcrService.name);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.log(`Processing document for user ${userId}`);
+./apps/client-api/src/ocr/ocr.service.ts:          this.logger.error(`Error in OCR processing: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Error initiating OCR process: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:          this.logger.log(`Successfully processed with Textract, confidence: ${confidence}`);
+./apps/client-api/src/ocr/ocr.service.ts:        this.logger.warn(`Textract processing failed: ${textractError.message}, trying Google Vision`);
+./apps/client-api/src/ocr/ocr.service.ts:            this.logger.log(`Successfully processed with Google Vision, confidence: ${confidence}`);
+./apps/client-api/src/ocr/ocr.service.ts:          this.logger.warn(`Google Vision processing failed: ${visionError.message}, trying Tesseract`);
+./apps/client-api/src/ocr/ocr.service.ts:          this.logger.log(`Processed with Tesseract, confidence: ${confidence}`);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.log(`OCR processing completed for result ${resultId} with ${violations.length} violations detected`);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Error in multi-engine OCR processing: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Textract processing error: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Google Vision processing error: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Tesseract processing error: ${error.message}`, error.stack);
+./apps/client-api/src/ocr/ocr.service.ts:      this.logger.error(`Error detecting violations: ${error.message}`, error.stack);
+./apps/client-api/src/billing/billing.service.ts:  private readonly logger = new Logger(BillingService.name);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.log(`Created Stripe customer for user ${userId}: ${customer.id}`);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.error(`Error creating Stripe customer: ${error.message}`, error.stack);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.error(`Error creating subscription: ${error.message}`, error.stack);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.log(`Processing webhook event: ${event.type}`);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.error(`Error handling webhook: ${error.message}`, error.stack);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.warn(`Subscription not found for Stripe ID: ${stripeSubscription.id}`);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.warn(`Subscription not found for Stripe ID: ${stripeSubscription.id}`);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.warn(`Subscription not found for invoice: ${invoice.id}`);
+./apps/client-api/src/billing/billing.service.ts:      this.logger.warn(`Subscription not found for invoice: ${invoice.id}`);
+./apps/client-api/src/admin/admin.service.ts:  private readonly logger = new Logger(AdminService.name);
+./apps/client-api/src/admin/admin.service.ts:      this.logger.error(`Database connection error: ${error.message}`, error.stack);
+./lib/commands/ai-dispute.ts:  console.log("Integrating with RebuildPreviewModal", actions);
+./lib/pdf/export-batch.ts:  console.log(`Generating ${exportType} into 1 PDF...`);
+./pages/api/upload.ts:    console.log("File uploaded successfully:", mockData);
+./src/disputes/disputes.controller.ts:    console.log("File metadata:", req.body);
+./src/disputes/disputes.controller.ts:    console.log("User info:", req.user);
+./utils/validateEnv.ts:  console.log("All required environment variables are set.");

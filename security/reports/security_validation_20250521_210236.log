@@ -1,0 +1,39 @@
+[2025-05-21 21:02:36] Security validation started
+[2025-05-21 21:02:36] Running dependency vulnerability scan...
+[2025-05-21 21:02:38] NPM audit completed
+[2025-05-21 21:02:38] Running static code analysis...
+[2025-05-21 21:02:38] Running ESLint with security rules...
+
+  #  npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json[7336]: void node::ResetStdio() at ../src/node.cc:760
+  #  Assertion failed: !(err != 0) || (err == -1 && (*__errno_location ()) == 1)
+
+----- Native stack trace -----
+
+ 1: 0xf95cf7 node::Assert(node::AssertionInfo const&) [npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json]
+ 2: 0xf42264  [npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json]
+ 3: 0xf43201 node::TearDownOncePerProcess() [npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json]
+ 4: 0xf49cac node::Start(int, char**) [npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json]
+ 5: 0x7f4e12e29d90  [/lib/x86_64-linux-gnu/libc.so.6]
+ 6: 0x7f4e12e29e40 __libc_start_main [/lib/x86_64-linux-gnu/libc.so.6]
+ 7: 0xe8e4fe _start [npm exec eslint --no-eslintrc -c .eslintrc.security.json --ext .js,.jsx,.ts,.tsx . -f json]
+[2025-05-21 21:04:11] Running SonarQube-like analysis...
+npm warn exec The following package was not found and will be installed: jscpd@4.0.5
+[2025-05-21 21:04:17] Static code analysis completed
+[2025-05-21 21:04:17] Scanning for secrets and credentials...
+npm warn exec The following package was not found and will be installed: detect-secrets@1.0.6
+[2025-05-21 21:04:19] Secret scanning completed
+[2025-05-21 21:04:19] Checking security headers configuration...
+[2025-05-21 21:04:19] Security headers check completed
+[2025-05-21 21:04:19] Validating authentication mechanisms...
+[2025-05-21 21:04:19] Authentication validation completed
+[2025-05-21 21:04:19] Checking CSRF protection...
+[2025-05-21 21:04:19] CSRF check completed
+[2025-05-21 21:04:19] Checking SQL injection protection...
+[2025-05-21 21:04:19] SQL injection check completed
+[2025-05-21 21:04:19] Analyzing error handling patterns...
+[2025-05-21 21:04:19] Error handling analysis completed
+[2025-05-21 21:04:19] Analyzing logging practices...
+[2025-05-21 21:04:19] Logging analysis completed
+[2025-05-21 21:04:19] Generating security report summary...
+[2025-05-21 21:04:19] Security report summary generated at /home/ubuntu/Cobra-Launch-Core/security/reports/security_summary.md
+[2025-05-21 21:04:19] Security validation completed

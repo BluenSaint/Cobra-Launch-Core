@@ -1,0 +1,87 @@
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:  readonly errorRegistry: ErrorRegistry;
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:declare interface ErrorRegistry {
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:  retryable?: boolean;
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:   * Extension of the original `.catch` function
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:  catch<R = never>(
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:   * The new entry will always be added in the front of the list of states.
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:   * @param key key of the TraceState entry.
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:   * @param value value of the TraceState entry.
+./apps/admin-portal/app/generated/prisma/runtime/library.d.ts:   * @param key the key for the TraceState entry to be removed.
+./apps/client-api/src/dispute/dispute.service.ts:    // Create initial timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:    await this.addTimelineEntry(savedDispute.id, {
+./apps/client-api/src/dispute/dispute.service.ts:      throw new NotFoundException(`Dispute with ID ${id} not found`);
+./apps/client-api/src/dispute/dispute.service.ts:    // If status changed, add timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:      await this.addTimelineEntry(id, {
+./apps/client-api/src/dispute/dispute.service.ts:    // Add timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:    await this.addTimelineEntry(disputeId, {
+./apps/client-api/src/dispute/dispute.service.ts:    // Add timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:    await this.addTimelineEntry(disputeId, {
+./apps/client-api/src/dispute/dispute.service.ts:    // Add timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:    await this.addTimelineEntry(disputeId, {
+./apps/client-api/src/dispute/dispute.service.ts:    // Add timeline entry
+./apps/client-api/src/dispute/dispute.service.ts:    await this.addTimelineEntry(disputeId, {
+./apps/client-api/src/dispute/dispute.service.ts:   * Add timeline entry to dispute
+./apps/client-api/src/dispute/dispute.service.ts:  async addTimelineEntry(disputeId: string, entry: any): Promise<DisputeTimelineEntity> {
+./apps/client-api/src/dispute/dispute.service.ts:    const timelineEntry = this.timelineRepository.create({
+./apps/client-api/src/dispute/dispute.service.ts:      status: entry.status,
+./apps/client-api/src/dispute/dispute.service.ts:      description: entry.description,
+./apps/client-api/src/dispute/dispute.service.ts:      timestamp: entry.timestamp || new Date(),
+./apps/client-api/src/dispute/dispute.service.ts:      metadata: entry.metadata || {},
+./apps/client-api/src/dispute/dispute.service.ts:    return this.timelineRepository.save(timelineEntry);
+./apps/client-api/src/escalation/escalation.service.ts:    // Create initial timeline entry
+./apps/client-api/src/escalation/escalation.service.ts:    await this.addTimelineEntry(savedEscalation.id, {
+./apps/client-api/src/escalation/escalation.service.ts:      throw new NotFoundException(`Escalation with ID ${id} not found`);
+./apps/client-api/src/escalation/escalation.service.ts:    // If status changed, add timeline entry
+./apps/client-api/src/escalation/escalation.service.ts:      await this.addTimelineEntry(id, {
+./apps/client-api/src/escalation/escalation.service.ts:    // Add timeline entry
+./apps/client-api/src/escalation/escalation.service.ts:    await this.addTimelineEntry(escalationId, {
+./apps/client-api/src/escalation/escalation.service.ts:    // Add timeline entry
+./apps/client-api/src/escalation/escalation.service.ts:    await this.addTimelineEntry(escalationId, {
+./apps/client-api/src/escalation/escalation.service.ts:    // Add timeline entry
+./apps/client-api/src/escalation/escalation.service.ts:    await this.addTimelineEntry(escalationId, {
+./apps/client-api/src/escalation/escalation.service.ts:   * Add timeline entry to escalation
+./apps/client-api/src/escalation/escalation.service.ts:  async addTimelineEntry(escalationId: string, entry: any): Promise<EscalationTimelineEntity> {
+./apps/client-api/src/escalation/escalation.service.ts:    const timelineEntry = this.timelineRepository.create({
+./apps/client-api/src/escalation/escalation.service.ts:      status: entry.status,
+./apps/client-api/src/escalation/escalation.service.ts:      description: entry.description,
+./apps/client-api/src/escalation/escalation.service.ts:      timestamp: entry.timestamp || new Date(),
+./apps/client-api/src/escalation/escalation.service.ts:      metadata: entry.metadata || {},
+./apps/client-api/src/escalation/escalation.service.ts:    return this.timelineRepository.save(timelineEntry);
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:        .catch(error => {
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:      try {
+./apps/client-api/src/ocr/ocr.service.ts:          throw new Error('Textract confidence too low');
+./apps/client-api/src/ocr/ocr.service.ts:      } catch (textractError) {
+./apps/client-api/src/ocr/ocr.service.ts:        this.logger.warn(`Textract processing failed: ${textractError.message}, trying Google Vision`);
+./apps/client-api/src/ocr/ocr.service.ts:        try {
+./apps/client-api/src/ocr/ocr.service.ts:            throw new Error('Google Vision confidence too low');
+./apps/client-api/src/ocr/ocr.service.ts:        } catch (visionError) {
+./apps/client-api/src/ocr/ocr.service.ts:          this.logger.warn(`Google Vision processing failed: ${visionError.message}, trying Tesseract`);
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/ocr/ocr.service.ts:    try {
+./apps/client-api/src/ocr/ocr.service.ts:    } catch (error) {
+./apps/client-api/src/billing/billing.service.ts:    try {
+./apps/client-api/src/billing/billing.service.ts:    } catch (error) {
+./apps/client-api/src/billing/billing.service.ts:    try {
+./apps/client-api/src/billing/billing.service.ts:    } catch (error) {
+./apps/client-api/src/billing/billing.service.ts:    try {
+./apps/client-api/src/billing/billing.service.ts:    } catch (error) {
+./apps/client-api/src/admin/admin.service.ts:      throw new ForbiddenException('Admin access required');
+./apps/client-api/src/admin/admin.service.ts:      throw new NotFoundException(`User with ID ${id} not found`);
+./apps/client-api/src/admin/admin.service.ts:      throw new NotFoundException(`Dispute with ID ${id} not found`);
+./apps/client-api/src/admin/admin.service.ts:      throw new NotFoundException(`Escalation with ID ${id} not found`);
+./apps/client-api/src/admin/admin.service.ts:      throw new NotFoundException(`Subscription with ID ${id} not found`);
+./apps/client-api/src/admin/admin.service.ts:      throw new NotFoundException(`OCR result with ID ${id} not found`);
+./apps/client-api/src/admin/admin.service.ts:    try {
+./apps/client-api/src/admin/admin.service.ts:    } catch (error) {
+./lib/templates/letter-templates.ts:  "duplicate entry":
+./src/main.ts:  await app.listen(3000).catch((err) => {
+./utils/validateEnv.ts:      throw new Error(`Environment variable ${varName} is missing`);
