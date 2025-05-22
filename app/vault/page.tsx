@@ -23,7 +23,8 @@ const VaultPage = () => {
     const fetchSession = async () => {
       const session = await getSession();
       if (!session) {
-        // Handle unauthenticated state
+        // Handle unauthenticated state, e.g., redirect to sign-in
+        window.location.href = "/api/auth/signin";
       }
     };
     fetchSession();
