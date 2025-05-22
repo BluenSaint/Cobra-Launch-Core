@@ -1,5 +1,5 @@
-// Python script for violation detection in credit reports
-// This script will be called by the OCR service to detect FCRA/FDCPA violations
+# Python script for violation detection in credit reports
+# This script will be called by the OCR service to detect FCRA/FDCPA violations
 
 import sys
 import json
