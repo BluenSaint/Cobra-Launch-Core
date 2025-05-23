@@ -1,10 +1,9 @@
 import { inter, spaceGrotesk } from './fonts';
 import './globals.css';
-import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Project Cobra - Credit Report Dispute Platform',
-  description: 'Automated credit report dispute processing and FCRA compliance management',
+export const metadata = {
+  title: 'Project Cobra | AI-Powered Credit Dispute Automation',
+  description: 'Transform your credit repair process with Project Cobra. Our AI-powered platform streamlines credit report disputes, increases success rates, and helps rebuild financial futures faster.',
 };
 
 export default function RootLayout({
@@ -14,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-gray-950 text-gray-100`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
