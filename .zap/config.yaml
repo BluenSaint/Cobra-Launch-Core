@@ -1,0 +1,24 @@
+rules_file_name: .zap/rules.tsv
+env:
+  contexts:
+    - name: Default Context
+      urls:
+        - https://staging.app.bluecrestfinancialconsultantllc.com
+      includePaths:
+        - https://staging.app.bluecrestfinancialconsultantllc.com.*
+      excludePaths: []
+      authentication:
+        method: form
+        parameters:
+          loginUrl: https://staging.app.bluecrestfinancialconsultantllc.com/login
+          loginRequestData: "email={%username%}&password={%password%}"
+        verification:
+          method: response
+          loggedInRegex: "Dashboard"
+          loggedOutRegex: "Sign In"
+      sessionManagement:
+        method: cookie
+        parameters: {}
+  parameters:
+    failOnError: true
+    progressToStdout: true

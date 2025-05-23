@@ -1,0 +1,184 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: OWASP ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'https://staging.app.bluecrestfinancialconsultantllc.com'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          urls: |
+            https://staging.app.bluecrestfinancialconsultantllc.com
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: './.github/workflows/lighthouserc.json'
+
+  terraform:
+    name: Terraform Production
+    runs-on: ubuntu-latest
+    needs: security-scan
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Terraform Init
+        run: |
+          cd infrastructure/terraform
+          terraform init -backend-config="environment=production"
+
+      - name: Terraform Plan
+        run: |
+          cd infrastructure/terraform
+          terraform plan -var="environment=production" -var="db_username=${{ secrets.DB_USERNAME }}" -var="db_password=${{ secrets.DB_PASSWORD }}" -out=tfplan
+
+      - name: Terraform Apply
+        run: |
+          cd infrastructure/terraform
+          terraform apply -auto-approve tfplan
+
+  build-and-deploy:
+    name: Build and Deploy Production
+    runs-on: ubuntu-latest
+    needs: terraform
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push frontend Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          push: true
+          tags: projectcobra/frontend:production,projectcobra/frontend:${{ github.sha }}
+
+      - name: Build and push backend Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./apps/client-api
+          push: true
+          tags: projectcobra/backend:production,projectcobra/backend:${{ github.sha }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name project-cobra-production --region us-east-1
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f k8s/namespace.yaml
+          kubectl create secret generic project-cobra-secrets \
+            --namespace=project-cobra \
+            --from-literal=JWT_SECRET=${{ secrets.JWT_SECRET }} \
+            --from-literal=STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }} \
+            --from-literal=STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET }} \
+            --from-literal=AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+            --from-literal=AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            --dry-run=client -o yaml | kubectl apply -f -
+          kubectl apply -f k8s/frontend-deployment.yaml
+          kubectl apply -f k8s/backend-deployment.yaml
+          kubectl apply -f k8s/services.yaml
+          kubectl set image deployment/frontend-deployment frontend=projectcobra/frontend:${{ github.sha }} -n project-cobra
+          kubectl set image deployment/backend-deployment backend=projectcobra/backend:${{ github.sha }} -n project-cobra
+
+  vercel-deploy:
+    name: Deploy to Vercel Production
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: |
+          cd frontend
+          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --prod --yes --scope ${{ secrets.VERCEL_ORG_ID }} --name app.bluecrestfinancialconsultantllc.com
+
+  notify:
+    name: Notify Stakeholders
+    runs-on: ubuntu-latest
+    needs: vercel-deploy
+    steps:
+      - name: Send Slack notification
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "text": "Project Cobra has been successfully deployed to production! :rocket:",
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Project Cobra Production Deployment",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Status:* :white_check_mark: Successful\n*Version:* ${{ github.sha }}\n*Deployed by:* ${{ github.actor }}"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Visit the application at <https://app.bluecrestfinancialconsultantllc.com|app.bluecrestfinancialconsultantllc.com>"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

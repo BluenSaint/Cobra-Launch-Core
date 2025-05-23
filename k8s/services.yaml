@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: project-cobra
+spec:
+  selector:
+    app: frontend
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: project-cobra
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 80
+    targetPort: 3001
+  type: LoadBalancer

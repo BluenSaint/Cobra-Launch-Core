@@ -1,0 +1,5 @@
+export enum Bureau {
+  EXPERIAN = 'EXPERIAN',
+  TRANSUNION = 'TRANSUNION',
+  EQUIFAX = 'EQUIFAX'
+}

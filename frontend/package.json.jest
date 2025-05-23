@@ -1,0 +1,16 @@
+{
+  "name": "frontend",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+    "moduleNameMapper": {
+      "^@/components/(.*)$": "<rootDir>/src/components/$1",
+      "^@/app/(.*)$": "<rootDir>/src/app/$1"
+    }
+  }
+}
