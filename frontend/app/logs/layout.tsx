@@ -1,4 +1,6 @@
-export default function LogsLayout({ children }) {
+import React from "react";
+
+export default function LogsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="logs-layout">
       <header>

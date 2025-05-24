@@ -3,7 +3,21 @@ import { generateLetterPDF } from "../lib/pdf-generator";
 import { saveAs } from "file-saver";
 import { motion } from "framer-motion";
 
-const LetterPreviewModal = ({ dispute, onClose }) => {
+interface Dispute {
+  userName: string;
+  userAddress: string;
+  creditorName: string;
+  reason: string;
+  letterText: string;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface LetterPreviewModalProps {
+  dispute: Dispute;
+  onClose: () => void;
+}
+
+const LetterPreviewModal = ({ dispute, onClose }: LetterPreviewModalProps) => {
   const handleDownload = () => {
     const pdfBlob = generateLetterPDF(dispute);
     saveAs(pdfBlob, "dispute_letter.pdf");

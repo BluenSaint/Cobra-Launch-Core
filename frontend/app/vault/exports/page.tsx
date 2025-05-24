@@ -3,18 +3,40 @@
 import React from "react";
 import PDFExportCard from "../../../components/PDFExportCard";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../../lib/auth";
 import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 
-export default async function ExportsPage() {
-  const session = await getServerSession(authOptions);
+interface Session {
+  user?: {
+    name?: string;
+    email?: string;
+    image?: string;
+    id?: string;
+    role?: string;
+  };
+}
 
-  if (!session) {
-    redirect("/api/auth/signin");
-  }
+export default function ExportsPage() {
+  const [session, setSession] = React.useState<Session | null>(null);
 
-  const handleDownload = async (exportType) => {
+  React.useEffect(() => {
+    async function checkSession() {
+      try {
+        const sessionData = await getServerSession();
+        setSession(sessionData as Session | null);
+
+        if (!sessionData) {
+          redirect("/api/auth/signin");
+        }
+      } catch (error) {
+        console.error("Error checking session:", error);
+      }
+    }
+
+    checkSession();
+  }, []);
+
+  const handleDownload = async (exportType: string) => {
     try {
       const response = await fetch("/api/exports/batch", {
         method: "POST",

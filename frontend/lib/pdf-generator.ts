@@ -1,6 +1,15 @@
+interface Dispute {
+  userName: string;
+  userAddress: string;
+  creditorName: string;
+  reason: string;
+  letterText: string;
+  [key: string]: unknown;
+}
+
 import { jsPDF } from "jspdf";
 
-export function generateLetterPDF(dispute) {
+export function generateLetterPDF(dispute: Dispute): Blob {
   const doc = new jsPDF();
 
   // Header

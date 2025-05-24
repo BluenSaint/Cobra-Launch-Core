@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const EscalationControls = ({ dispute }) => {
+interface Dispute {
+  title: string;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface EscalationControlsProps {
+  dispute: Dispute;
+}
+
+const EscalationControls = ({ dispute }: EscalationControlsProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [action, setAction] = useState("");
 
-  const handleAction = (actionType) => {
+  const handleAction = (actionType: string) => {
     setAction(actionType);
     setIsModalOpen(true);
   };

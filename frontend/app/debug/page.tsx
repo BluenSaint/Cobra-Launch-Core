@@ -2,12 +2,45 @@
 
 import React from "react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../lib/auth";
 import { fetchUsers } from "../../lib/admin-mock-data";
 
-export default async function DebugPage() {
-  const session = await getServerSession(authOptions);
-  const userDisputes = fetchUsers().find((u) => u.name === session?.user?.name)?.disputes || [];
+interface Session {
+  user?: {
+    name?: string;
+    email?: string;
+    image?: string;
+    id?: string;
+    role?: string;
+  };
+}
+
+interface Dispute {
+  title: string;
+  status: string;
+  [key: string]: unknown;
+}
+
+export default function DebugPage() {
+  const [session, setSession] = React.useState<Session | null>(null);
+  const [userDisputes, setUserDisputes] = React.useState<Dispute[]>([]);
+
+  React.useEffect(() => {
+    async function fetchSession() {
+      try {
+        // Using a more specific type cast for NextAuth compatibility
+        const sessionData = await getServerSession();
+        setSession(sessionData as Session | null);
+
+        const disputes =
+          fetchUsers().find((u) => u.name === sessionData?.user?.name)?.disputes || [];
+        setUserDisputes(disputes);
+      } catch (error) {
+        console.error("Error fetching session:", error);
+      }
+    }
+
+    fetchSession();
+  }, []);
 
   return (
     <div className="debug-page">

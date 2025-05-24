@@ -32,11 +32,33 @@ export const authenticateUser = (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
+interface User {
+  id: string;
+  role: string;
+  [key: string]: any;
+}
+
+interface Token {
+  id?: string;
+  role?: string;
+  error?: string;
+  [key: string]: any;
+}
+
+interface Session {
+  user: {
+    id?: string;
+    role?: string;
+    [key: string]: any;
+  };
+  [key: string]: any;
+}
+
 // Add 'authOptions' export with proper error handling
 export const authOptions = {
   // Enhanced auth options with error handling
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: Token; user?: User }) {
       try {
         if (user) {
           token.id = user.id;
@@ -49,7 +71,7 @@ export const authOptions = {
         return { ...token, error: "Token processing error" };
       }
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: Token }) {
       try {
         if (token) {
           session.user.id = token.id;

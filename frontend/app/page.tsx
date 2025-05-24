@@ -17,35 +17,35 @@ export default function HomePage() {
           <p className="text-xl mb-8">
             Modern credit repair SaaS platform with powerful tools to help you rebuild your credit
           </p>
-          
+
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block"
           >
-            <a 
-              href="/login" 
+            <a
+              href="/login"
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300"
             >
               Get Started
             </a>
           </motion.div>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {[
             {
               title: "Credit Monitoring",
-              description: "Real-time monitoring of your credit score and report changes"
+              description: "Real-time monitoring of your credit score and report changes",
             },
             {
               title: "Dispute Management",
-              description: "Automated tools to help dispute inaccurate items on your credit report"
+              description: "Automated tools to help dispute inaccurate items on your credit report",
             },
             {
               title: "Credit Education",
-              description: "Resources and guidance to help improve your financial literacy"
-            }
+              description: "Resources and guidance to help improve your financial literacy",
+            },
           ].map((feature, index) => (
             <motion.div
               key={index}

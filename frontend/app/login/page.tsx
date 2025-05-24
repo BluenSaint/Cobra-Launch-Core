@@ -16,7 +16,7 @@ export default function LoginPage() {
           <h1 className="text-3xl font-bold">Login to Cobra Launch</h1>
           <p className="text-gray-400 mt-2">Access your credit repair dashboard</p>
         </motion.div>
-        
+
         <form className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
@@ -29,7 +29,7 @@ export default function LoginPage() {
               placeholder="your@email.com"
             />
           </div>
-          
+
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1">
               Password
@@ -41,7 +41,7 @@ export default function LoginPage() {
               placeholder="••••••••"
             />
           </div>
-          
+
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
@@ -53,12 +53,12 @@ export default function LoginPage() {
                 Remember me
               </label>
             </div>
-            
+
             <a href="#" className="text-sm text-blue-400 hover:text-blue-300">
               Forgot password?
             </a>
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -68,7 +68,7 @@ export default function LoginPage() {
             Sign In
           </motion.button>
         </form>
-        
+
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm">
             Don't have an account?{" "}

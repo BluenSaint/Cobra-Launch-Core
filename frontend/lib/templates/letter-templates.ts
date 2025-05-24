@@ -1,4 +1,13 @@
-export const letterTemplates = {
+export interface LetterTemplates {
+  "inaccurate reporting": string;
+  "account not mine": string;
+  "duplicate entry": string;
+  "identity theft": string;
+  "unauthorized inquiry": string;
+  [key: string]: string; // Add index signature to allow string indexing
+}
+
+export const letterTemplates: LetterTemplates = {
   "inaccurate reporting": "I am writing to dispute inaccurate reporting on my credit report...",
   "account not mine": "I do not recognize this account and believe it was reported in error...",
   "duplicate entry":

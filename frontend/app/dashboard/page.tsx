@@ -13,7 +13,7 @@ export default function DashboardPage() {
             <h1 className="text-xl font-bold">Cobra Launch</h1>
             <p className="text-sm text-gray-400">Credit Repair Dashboard</p>
           </div>
-          
+
           <nav className="space-y-2">
             {[
               { name: "Dashboard", icon: "📊" },
@@ -23,7 +23,7 @@ export default function DashboardPage() {
               { name: "Education", icon: "📚" },
               { name: "Settings", icon: "⚙️" },
             ].map((item, index) => (
-              <a 
+              <a
                 key={index}
                 href="#"
                 className="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-md transition duration-200"
@@ -34,7 +34,7 @@ export default function DashboardPage() {
             ))}
           </nav>
         </div>
-        
+
         {/* Main content */}
         <div className="flex-1 p-8">
           <motion.div
@@ -43,7 +43,7 @@ export default function DashboardPage() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-3xl font-bold mb-6">Welcome back, User</h1>
-            
+
             {/* Credit score card */}
             <div className="bg-gray-800 rounded-lg p-6 mb-8">
               <h2 className="text-xl font-semibold mb-4">Your Credit Score</h2>
@@ -57,13 +57,13 @@ export default function DashboardPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Stats grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               {[
                 { title: "Active Disputes", value: "3", color: "bg-yellow-600" },
                 { title: "Resolved Items", value: "7", color: "bg-green-600" },
-                { title: "Pending Reviews", value: "2", color: "bg-purple-600" }
+                { title: "Pending Reviews", value: "2", color: "bg-purple-600" },
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -77,7 +77,7 @@ export default function DashboardPage() {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Recent activity */}
             <div className="bg-gray-800 rounded-lg p-6">
               <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
@@ -86,9 +86,12 @@ export default function DashboardPage() {
                   { action: "Dispute filed", account: "Capital One", date: "May 22, 2025" },
                   { action: "Letter sent", account: "Experian", date: "May 18, 2025" },
                   { action: "Account updated", account: "TransUnion", date: "May 15, 2025" },
-                  { action: "Item removed", account: "Equifax", date: "May 10, 2025" }
+                  { action: "Item removed", account: "Equifax", date: "May 10, 2025" },
                 ].map((activity, index) => (
-                  <div key={index} className="flex justify-between items-center border-b border-gray-700 pb-3">
+                  <div
+                    key={index}
+                    className="flex justify-between items-center border-b border-gray-700 pb-3"
+                  >
                     <div>
                       <p className="font-medium">{activity.action}</p>
                       <p className="text-sm text-gray-400">{activity.account}</p>

@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import RebuildPreviewModal from "./RebuildPreviewModal";
 
-const UploadSuccessModal = ({ onClose }) => {
+interface UploadSuccessModalProps {
+  onClose: () => void;
+}
+
+const UploadSuccessModal = ({ onClose }: UploadSuccessModalProps) => {
   const [isRebuildModalOpen, setRebuildModalOpen] = useState(false);
-  const [actions, setActions] = useState([]);
+  const [actions, setActions] = useState<any[]>([]);
 
   const handleAutoRebuild = async () => {
     try {

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const TermsModal = ({ onAgree }) => {
+interface TermsModalProps {
+  onAgree: () => void;
+}
+
+const TermsModal = ({ onAgree }: TermsModalProps) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleAgree = () => {

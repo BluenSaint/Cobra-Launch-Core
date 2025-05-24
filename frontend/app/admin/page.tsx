@@ -9,7 +9,17 @@ import { useEffect, useState } from "react";
 import AdminUserCard from "../../components/AdminUserCard";
 import { fetchUsers } from "../../lib/admin-mock-data";
 
-export default async function AdminPage() {
+interface Session {
+  user?: {
+    name?: string;
+    email?: string;
+    image?: string;
+    id?: string;
+    role?: string;
+  };
+}
+
+export default function AdminPage() {
   const [users, setUsers] = useState<
     {
       name: string;
@@ -27,11 +37,16 @@ export default async function AdminPage() {
 
   useEffect(() => {
     const fetchSession = async () => {
-      const session = await getServerSession(authOptions);
-      if (session && session.user) {
-        // Handle authenticated state
-      } else {
-        // Handle unauthenticated state
+      try {
+        // Using type assertion to resolve NextAuth type compatibility issues
+        const session = (await getServerSession(authOptions as any)) as Session | null;
+        if (session && session.user) {
+          // Handle authenticated state
+        } else {
+          // Handle unauthenticated state
+        }
+      } catch (error) {
+        console.error("Error fetching session:", error);
       }
     };
     fetchSession();

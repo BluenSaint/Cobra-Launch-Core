@@ -1,6 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { autoRebuildDisputes } from "../../lib/rebuilder";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     const { prev, current } = req.body;
 

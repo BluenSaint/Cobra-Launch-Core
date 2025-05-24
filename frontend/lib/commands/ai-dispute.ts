@@ -1,4 +1,11 @@
-import { autoRebuildDisputes } from "../rebuilder";
+interface Tradeline {
+  creditor: string;
+  status: string;
+}
+
+interface CreditReport {
+  tradelines: Tradeline[];
+}
 
 interface DisputeAction {
   creditor: string;
@@ -7,7 +14,12 @@ interface DisputeAction {
   state?: string;
 }
 
-export function processDisputeActions(prevReport, currentReport): DisputeAction[] {
+import { autoRebuildDisputes } from "../rebuilder";
+
+export function processDisputeActions(
+  prevReport: CreditReport,
+  currentReport: CreditReport
+): DisputeAction[] {
   const actions: DisputeAction[] = autoRebuildDisputes(prevReport, currentReport);
 
   actions.forEach((action) => {
@@ -24,7 +36,7 @@ export function processDisputeActions(prevReport, currentReport): DisputeAction[
 }
 
 // Hook into RebuildPreviewModal
-export function integrateWithRebuildPreview(actions: DisputeAction[], onAccept: () => void) {
+export function integrateWithRebuildPreview(actions: DisputeAction[], onAccept: () => void): void {
   // Logic to integrate actions with the RebuildPreviewModal
   // This is a placeholder for actual integration logic
   console.log("Integrating with RebuildPreviewModal", actions);

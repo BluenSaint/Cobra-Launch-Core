@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const Dashboard = ({ user }) => {
+interface User {
+  firstName: string;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface DashboardProps {
+  user: User;
+}
+
+const Dashboard = ({ user }: DashboardProps) => {
   const [isFreezeModalOpen, setIsFreezeModalOpen] = useState(false);
 
   const handleRequestUpdate = () => {

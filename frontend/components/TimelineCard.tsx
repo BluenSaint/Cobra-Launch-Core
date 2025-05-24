@@ -2,7 +2,20 @@ import React from "react";
 import { generateLetter } from "../lib/letter-generator";
 import { getRecommendedAction } from "../lib/ai-commander";
 
-const TimelineCard = ({ dispute }) => {
+interface Dispute {
+  title: string;
+  status: string;
+  sentDate: string | Date;
+  creditor: string;
+  violationType: string;
+  [key: string]: unknown; // Allow for additional properties
+}
+
+interface TimelineCardProps {
+  dispute: Dispute;
+}
+
+const TimelineCard = ({ dispute }: TimelineCardProps) => {
   const handleGenerateLetter = () => {
     const letter = generateLetter(dispute);
     // Open modal with letter preview

@@ -34,7 +34,7 @@ const VaultPage = () => {
     fetch("/api/vault/list")
       .then((res) => res.json())
       .then((data) => setDocuments(data))
-      .catch((error) => toast.error("Failed to load documents"));
+      .catch(() => toast.error("Failed to load documents"));
   }, []);
 
   return (

@@ -1,4 +1,25 @@
-export function getCommanderRecommendation(dispute, history) {
+interface Dispute {
+  status: string;
+  daysSinceFiled: number;
+  creditor: string;
+  verifiedWithoutInvestigation?: boolean;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface DisputeHistory {
+  creditor: string;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface CommanderRecommendation {
+  action: string;
+  reason: string;
+}
+
+export function getCommanderRecommendation(
+  dispute: Dispute,
+  history: DisputeHistory[]
+): CommanderRecommendation {
   if (dispute.status === "DISPUTED" && dispute.daysSinceFiled > 30) {
     return { action: "Send Follow-up", reason: "No response in 30+ days" };
   }

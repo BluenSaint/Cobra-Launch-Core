@@ -1,7 +1,17 @@
 import React from "react";
 import EscalationControls from "./EscalationControls";
 
-const AdminTimeline = ({ disputes }) => {
+interface Dispute {
+  title: string;
+  status: string;
+  [key: string]: any; // Allow for additional properties
+}
+
+interface AdminTimelineProps {
+  disputes: Dispute[];
+}
+
+const AdminTimeline = ({ disputes }: AdminTimelineProps) => {
   return (
     <div className="admin-timeline">
       {disputes.map((dispute, index) => (
