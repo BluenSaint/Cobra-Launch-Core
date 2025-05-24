@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String
+  // Add more fields as needed
+}
+
+model UploadedReports {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  file   String
+  // Add more fields as needed
+}
+
+model Disputes {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  reportId String @db.ObjectId
+  summary String
+  // Add more fields as needed
+} 
