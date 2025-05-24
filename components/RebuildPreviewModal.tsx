@@ -4,17 +4,47 @@ import { toast } from "react-toastify";
 import { autoRebuildDisputes } from "../lib/rebuilder";
 import { mockReportNew, mockReportOld } from "../lib/mocks/mock-report";
 
-const RebuildPreviewModal = () => {
-  const [actions, setActions] = useState([]);
+export interface RebuildAction {
+  creditor: string;
+  type: string;
+  message: string;
+}
+
+interface RebuildPreviewModalProps {
+  actions?: RebuildAction[];
+  onClose?: () => void;
+  onAccept?: () => void;
+}
+
+const RebuildPreviewModal = ({
+  actions: initialActions,
+  onClose,
+  onAccept,
+}: RebuildPreviewModalProps) => {
+  const [actions, setActions] = useState<RebuildAction[]>(initialActions || []);
 
   const handleGenerateActions = () => {
     const generatedActions = autoRebuildDisputes(mockReportOld, mockReportNew);
     setActions(generatedActions);
   };
 
-  const handleDeployAction = (action) => {
+  const handleDeployAction = (action: RebuildAction) => {
     console.log("Action deployed:", action);
     toast.success("Action deployed to timeline");
+  };
+
+  const handleAccept = () => {
+    if (onAccept) {
+      onAccept();
+    }
+  };
+
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else {
+      console.log("Modal closed");
+    }
   };
 
   return (
@@ -26,7 +56,7 @@ const RebuildPreviewModal = () => {
     >
       <div className="modal-content">
         <h2>Recommended Actions</h2>
-        <button onClick={handleGenerateActions}>Generate Actions</button>
+        {!initialActions && <button onClick={handleGenerateActions}>Generate Actions</button>}
         <ul>
           {actions.map((action, index) => (
             <li key={index}>
@@ -36,13 +66,12 @@ const RebuildPreviewModal = () => {
               <br />
               <strong>Reason:</strong> {action.message}
               <br />
-              <button onClick={() => handleDeployAction(action)}>
-                Deploy Action
-              </button>
+              <button onClick={() => handleDeployAction(action)}>Deploy Action</button>
             </li>
           ))}
         </ul>
-        <button onClick={() => console.log("Modal closed")}>Close</button>
+        {onAccept && <button onClick={handleAccept}>Accept All</button>}
+        <button onClick={handleClose}>Close</button>
       </div>
     </motion.div>
   );

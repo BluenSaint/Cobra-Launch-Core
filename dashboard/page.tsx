@@ -3,10 +3,41 @@ import AICommanderPanel from "../components/AICommanderPanel";
 import { getCommanderRecommendation } from "../lib/ai/commander";
 import { toast } from "react-toastify";
 
-const DashboardPage = ({ disputes, history }) => {
-  const [timeline, setTimeline] = useState([]);
+interface Dispute {
+  creditor: string;
+  status: string;
+}
 
-  const handleDeployAction = (action) => {
+interface History {
+  // Define history properties as needed
+}
+
+interface CommanderAction {
+  creditor: string;
+  action: string;
+  reason: string;
+  timestamp?: string;
+}
+
+interface Recommendation {
+  action: string;
+  reason: string;
+}
+
+interface RecommendationWithCreditor {
+  creditor: string;
+  recommendation: Recommendation;
+}
+
+interface DashboardPageProps {
+  disputes: Dispute[];
+  history: History;
+}
+
+const DashboardPage = ({ disputes, history }: DashboardPageProps) => {
+  const [timeline, setTimeline] = useState<CommanderAction[]>([]);
+
+  const handleDeployAction = (action: CommanderAction) => {
     setTimeline([...timeline, action]);
     toast.success("Commander action deployed to timeline");
   };
@@ -21,7 +52,7 @@ const DashboardPage = ({ disputes, history }) => {
       }
       return null;
     })
-    .filter(Boolean);
+    .filter((item): item is RecommendationWithCreditor => item !== null);
 
   const topRecommendations = recommendations
     .sort((a, b) => {

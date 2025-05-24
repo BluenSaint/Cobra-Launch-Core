@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { getNotifications, markAllAsRead } from "../lib/notifications";
 
+interface Notification {
+  message: string;
+  timestamp: string;
+}
+
 export default function NotificationCenter() {
-  const [notifications, setNotifications] = useState(getNotifications());
+  const [notifications, setNotifications] = useState<Notification[]>(getNotifications());
 
   const handleMarkAllAsRead = () => {
     markAllAsRead();

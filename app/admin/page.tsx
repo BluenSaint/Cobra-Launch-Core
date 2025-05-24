@@ -10,12 +10,14 @@ import AdminUserCard from "../../components/AdminUserCard";
 import { fetchUsers } from "../../lib/admin-mock-data";
 
 export default async function AdminPage() {
-  const [users, setUsers] = useState<{
-    name: string;
-    plan: string;
-    disputes: { title: string; status: string }[];
-    creditScore: number;
-  }[]>([]);
+  const [users, setUsers] = useState<
+    {
+      name: string;
+      plan: string;
+      disputes: { title: string; status: string }[];
+      creditScore: number;
+    }[]
+  >([]);
 
   useEffect(() => {
     // Fetch users from mock data

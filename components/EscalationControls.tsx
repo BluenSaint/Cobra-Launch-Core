@@ -17,15 +17,9 @@ const EscalationControls = ({ dispute }) => {
 
   return (
     <div className="escalation-controls">
-      <button onClick={() => handleAction("send-followup")}>
-        Send Follow-Up Letter
-      </button>
-      <button onClick={() => handleAction("escalate-cfpb")}>
-        Escalate to CFPB
-      </button>
-      <button onClick={() => handleAction("mark-resolved")}>
-        Mark as Resolved
-      </button>
+      <button onClick={() => handleAction("send-followup")}>Send Follow-Up Letter</button>
+      <button onClick={() => handleAction("escalate-cfpb")}>Escalate to CFPB</button>
+      <button onClick={() => handleAction("mark-resolved")}>Mark as Resolved</button>
 
       {isModalOpen && (
         <motion.div

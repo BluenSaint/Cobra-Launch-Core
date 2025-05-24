@@ -26,9 +26,7 @@ const UploadSuccessModal = ({ onClose }) => {
       const data = await response.json();
       setActions(data.actions);
       setRebuildModalOpen(true);
-      toast.info(
-        `${data.actions.length} auto-generated dispute actions ready for review`
-      );
+      toast.info(`${data.actions.length} auto-generated dispute actions ready for review`);
     } catch (error) {
       toast.error("Failed to auto rebuild disputes");
     }

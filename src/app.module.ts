@@ -6,8 +6,12 @@ import { ThrottlerModule } from "@nestjs/throttler";
   imports: [
     AuthModule,
     ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
+      throttlers: [
+        {
+          ttl: 60000,
+          limit: 10,
+        },
+      ],
     }),
   ],
 })

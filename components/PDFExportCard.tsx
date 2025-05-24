@@ -6,11 +6,7 @@ interface PDFExportCardProps {
   onDownload: () => void;
 }
 
-const PDFExportCard: React.FC<PDFExportCardProps> = ({
-  exportType,
-  lastGenerated,
-  onDownload,
-}) => {
+const PDFExportCard: React.FC<PDFExportCardProps> = ({ exportType, lastGenerated, onDownload }) => {
   return (
     <div className="pdf-export-card">
       <h3>{exportType}</h3>

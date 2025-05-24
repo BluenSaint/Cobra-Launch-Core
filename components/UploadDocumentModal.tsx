@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
-const UploadDocumentModal = ({ onClose }) => {
-  const [file, setFile] = useState(null);
+interface UploadDocumentModalProps {
+  onClose: () => void;
+}
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+const UploadDocumentModal = ({ onClose }: UploadDocumentModalProps) => {
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
   };
 
   const handleUpload = () => {

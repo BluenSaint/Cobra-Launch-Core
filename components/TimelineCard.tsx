@@ -18,9 +18,7 @@ const TimelineCard = ({ dispute }) => {
       {["NO RESPONSE", "READY TO ESCALATE"].includes(dispute.status) && (
         <button onClick={handleGenerateLetter}>Generate Letter</button>
       )}
-      <span className={`ai-status-tag ${action.action}`}>
-        AI: {action.reason}
-      </span>
+      <span className={`ai-status-tag ${action.action}`}>AI: {action.reason}</span>
     </div>
   );
 };

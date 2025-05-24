@@ -6,12 +6,15 @@ import { useSession } from "next-auth/react";
 // import { getAuditLogs } from "../../lib/audit-log";
 
 const LogsPage = () => {
-  const { data: session } = useSession();
-  const [logs, setLogs] = useState<{
-    type: string;
-    timestamp: string;
-    context: string;
-  }[]>([]);
+  // Use optional chaining to safely handle undefined session
+  const session = useSession()?.data;
+  const [logs, setLogs] = useState<
+    {
+      type: string;
+      timestamp: string;
+      context: string;
+    }[]
+  >([]);
 
   useEffect(() => {
     // Simulate fetching logs

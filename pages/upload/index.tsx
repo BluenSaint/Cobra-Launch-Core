@@ -58,7 +58,7 @@ const UploadPage = () => {
   return (
     <div className="upload-page">
       <h1>Upload Your Credit Report</h1>
-      <Dropzone onDrop={handleDrop} accept="application/pdf">
+      <Dropzone onDrop={handleDrop} accept={{ "application/pdf": [".pdf"] }}>
         {({ getRootProps, getInputProps }) => (
           <div {...getRootProps({ className: "dropzone" })}>
             <input {...getInputProps()} />

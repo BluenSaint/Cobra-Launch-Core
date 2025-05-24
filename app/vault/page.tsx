@@ -47,9 +47,7 @@ const VaultPage = () => {
             <li key={index}>{doc.name}</li>
           ))}
         </ul>
-        {isModalOpen && (
-          <UploadDocumentModal onClose={() => setIsModalOpen(false)} />
-        )}
+        {isModalOpen && <UploadDocumentModal onClose={() => setIsModalOpen(false)} />}
       </div>
     </VaultLayout>
   );

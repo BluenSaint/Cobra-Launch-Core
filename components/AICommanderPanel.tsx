@@ -2,10 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 
+interface CommanderAction {
+  creditor: string;
+  action: string;
+  reason: string;
+  timestamp?: string;
+}
+
 interface AICommanderPanelProps {
   creditor: string;
   recommendation: { action: string; reason: string };
-  onDeploy: (action: { type: string; creditor: string }) => void;
+  onDeploy: (action: CommanderAction) => void;
 }
 
 const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
@@ -13,7 +20,7 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
   recommendation,
   onDeploy,
 }) => {
-  const getThreatScore = (action) => {
+  const getThreatScore = (action: string) => {
     switch (action) {
       case "Escalate":
         return 80;
@@ -26,7 +33,12 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
   };
 
   const handleDeployAction = () => {
-    const action = { type: recommendation.action, creditor };
+    const action: CommanderAction = {
+      creditor,
+      action: recommendation.action,
+      reason: recommendation.reason,
+      timestamp: new Date().toISOString(),
+    };
     onDeploy(action);
     toast.success("Commander action deployed to timeline");
   };
@@ -47,8 +59,7 @@ const AICommanderPanel: React.FC<AICommanderPanelProps> = ({
         className="threat-score-bar"
         style={{
           width: `${threatScore}%`,
-          backgroundColor:
-            threatScore >= 80 ? "red" : threatScore >= 50 ? "yellow" : "green",
+          backgroundColor: threatScore >= 80 ? "red" : threatScore >= 50 ? "yellow" : "green",
         }}
       >
         Threat Score: {threatScore}

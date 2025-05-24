@@ -1,0 +1,13 @@
+# Ignore Prisma generated files
+**/prisma/client/**
+**/prisma/wasm.js
+**/generated/prisma/**
+
+# Ignore build output
+.next/
+out/
+dist/
+build/
+
+# Ignore node modules
+node_modules/

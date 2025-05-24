@@ -14,12 +14,8 @@ const TermsModal = ({ onAgree }) => {
       <h2>Terms and Conditions</h2>
       <p>Please read and agree to the terms and conditions to proceed.</p>
       <label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-        I agree to the terms and conditions
+        <input type="checkbox" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />I
+        agree to the terms and conditions
       </label>
       <button onClick={handleAgree} disabled={!isChecked}>
         Agree

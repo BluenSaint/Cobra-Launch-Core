@@ -10,8 +10,7 @@ export default async function DebugPage() {
   const session = await getServerSession(authOptions);
 
   const envValidation = validateEnv();
-  const userDisputes =
-    fetchUsers().find((u) => u.name === session.user.name)?.disputes || [];
+  const userDisputes = fetchUsers().find((u) => u.name === session?.user?.name)?.disputes || [];
 
   return (
     <div className="debug-page">
@@ -20,9 +19,7 @@ export default async function DebugPage() {
       <pre>{JSON.stringify(session, null, 2)}</pre>
       <h2>Environment Variables</h2>
       <ul>
-        <li>
-          NEXTAUTH_SECRET: {process.env.NEXTAUTH_SECRET ? "Set" : "Not Set"}
-        </li>
+        <li>NEXTAUTH_SECRET: {process.env.NEXTAUTH_SECRET ? "Set" : "Not Set"}</li>
         <li>NEXTAUTH_URL: {process.env.NEXTAUTH_URL ? "Set" : "Not Set"}</li>
         <li>MONGODB_URI: {process.env.MONGODB_URI ? "Set" : "Not Set"}</li>
         <li>ADMIN_EMAIL: {process.env.ADMIN_EMAIL ? "Set" : "Not Set"}</li>

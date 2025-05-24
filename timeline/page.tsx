@@ -3,10 +3,28 @@ import AICommanderPanel from "../components/AICommanderPanel";
 import { getCommanderRecommendation } from "../lib/ai/commander";
 import { toast } from "react-toastify";
 
-const TimelinePage = ({ disputes, history }) => {
-  const [timeline, setTimeline] = useState([]);
+// Import the CommanderAction type from AICommanderPanel component
+interface CommanderAction {
+  creditor: string;
+  action: string;
+  reason: string;
+  timestamp?: string;
+}
 
-  const handleDeployAction = (action) => {
+interface Dispute {
+  creditor: string;
+  status: string;
+}
+
+interface TimelinePageProps {
+  disputes: Dispute[];
+  history: any[];
+}
+
+const TimelinePage = ({ disputes, history }: TimelinePageProps) => {
+  const [timeline, setTimeline] = useState<CommanderAction[]>([]);
+
+  const handleDeployAction = (action: CommanderAction) => {
     setTimeline([...timeline, action]);
     toast.success("Commander action deployed to timeline");
   };
@@ -17,8 +35,10 @@ const TimelinePage = ({ disputes, history }) => {
       {timeline.map((action, index) => (
         <div key={index} className="timeline-entry">
           <p>
-            Action: {action.type} for {action.creditor}
+            Action: {action.action} for {action.creditor}
           </p>
+          <p>Reason: {action.reason}</p>
+          {action.timestamp && <p>Time: {action.timestamp}</p>}
         </div>
       ))}
       {disputes.map((dispute, index) => {
