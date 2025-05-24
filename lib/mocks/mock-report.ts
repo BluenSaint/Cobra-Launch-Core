@@ -13,9 +13,7 @@ export const mockReportNew = {
 export const mockReportOld = {
   name: "Test User",
   score: 622,
-  tradelines: [
-    { creditor: "Midland Credit", status: "collection", balance: 240 },
-  ],
+  tradelines: [{ creditor: "Midland Credit", status: "collection", balance: 240 }],
   inquiries: [],
   reportDate: "2025-04-01",
 };

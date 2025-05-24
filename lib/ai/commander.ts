@@ -3,9 +3,7 @@ export function getCommanderRecommendation(dispute, history) {
     return { action: "Send Follow-up", reason: "No response in 30+ days" };
   }
 
-  const sameCreditorCount = history.filter(
-    (h) => h.creditor === dispute.creditor
-  ).length;
+  const sameCreditorCount = history.filter((h) => h.creditor === dispute.creditor).length;
   if (sameCreditorCount >= 2) {
     return {
       action: "Escalate",

@@ -1,4 +1,13 @@
-export function parseCreditReport(file: File): Promise<{ name: string; score: number; tradelines: { creditor: string; status: string; balance: number; }[]; inquiries: string[]; reportDate: string; }> {
+// Define the type based on the return type of parseCreditReport
+export interface ParsedCreditReport {
+  name: string;
+  score: number;
+  tradelines: { creditor: string; status: string; balance: number }[];
+  inquiries: string[];
+  reportDate: string;
+}
+
+export function parseCreditReport(file: File): Promise<ParsedCreditReport> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

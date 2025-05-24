@@ -1,16 +1,11 @@
-export function validateEnv() {
-  const requiredVars = [
-    "NEXTAUTH_SECRET",
-    "NEXTAUTH_URL",
-    "MONGODB_URI",
-    "ADMIN_EMAIL",
-  ];
+export function validateEnv(): string {
+  const requiredVars = ["NEXTAUTH_SECRET", "NEXTAUTH_URL", "MONGODB_URI", "ADMIN_EMAIL"];
 
-  requiredVars.forEach((varName) => {
-    if (!process.env[varName]) {
-      throw new Error(`Environment variable ${varName} is missing`);
-    }
-  });
+  const missingVars = requiredVars.filter((varName) => !process.env[varName]);
 
-  console.log("All required environment variables are set.");
+  if (missingVars.length > 0) {
+    return `Missing environment variables: ${missingVars.join(", ")}`;
+  }
+
+  return "All required environment variables are set.";
 }

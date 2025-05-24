@@ -5,9 +5,7 @@ export default function handler(req, res) {
     const { prev, current } = req.body;
 
     if (!prev || !current) {
-      return res
-        .status(400)
-        .json({ error: "Previous and current reports are required." });
+      return res.status(400).json({ error: "Previous and current reports are required." });
     }
 
     const actions = autoRebuildDisputes(prev, current);

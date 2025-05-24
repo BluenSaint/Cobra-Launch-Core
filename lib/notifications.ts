@@ -1,6 +1,15 @@
-const notifications = [];
+interface Notification {
+  id: number;
+  userId: string;
+  message: string;
+  type: string;
+  read: boolean;
+  timestamp: string;
+}
 
-export function sendNotification(userId, message, type) {
+const notifications: Notification[] = [];
+
+export function sendNotification(userId: string, message: string, type: string): void {
   const timestamp = new Date().toISOString();
   notifications.push({
     id: notifications.length + 1,
@@ -12,10 +21,10 @@ export function sendNotification(userId, message, type) {
   });
 }
 
-export function getNotifications() {
+export function getNotifications(): Notification[] {
   return notifications;
 }
 
-export function markAllAsRead() {
+export function markAllAsRead(): void {
   notifications.forEach((notification) => (notification.read = true));
 }

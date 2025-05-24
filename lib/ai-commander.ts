@@ -1,7 +1,6 @@
 export function getRecommendedAction(dispute) {
   const daysSinceSent = Math.floor(
-    (new Date().getTime() - new Date(dispute.sentDate).getTime()) /
-      (1000 * 60 * 60 * 24)
+    (new Date().getTime() - new Date(dispute.sentDate).getTime()) / (1000 * 60 * 60 * 24)
   );
 
   if (dispute.status === "NO RESPONSE" && daysSinceSent > 30) {

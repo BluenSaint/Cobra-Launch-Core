@@ -4,9 +4,7 @@ export default function handler(req, res) {
 
     // Mock response for PDF download
     const mockResponse = {
-      link: `/mock-pdfs/${exportType
-        .replace(/\s+/g, "-")
-        .toLowerCase()}-bundle.pdf`,
+      link: `/mock-pdfs/${exportType.replace(/\s+/g, "-").toLowerCase()}-bundle.pdf`,
     };
 
     return res.status(200).json(mockResponse);

@@ -1,5 +1,16 @@
-export function autoRebuildDisputes(prev, current) {
-  const newActions = [];
+import { RebuildAction } from "../components/RebuildPreviewModal";
+
+interface Tradeline {
+  creditor: string;
+  status: string;
+}
+
+interface CreditReport {
+  tradelines: Tradeline[];
+}
+
+export function autoRebuildDisputes(prev: CreditReport, current: CreditReport): RebuildAction[] {
+  const newActions: RebuildAction[] = [];
 
   current.tradelines.forEach((item) => {
     const old = prev.tradelines.find((t) => t.creditor === item.creditor);
@@ -15,8 +26,7 @@ export function autoRebuildDisputes(prev, current) {
       newActions.push({
         creditor: item.creditor,
         type: "Escalate",
-        message:
-          "Creditor verified item without investigation — escalate to AG or CFPB.",
+        message: "Creditor verified item without investigation — escalate to AG or CFPB.",
       });
     }
   });

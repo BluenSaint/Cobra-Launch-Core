@@ -1,11 +1,15 @@
-import { ParsedCreditReport } from "./ocr/credit-parser";
+interface SnapshotChange {
+  creditor: string;
+  oldStatus: string;
+  newStatus: string;
+}
 
-export function compareSnapshots(oldReport, newReport) {
-  const changes = [];
+export function compareSnapshots(oldReport: any, newReport: any): SnapshotChange[] {
+  const changes: SnapshotChange[] = [];
 
-  newReport.tradelines.forEach((newTradeline) => {
+  newReport.tradelines.forEach((newTradeline: any) => {
     const oldTradeline = oldReport.tradelines.find(
-      (t) => t.creditor === newTradeline.creditor
+      (t: any) => t.creditor === newTradeline.creditor
     );
     if (!oldTradeline || oldTradeline.status !== newTradeline.status) {
       changes.push({
