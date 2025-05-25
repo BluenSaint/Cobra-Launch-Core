@@ -1,0 +1,17 @@
+{
+  "builds": [
+    { "src": "apps/admin-portal/next.config.js", "use": "@vercel/next" },
+    { "src": "apps/client-api/main.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "apps/client-api/$1" },
+    { "src": "/(.*)", "dest": "apps/admin-portal/$1" }
+  ],
+  "github": {
+    "silent": false,
+    "autoAlias": true
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
